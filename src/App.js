@@ -1,21 +1,24 @@
 import "./App.css";
-import { CategoryScroller } from "./CategoriesScroller";
-import { SearchBar } from "./SearchBar";
 import { Switch, Route } from "react-router-dom";
+import { FrontPage } from "./FrontPage";
+import { Category } from "./Category";
 function App() {
-  return (
-    <div className="App">
-      <header></header>
+  const routes = [
+    { path: "/category/:name", as: Category },
+    { path: "/", as: FrontPage },
+  ];
 
-      <SearchBar />
-      <CategoryScroller
-        categories={[
-          { name: "driving" },
-          { name: "singing" },
-          { name: "Philosophy" },
-        ]}
-      />
-    </div>
+  return (
+    <Switch>
+      {routes.map(({ path, as }) => {
+        console.log(path);
+        return (
+          <Route key={path} path={path}>
+            {as}
+          </Route>
+        );
+      })}
+    </Switch>
   );
 }
 
