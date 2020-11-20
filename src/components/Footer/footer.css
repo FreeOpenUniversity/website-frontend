@@ -1,0 +1,45 @@
+/*Foot Menu*/
+.footer {
+  padding-top: 10px;
+  background-color: #1f253d;
+  min-height: 500px;
+}
+
+.footerMenu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  max-width: 85%;
+  margin: 5px auto;
+  color: #fff;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #727272;
+}
+
+.footerMenu a {
+  color: #fff;
+  text-decoration: none;
+  line-height: 1.8;
+}
+
+.footerMenu a:hover {
+  border-bottom: 1px solid #fec23d;
+}
+
+.menu {
+  padding-left: 30px;
+  border-right: 1px solid #727272;
+}
+
+.menu h2 {
+  text-transform: capitalize;
+}
+
+/* the right most menu has no border */
+.menu.right {
+  border-right: none;
+}
+
+ul.list-item {
+  padding-left: 0;
+  list-style-type: none;
+}

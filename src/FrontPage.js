@@ -1,6 +1,7 @@
 import React from "react";
 import { SearchBar } from "./SearchBar";
 import { CategoryScroller } from "./CategoriesScroller";
+import { Footer } from './components/Footer'
 
 export const FrontPage = () => {
   return (
@@ -14,6 +15,7 @@ export const FrontPage = () => {
           { name: "Philosophy" },
         ]}
       />
+      <Footer />
     </div>
   );
 };
