@@ -27,11 +27,17 @@ export function Book({ book, key }) {
 }
 
 export function Category(props) {
-  const catName = props.match.params.name;
+  const catName = props.location.state.name;
+
   return (
     <div className="ml2 w-75 center">
       <div className="f1 tc mt3 ttc">{catName}</div>
-      {data.slice(0, 20).map((book, key) => Book({ book, key }))}
+      {data
+        .filter(({ category }) => {
+          return category === catName;
+        })
+        .slice(0, 20)
+        .map((book, key) => Book({ book, key }))}
     </div>
   );
 }
