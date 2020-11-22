@@ -11,7 +11,6 @@ function App() {
   return (
     <Switch>
       {routes.map(({ path, as }) => {
-        console.log(path);
         return (
           <Route key={path} path={path}>
             {as}
