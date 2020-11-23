@@ -11,3 +11,63 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.blueprint-blue {
+  color: #1d3759;
+}
+.bg-blueprint-blue {
+  background-color: #1d3759;
+}
+.b--blueprint-blue {
+  border-color: #1d3759;
+}
+
+.hover-blueprint-blue:hover,
+.hover-blueprint-blue:focus {
+  color: #1d3759;
+}
+
+.hover-bg-blueprint-blue:hover,
+.hover-bg-blueprint-blue:focus {
+  background-color: #1d3759;
+}
+
+.blueprint-white {
+  color: #cedef2;
+}
+.bg-blueprint-white {
+  background-color: #cedef2;
+}
+.b--blueprint-white {
+  border-color: #cedef2;
+}
+
+.hover-blueprint-white:hover,
+.hover-blueprint-white:focus {
+  color: #cedef2;
+}
+
+.hover-bg-blueprint-white:hover,
+.hover-bg-blueprint-white:focus {
+  background-color: #cedef2;
+}
+
+.fawn {
+  color: #8c5332;
+}
+.bg-fawn {
+  background-color: #8c5332;
+}
+.b--fawn {
+  border-color: #8c5332;
+}
+
+.hover-fawn:hover,
+.hover-fawn:focus {
+  color: #8c5332;
+}
+
+.hover-bg-fawn:hover,
+.hover-bg-fawn:focus {
+  background-color: #8c5332;
+}

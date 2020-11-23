@@ -6,7 +6,7 @@ import _ from "lodash";
 
 export const FrontPage = () => {
   return (
-    <div className="avenir">
+    <div className="avenir bg-blueprint-white">
       <header></header>
       <SearchBar />
       <CategoryScroller

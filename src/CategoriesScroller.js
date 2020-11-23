@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function CategoryScroller({ categories }) {
   return (
-    <div>
+    <div className="h-100 dib">
       {categories.map(({ id, name }) => (
         <div key={name} className="f1 pa3 avenir black ttc fl mr2">
           <Link
@@ -11,7 +11,7 @@ export function CategoryScroller({ categories }) {
               pathname: "/category/" + name.toLowerCase(),
               state: { id, name },
             }}
-            className="link dark-gray hover-green hover-animate"
+            className="link blueprint-blue hover-fawn hover-animate"
           >
             {name}
           </Link>

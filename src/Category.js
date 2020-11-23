@@ -9,13 +9,13 @@ import data from "./MOCK_DATA.json";
  *
  * @param {{book:book}} param0
  */
-export function Book({ book, key }) {
+function Book({ book, key }) {
   const { title, author, link: download, category } = book;
   const cutLength = 24;
   return (
     <div
       key={key}
-      className="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 mr2 fl"
+      className="br2 ba blueprint-blue b--black-10 mv4 w-100 w-50-m w-25-l mw5 mr2 fl"
     >
       <div className="h4 f2 fw5 tc">
         {title.length > cutLength ? title.slice(0, cutLength) + "..." : title}
@@ -31,7 +31,7 @@ export function Category(props) {
 
   return (
     <div className="ml2 w-75 center">
-      <div className="f1 tc mt3 ttc">{catName}</div>
+      <div className="f1 tc mt3 ttc blueprint-blue">{catName}</div>
       {data
         .filter(({ category }) => {
           return category === catName;
