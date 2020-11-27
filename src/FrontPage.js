@@ -1,8 +1,7 @@
 import React from "react";
 import { SearchBar } from "./SearchBar";
 import { CategoryScroller } from "./CategoriesScroller";
-import data from "./MOCK_DATA.json";
-import _ from "lodash";
+
 
 export const FrontPage = () => {
   return (
@@ -16,6 +15,7 @@ export const FrontPage = () => {
             .filter((cat) => !cat.includes("|"))
         ).map((name) => ({ name }))}
       />
+      <Footer />
     </div>
   );
 };
