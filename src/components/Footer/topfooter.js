@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import FooterMenu from './footerMenu';
 
@@ -35,21 +36,44 @@ const sectionMenu3 = [
 ]
 
 
-const TopFooter = () =>
-    <div className="footer--top">
-        <FooterMenu title="About OpenLearn" items={sectionMenu1} />
-        <FooterMenu title="Explore subjects" items={sectionMenu2} />
-        <FooterMenu title="Explore resources" items={sectionMenu3} />
-        <div className="menu right">
-            <h2>Our partners</h2>
-            <p>
-                OpenLearn works with other organisations by providing free courses
-                and resources that support our mission of opening up educational opportunities
-                to more people in more places.
-                </p>
-            <div><Link to="/">Find Out More</Link></div>
-            <Link to="/">Support Us</Link>
+const TopFooter = () => {
+    useEffect(() => {
+        let menus = document.getElementsByClassName("menu_header")
+
+        for (let i = 0; i < menus.length; i++) {
+            menus[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                let menuItems = this.nextElementSibling;
+                if (menuItems.style.maxHeight) {
+                    menuItems.style.maxHeight = null;
+                } else {
+                    menuItems.style.maxHeight = menuItems.scrollHeight + "px";
+                }
+
+            })
+        }
+    })
+
+    return (
+        <div className="footer--top">
+            <FooterMenu title="About OpenLearn" items={sectionMenu1} />
+            <FooterMenu title="Explore subjects" items={sectionMenu2} />
+            <FooterMenu title="Explore resources" items={sectionMenu3} />
+            <div className="menu right">
+                <h2 className="menu_header">Our partners</h2>
+                <ul className="list-item">
+                    <p>
+                        OpenLearn works with other organisations by providing free courses
+                        and resources that support our mission of opening up educational opportunities
+                        to more people in more places.
+                    </p>
+                    <li><Link to="/">Find Out More</Link></li>
+                    <li><Link to="/">Support Us</Link></li>
+                </ul>
+
+            </div>
         </div>
-    </div>
+    )
+}
 
 export default TopFooter;

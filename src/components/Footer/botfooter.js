@@ -3,8 +3,8 @@ import logo1 from '../../Images/logo1.png'
 import logo2 from '../../Images/logo2.png'
 
 const BotFooter = () =>
-    <div className="footer-bot">
-        <div>
+    <div className="footer--bot">
+        <div className="logo">
             <img id="OU-logo" src={logo1} alt="Opean University Logo" />
             <img id="OL-logo" src={logo2} alt="OpenLearn Logo" />
         </div>

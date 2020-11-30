@@ -3,6 +3,7 @@
   padding-top: 10px;
   background-color: #1f253d;
   padding-bottom: 20px;
+  clear: both;
 }
 
 .footer a {
@@ -30,8 +31,14 @@
   border-right: 1px solid #727272;
 }
 
-.menu h2 {
+.menu_header {
   text-transform: capitalize;
+  background-color: #1f253d;
+  color: #fff;
+}
+.active {
+  background-color: #1e2c3f;
+  color: #fec23d;
 }
 
 /* the right most menu has no border */
@@ -44,7 +51,7 @@ ul.list-item {
   list-style-type: none;
 }
 /* Bottom Footer */
-.footer-bot {
+.footer--bot {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   color: #fff;
@@ -91,4 +98,59 @@ ul.social {
 }
 .social li i {
   font-size: 50px;
+}
+
+@media only screen and (max-width: 1080px) {
+  .footer--top,
+  .footer--bot {
+    max-width: 100%;
+  }
+  /*Bottom Footer*/
+  #OL-logo {
+    margin-left: 0px;
+  }
+}
+
+/*Mobile*/
+@media only screen and (max-width: 600px) {
+  .footer--top {
+    display: block;
+    max-width: 100%;
+    border-bottom: none;
+  }
+  .menu {
+    padding-left: 0;
+    border-right: none;
+  }
+  .menu_header {
+    padding: 15px 30px;
+    margin-bottom: -20px;
+    background-color: #1e2c3f;
+  }
+  ul.list-item {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 30px;
+  }
+
+  /*Bottom Footer*/
+  .footer--bot {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  ul.social {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .social li a {
+    color: #fff;
+  }
+  .social li a:hover {
+    border-bottom: none;
+    color: #fff;
+  }
+  .footer--bot .logo {
+    text-align: center;
+  }
 }

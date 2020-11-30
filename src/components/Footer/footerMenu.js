@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const FooterMenu = ({title, items}) =>
+const FooterMenu = ({ title, items }) =>
     <div className="menu">
-        <h2>{title}</h2>
+        <h2 className="menu_header">{title}</h2>
         <ul className="list-item">
             {
                 items.map((menu, index) =>

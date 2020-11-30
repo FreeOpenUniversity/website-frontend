@@ -4,6 +4,7 @@ import { FrontPage } from "./FrontPage";
 import { Category } from "./Category";
 import { Book } from "./Book";
 import MOCK_DATA from "./MOCK_DATA.json";
+import AboutUs from "./components/AboutUs";
 function App() {
   const routes = [
     { path: "/category/:name", as: Category },
@@ -15,13 +16,14 @@ function App() {
       },
     },
     { path: "/", as: FrontPage },
+    { path: "/about-us", as: AboutUs },
   ];
 
   return (
     <Switch>
       {routes.map(({ path, as }) => {
         return (
-          <Route key={path} path={path}>
+          <Route key={path} path={path} exact>
             {as}
           </Route>
         );
