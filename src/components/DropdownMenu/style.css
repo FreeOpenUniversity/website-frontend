@@ -1,0 +1,62 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-bars {
+  color: rgb(4, 145, 102);
+  font-size: 2rem;
+  padding-left: 2rem;
+  position: absolute;
+  top: 1rem;
+}
+
+.menu-items {
+  width: 100%;
+  padding-left: 0;
+}
+
+.drop-menu {
+  background-color: rgb(4, 145, 102);
+  width: 210px;
+  height: 25vh;
+  position: fixed;
+  left: 2rem;
+  top: 3.5rem;
+  display: none;
+  border-radius: 2px;
+}
+
+.drop-menu.active {
+  display: flex;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 40px;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 3px;
+}
+
+.nav-text a:hover {
+  background-color: aliceblue;
+  color: rgb(3, 119, 84);
+}
+
+span {
+  margin-left: 10px;
+}
