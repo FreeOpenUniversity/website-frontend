@@ -5,6 +5,7 @@ import { Category } from "./Category";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import { MyLearning } from "./components/MyLearning/MyLearning";
+import { Navbar } from "./components/Navbar/Navbar";
 
 function App() {
   const routes = [
@@ -13,19 +14,21 @@ function App() {
   ];
 
   return (
-    <Switch>
-      <Route path="/setting" exact component={AccountSetting} />
-      <Route path="/profile" exact component={Profile} />
-      <Route path="/mylearning" exact component={MyLearning} />
+    <>
+      <Switch>
+        <Route path="/setting" exact component={AccountSetting} />
+        <Route path="/profile" exact component={Profile} />
+        <Route path="/mylearning" exact component={MyLearning} />
 
-      {routes.map(({ path, as }) => {
-        return (
-          <Route key={path} path={path}>
-            {as}
-          </Route>
-        );
-      })}
-    </Switch>
+        {routes.map(({ path, as }) => {
+          return (
+            <Route key={path} path={path}>
+              {as}
+            </Route>
+          );
+        })}
+      </Switch>
+    </>
   );
 }
 
