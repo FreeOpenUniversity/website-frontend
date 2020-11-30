@@ -4,11 +4,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To run, execute `yarn start` while in the directory
 
-# build and server the app locally using NPM:  http://localhost:3000
-run the following command in your terminal/command prompt, this assumes you have npm installed.  
+# build and server the app locally using NPM: http://localhost:3000
+
+run the following command in your terminal/command prompt, this assumes you have npm installed.
 
 `npm install`
-`npm run start` 
+`npm run start`
 
 # CSS
 
