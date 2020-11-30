@@ -1,20 +1,20 @@
 import React from "react";
 import { SearchBar } from "./SearchBar";
 import { CategoryScroller } from "./CategoriesScroller";
-
+import Footer from "./components/Footer";
 
 export const FrontPage = () => {
   return (
     <div className="avenir">
       <header></header>
       <SearchBar />
-      <CategoryScroller
+      {/* <CategoryScroller
         categories={_.uniq(
           data
             .map(({ category }) => category)
             .filter((cat) => !cat.includes("|"))
         ).map((name) => ({ name }))}
-      />
+      /> */}
       <Footer />
     </div>
   );
