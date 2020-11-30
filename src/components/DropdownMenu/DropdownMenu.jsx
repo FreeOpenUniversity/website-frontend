@@ -20,7 +20,7 @@ function DropdownMenu() {
       </div>
 
       <nav className={userButton ? "drop-menu active" : "drop-menu"}>
-        <ul className="menu-items">
+        <ul className="menu-items" onClick={showMenu}>
           {MenuData.map((item, index) => {
             return (
               <li key={index} className={item.cName}>
