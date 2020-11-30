@@ -28,7 +28,7 @@ const AboutUs = () => {
         <div className="content">
           <div className="blog">
             <p id="summary-content">
-              <b>Welcome to OpenLearn</b> - the home of free learning from The
+              <b>Welcome to OpenLearn</b>- the home of free learning from The
               Open University. Are you looking for a new topic to explore, or
               want to dig deeper into something you've already discovered?
               Whether it’s a 60-second animated video or a 24-hour course you
