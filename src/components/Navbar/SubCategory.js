@@ -9,9 +9,9 @@ export const SubCategory = () => {
     <>
       <div className="sub_nav_bar">
         <div className="sub_nav_bar_top ">
-          <h2>Catagories</h2>
+          <h2>Catagory</h2>
           <button className="fw5 avenir pa3 br-pill b-dark-green bw0 ">
-            View all categories
+            View all category
           </button>
         </div>
 
@@ -25,7 +25,6 @@ export const SubCategory = () => {
             </li>
           );
         })}
-        {/* </div> */}
       </div>
     </>
   );

@@ -11,22 +11,22 @@ export const Navbar = () => {
   return (
     <div className="nav_bar">
       <div className="nav_bar_content">
-        {/* <div> */}
         <ul>
           <div className="nav_bar_content_main avenir">
             <Link to="#">
-              <img src={logo} height="50px" />
+              <img src={logo} height="60px" />
             </Link>
 
             <Link
               to="#"
               className="link white hover-green hover-animate dropdown"
             >
-              <p>Categories</p>
+              <p>Category</p>
               <SubCategory />
             </Link>
+
             <Link to="#" className="link white hover-green hover-animate">
-              <p>Subject</p>
+              <p>Subjects</p>
             </Link>
             <Link to="#" className="link white hover-green hover-animate">
               <p>For Study</p>
@@ -38,7 +38,7 @@ export const Navbar = () => {
 
           <div className="nav_bar_content_side">
             <SearchBar />
-            <button className="button">Register</button>
+            <button className="button">Sign In / Register</button>
             {/*convert into a button component */}
           </div>
         </ul>
@@ -48,4 +48,3 @@ export const Navbar = () => {
     </div>
   );
 };
-// export default NavBar;

@@ -5,7 +5,6 @@ import { Category } from "./Category";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import { MyLearning } from "./components/MyLearning/MyLearning";
-import { Navbar } from "./components/Navbar/Navbar";
 
 function App() {
   const routes = [

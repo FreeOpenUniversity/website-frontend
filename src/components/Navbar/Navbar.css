@@ -18,7 +18,7 @@
 p {
   margin: 0 1rem 0 1rem;
   width: fit-content;
-  padding: 1.3rem 0;
+  padding: 1.5rem 0;
 }
 .nav_bar_content_main > a:nth-child(2) {
   margin-left: 1rem;
@@ -27,9 +27,10 @@ p {
 .nav_bar_content_main {
   display: flex;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: white;
   align-items: center;
+  text-transform: uppercase;
 }
 .nav_bar_content_side {
   display: flex;
@@ -49,7 +50,8 @@ p {
   padding: 1rem 0;
   display: grid;
   position: absolute;
-  grid-template-columns: repeat(4, 200px);
+  grid-template-columns: repeat(4, 150px);
+  padding: 2rem;
 
   width: fit-content;
   visibility: hidden;
@@ -58,7 +60,7 @@ p {
 }
 
 .sub_nav_bar_top {
-  padding: 1rem;
+  padding-bottom: 2rem;
   display: flex;
   margin-bottom: 1rem;
   width: 100%;
@@ -68,19 +70,17 @@ p {
   height: fit-content;
   /* border: 1px solid blue; */
 }
-/* .sub_nav_bar_bottom {
-
-  position: absolute;
-  grid-template-columns: repeat(4, 200px);
-} */
 
 .sub_nav_bar > li {
   padding: 0.3rem;
-  margin: auto;
+
+  text-align: left;
+  /* border: 2px red solid; */
 }
 
 .button {
-  margin: auto 1rem;
+  margin: auto 0;
+  margin-left: 0.5rem;
   padding: 0.3rem 0.8rem;
   text-align: center;
   font-size: 1rem;
@@ -88,6 +88,7 @@ p {
   font-weight: bold;
   border-radius: 10px;
   background-color: white;
+  border: solid 2px;
 }
 .button:hover {
   color: white;
