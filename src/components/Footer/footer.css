@@ -1,7 +1,7 @@
 /*Foot Menu*/
 .footer {
   padding-top: 10px;
-  background-color: #1f253d;
+  background-color: #333;
   padding-bottom: 20px;
   clear: both;
 }
@@ -13,7 +13,7 @@
 }
 
 .footer a:hover {
-  border-bottom: 1px solid #fec23d;
+  border-bottom: 1px solid rgb(4, 145, 102);
 }
 
 .footer--top {
@@ -33,12 +33,12 @@
 
 .menu_header {
   text-transform: capitalize;
-  background-color: #1f253d;
+  background-color: #333;
   color: #fff;
 }
 .active {
   background-color: #1e2c3f;
-  color: #fec23d;
+  color: rgb(4, 145, 102);
 }
 
 /* the right most menu has no border */
@@ -65,9 +65,7 @@ ul.list-item {
 #OL-logo {
   margin-left: 20px;
 }
-.mid p {
-  font-size: 12px;
-}
+
 .mid ul {
   padding-left: 0;
   list-style-type: none;
@@ -89,12 +87,12 @@ ul.social {
   display: inline-block;
 }
 .social li a {
-  color: #2a4d7f;
+  color: #fff;
   text-decoration: none;
 }
 .social li a:hover {
   border-bottom: none;
-  color: #fec23d;
+  color: rgb(4, 145, 102);
 }
 .social li i {
   font-size: 50px;

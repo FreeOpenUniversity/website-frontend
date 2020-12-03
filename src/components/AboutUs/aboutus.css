@@ -8,6 +8,9 @@
   max-width: 1200px;
   margin: 1px auto;
 }
+.nav a {
+  color: #000;
+}
 
 .nav .title::before {
   color: #808080;
@@ -82,6 +85,10 @@
   text-align: center;
 }
 
+.text li {
+  margin: 2px 0;
+}
+
 .sidebar-becomeStudent {
   background-color: #fff;
   padding: 25px 40px;
@@ -106,4 +113,13 @@
   margin-left: 10px;
   font-size: 15px;
   line-height: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .content {
+    display: block;
+  }
+  .video iframe {
+    width: 320px;
+    height: 180px;
+  }
 }
