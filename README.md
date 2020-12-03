@@ -1,6 +1,10 @@
 # Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Check out the [contribution guidelines in the wiki](https://github.com/FreeOpenUniversity/website-frontend/wiki/contribution-guidelines).
+
+
+
+## Running this thing
 
 To run, `cd` into the directory, then execute either:
 
