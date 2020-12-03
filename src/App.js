@@ -1,10 +1,13 @@
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { FrontPage } from "./FrontPage";
 import { Category } from "./Category";
 import { Book } from "./Book";
 import MOCK_DATA from "./MOCK_DATA.json";
 import AboutUs from "./components/AboutUs";
+import { AccountSetting } from "./components/AccountSetting/AccountSetting";
+import { Profile } from "./components/Profile/Profile";
+import { MyLearning } from "./components/MyLearning/MyLearning";
 import classPage from "./classPage";
 
 function App() {
@@ -24,6 +27,10 @@ function App() {
 
   return (
     <Switch>
+      <Route path="/setting" exact component={AccountSetting} />
+      <Route path="/profile" exact component={Profile} />
+      <Route path="/mylearning" exact component={MyLearning} />
+
       {routes.map(({ path, as }) => {
         return (
           <Route key={path} path={path} exact>
