@@ -2,11 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-To run, execute `yarn start` while in the directory
+To run, `cd` into the directory, then execute either:
 
+`yarn && yarn start` if you have yarn installed,
+
+or
+
+- `npm install`
+- `npm run start`
+
+to develop with npm.
+
+Your server should run be running locally on http://localhost:3000
 # CSS
 
-Use [tachyons](tachyons.io) classes for styling. See
+Please use [tachyons](tachyons.io) classes for styling. See
 
 - https://tachyons-tldr.now.sh/#/tools
 - and https://roperzh.github.io/tachyons-cheatsheet/
