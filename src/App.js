@@ -5,6 +5,8 @@ import { Category } from "./Category";
 import { Book } from "./Book";
 import MOCK_DATA from "./MOCK_DATA.json";
 import AboutUs from "./components/AboutUs";
+import classPage from "./classPage";
+
 function App() {
   const routes = [
     { path: "/category/:name", as: Category },
@@ -17,6 +19,7 @@ function App() {
     },
     { path: "/", as: FrontPage },
     { path: "/about-us", as: AboutUs },
+    { path: "/my-classes", as: classPage },
   ];
 
   return (
