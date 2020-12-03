@@ -4,7 +4,7 @@ Check out the [contribution guidelines in the wiki](https://github.com/FreeOpenU
 
 
 
-## Running this thing
+## Running
 
 To run, `cd` into the directory, then execute either:
 
