@@ -7,9 +7,23 @@ import "./Navbar.css";
 import logo from "./freeopenu88.png";
 import { SubCategory } from "./SubCategory";
 
-export const Navbar = () => {
+export const Navbar = ({ signedIn }) => {
+  signedIn = false;
+  const UserControls = () => {
+    const className = "ml-auto link white hover-green hover-animate h2";
+    return signedIn ? (
+      <div className={className}>
+        <UserDropdownMenu />
+      </div>
+    ) : (
+      <Link className={className} to="#">
+        Sign In
+      </Link>
+    );
+  };
+
   return (
-    <div className="w-100 fw5 f4 h-auto bg-dark-blue pa2 bb bw1 v-mid avenir flex">
+    <div className="w-100 fw5 f4 h-auto bg-dark-blue pa2 bb bw1 flex items-center avenir">
       <Link to="#">
         <img src={logo} height="60px" />
       </Link>
@@ -18,12 +32,7 @@ export const Navbar = () => {
         <SubCategory />
       </Link>
       <SearchBar className="fr" />
-      <div className="ml-auto">
-        <Link to="#" className="link white hover-green hover-animate ">
-          Sign In / Register
-        </Link>
-        <UserDropdownMenu />
-      </div>
+      <UserControls />
     </div>
   );
 };
