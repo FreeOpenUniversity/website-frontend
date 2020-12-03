@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+
 import { Link } from "react-router-dom";
 import "./style.css";
 import { MenuData } from "../MenuData";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function DropdownMenu() {
+function UserDropdownMenu() {
   const [userButton, setUserButton] = useState(false);
 
   const showMenu = () => setUserButton(!userButton);
@@ -37,4 +36,4 @@ function DropdownMenu() {
   );
 }
 
-export default DropdownMenu;
+export default UserDropdownMenu;
