@@ -9,6 +9,7 @@ import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import { MyLearning } from "./components/MyLearning/MyLearning";
 import Footer from "./components/Footer";
+import classPage from "./classPage";
 
 function App() {
   const routes = [
@@ -22,6 +23,7 @@ function App() {
     },
     { path: "/", as: FrontPage },
     { path: "/about-us", as: AboutUs },
+    { path: "/my-classes", as: classPage },
   ];
 
   return (
