@@ -32,7 +32,7 @@ function App() {
 
   return (
     <>
-      <Navbar> </Navbar>
+      <Navbar />
       <Switch>
         {routes.map(({ path, as }) => {
           return (
