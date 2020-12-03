@@ -9,6 +9,8 @@ import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import { MyLearning } from "./components/MyLearning/MyLearning";
 import classPage from "./classPage";
+import { Navbar } from "./components/Navbar/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const routes = [
@@ -23,22 +25,25 @@ function App() {
     { path: "/", as: FrontPage },
     { path: "/about-us", as: AboutUs },
     { path: "/my-classes", as: classPage },
+    { path: "/setting", as: AccountSetting },
+    { path: "/profile", as: Profile },
+    { path: "/mylearning", as: MyLearning },
   ];
 
   return (
-    <Switch>
-      <Route path="/setting" exact component={AccountSetting} />
-      <Route path="/profile" exact component={Profile} />
-      <Route path="/mylearning" exact component={MyLearning} />
-
-      {routes.map(({ path, as }) => {
-        return (
-          <Route key={path} path={path} exact>
-            {as}
-          </Route>
-        );
-      })}
-    </Switch>
+    <>
+      <Navbar> </Navbar>
+      <Switch>
+        {routes.map(({ path, as }) => {
+          return (
+            <Route key={path} path={path} exact>
+              {as}
+            </Route>
+          );
+        })}
+      </Switch>
+      <Footer />
+    </>
   );
 }
 
