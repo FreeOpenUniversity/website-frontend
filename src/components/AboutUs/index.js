@@ -3,6 +3,7 @@ import AboutUs_Banner from "../../Images/about_us.jpg";
 import { Link } from "react-router-dom";
 import Content from "./content";
 import Sidebar from "./sidebar";
+import Template from "../BlogTemplate";
 
 const AboutUs = () => {
   return (
@@ -28,11 +29,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-
-      <div className="center mw8-l mw100 min-vh-100">
-        <Content />
-        <Sidebar />
-      </div>
+      <Template Main={Content} Sidebar={Sidebar} dir="default" />
     </div>
   );
 };

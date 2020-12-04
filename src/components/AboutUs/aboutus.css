@@ -59,12 +59,3 @@
   font-size: 15px;
   line-height: 20px;
 }
-@media only screen and (max-width: 600px) {
-  .content {
-    display: block;
-  }
-  .video iframe {
-    width: 320px;
-    height: 180px;
-  }
-}

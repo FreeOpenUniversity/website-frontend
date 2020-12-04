@@ -10,6 +10,7 @@ import { Profile } from "./components/Profile/Profile";
 import { MyLearning } from "./components/MyLearning/MyLearning";
 import Footer from "./components/Footer";
 import classPage from "./classPage";
+import ContactUs from "./components/ContactUs";
 
 function App() {
   const routes = [
@@ -23,6 +24,7 @@ function App() {
     },
     { path: "/", as: FrontPage },
     { path: "/about-us", as: AboutUs },
+    { path: "/contact-us", as: ContactUs },
     { path: "/my-classes", as: classPage },
   ];
 

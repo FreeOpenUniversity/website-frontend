@@ -10,7 +10,7 @@ const TitleBar = ({ title }) => (
 
 export default function Content() {
   return (
-    <div className="fl w-70 w-100-m ph4 pv3 bg-white mv3">
+    <div className="">
       <p id="summary-content">
         <b>Welcome to OpenLearn</b>- the home of free learning from The Open
         University. Are you looking for a new topic to explore, or want to dig
