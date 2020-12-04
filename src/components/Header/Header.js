@@ -1,15 +1,16 @@
 import React from "react";
-import HeadBgImg from "../../Images/HeadBgImg.jpg";
+import HeadBgImg from "./HeadBgImg.jpg";
 import logo from "../../Images/logo.png";
 import { SearchBar } from "../../SearchBar";
 import { Navbar } from "../Navbar/Navbar";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import "./header.css";
 
 function Header() {
   return (
     <div className="">
-      <div className=" bg-gray w-100">
-        <div className="pa4 mh5 flex items-center">
+      <div className=" bg-light-silver w-100">
+        <div className="pa3 mh5 flex items-center">
           <img
             id="CIS-logo"
             className="w-13 h3 pr2 br"
@@ -28,14 +29,8 @@ function Header() {
         </div>
       </div>
       <Navbar />
-      <img
-        className="ma0 vh-75 w-100"
-        src={HeadBgImg}
-        alt="Collegiate Independent Study"
-      />
-      <span className="dib pl7">
-        <SearchBar />
-      </span>
+
+      <img src={HeadBgImg} className="vh-50 w-100" />
     </div>
   );
 }

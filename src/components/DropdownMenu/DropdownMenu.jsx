@@ -14,13 +14,20 @@ function DropdownMenu() {
   return (
     <div>
       <div className="ml5 userbtn">
-        <Link to="#" className="green f1 ">
-          <FaIcons.FaUserAlt onClick={showMenu} />
+        <Link to="#" className="dark-green f1 pl5">
+          <FaIcons.FaUserAlt
+            onMouseEnter={() => setUserButton(true)}
+            onMouseLeave={() => setUserButton(false)}
+          />
         </Link>
       </div>
 
       <nav className={userButton ? "drop-menu active" : "drop-menu"}>
-        <ul className="w-100 pl0" onClick={showMenu}>
+        <ul
+          className="w-100 pl0"
+          onMouseEnter={() => setUserButton(true)}
+          onMouseLeave={() => setUserButton(false)}
+        >
           {MenuData.map((item, index) => {
             return (
               <li key={index} className={item.cName}>
