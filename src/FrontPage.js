@@ -7,15 +7,15 @@ import _ from "lodash";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DropdownMenu from "./components/DropdownMenu/DropdownMenu";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
+import Header from "./components/Header/Header";
 
 export const FrontPage = () => {
   return (
     <div className="avenir">
       <header>
-        <DropdownMenu />
+        <Header />
       </header>
 
-      <SearchBar />
       <CategoryScroller
         categories={_.uniq(
           data

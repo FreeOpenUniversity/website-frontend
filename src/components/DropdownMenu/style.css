@@ -1,29 +1,10 @@
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.menu-bars {
-  color: rgb(4, 145, 102);
-  font-size: 2rem;
-  padding-left: 2rem;
-  position: absolute;
-  top: 1rem;
-}
-
-.menu-items {
-  width: 100%;
-  padding-left: 0;
-}
-
 .drop-menu {
   background-color: rgb(4, 145, 102);
   width: 210px;
   height: 25vh;
   position: fixed;
-  left: 2rem;
-  top: 3.5rem;
+  right: 3rem;
+  top: 6rem;
   display: none;
   border-radius: 2px;
 }
@@ -55,8 +36,4 @@ body {
 .nav-text a:hover {
   background-color: aliceblue;
   color: rgb(3, 119, 84);
-}
-
-span {
-  margin-left: 10px;
 }
