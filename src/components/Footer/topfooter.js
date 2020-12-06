@@ -35,44 +35,35 @@ const sectionMenu3 = [
   { title: "My OpenLearn profile", link: "/" },
 ];
 
+const sectionMenu4 = [
+  {
+    title:
+      "OpenLearn works with other organisations by providing free courses and resources that support our mission of opening up educational opportunities to more people in more places.",
+    link: "none",
+  },
+  { title: "Find Out More", link: "/" },
+  { title: "Support Us", link: "/" },
+];
+
 const TopFooter = () => {
-  useEffect(() => {
-    let menus = document.getElementsByClassName("menu_header");
-
-    for (let i = 0; i < menus.length; i++) {
-      menus[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        let menuItems = this.nextElementSibling;
-        if (menuItems.style.maxHeight) {
-          menuItems.style.maxHeight = null;
-        } else {
-          menuItems.style.maxHeight = menuItems.scrollHeight + "px";
-        }
-      });
-    }
-  });
-
   return (
-    <div className="footer--top">
-      <FooterMenu title="About OpenLearn" items={sectionMenu1} />
-      <FooterMenu title="Explore subjects" items={sectionMenu2} />
-      <FooterMenu title="Explore resources" items={sectionMenu3} />
-      <div className="menu right">
-        <h2 className="menu_header">Our partners</h2>
-        <ul className="list-item">
-          <p>
-            OpenLearn works with other organisations by providing free courses
-            and resources that support our mission of opening up educational
-            opportunities to more people in more places.
-          </p>
-          <li>
-            <Link to="/">Find Out More</Link>
-          </li>
-          <li>
-            <Link to="/">Support Us</Link>
-          </li>
-        </ul>
-      </div>
+    <div className="footer--top white center mv3 pb3">
+      <FooterMenu
+        title="About OpenLearn"
+        items={sectionMenu1}
+        hasBorder={true}
+      />
+      <FooterMenu
+        title="Explore subjects"
+        items={sectionMenu2}
+        hasBorder={true}
+      />
+      <FooterMenu
+        title="Explore resources"
+        items={sectionMenu3}
+        hasBorder={true}
+      />
+      <FooterMenu title="Our partners" items={sectionMenu4} hasBorder={false} />
     </div>
   );
 };
