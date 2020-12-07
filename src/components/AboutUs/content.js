@@ -1,5 +1,5 @@
 const TitleBar = ({ title }) => (
-  <div className="titlebar">
+  <div className="titlebar w100 mt4 mb3 h1 tl">
     <h2>
       <span className="ma0 pa3 f3 bg-white">
         <strong>{title}</strong>
@@ -20,7 +20,7 @@ export default function Content() {
       </p>
       {/* Section: Who We Are */}
       <TitleBar title="Who We Are" />
-      <div className="video">
+      <div className="tc center mv4">
         <iframe
           title="OpenLearn Introduction"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -55,7 +55,7 @@ export default function Content() {
       </div>
       {/* Section: What We Do */}
       <TitleBar title=" What We Do" />
-      <div className="video">
+      <div className="tc center mv4">
         <iframe
           title="OpenLearn Introduction"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -67,7 +67,6 @@ export default function Content() {
       </div>
       <div className="text">
         <p>
-          {" "}
           We deliver bite-sized learning experiences designed to fit easily into
           daily life, so whether you're a busy parent looking to get promoted at
           work, or back-packing across Africa and wanting to increase your
