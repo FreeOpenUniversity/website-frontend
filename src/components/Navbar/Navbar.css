@@ -15,7 +15,7 @@
   height: fit-content;
 }
 .nav_bar_content_main ~ li,
-p {
+.nav_bar_content_main ~ p {
   margin: 0 1rem 0 1rem;
   width: fit-content;
   padding: 1.5rem 0;
@@ -95,9 +95,9 @@ p {
   background-color: transparent;
   cursor: pointer;
 }
-* {
+/* * {
   list-style-type: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */

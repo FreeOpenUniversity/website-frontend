@@ -8,6 +8,7 @@ import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import { MyLearning } from "./components/MyLearning/MyLearning";
+import Footer from "./components/Footer";
 import classPage from "./classPage";
 
 function App() {
@@ -26,19 +27,22 @@ function App() {
   ];
 
   return (
-    <Switch>
-      <Route path="/setting" exact component={AccountSetting} />
-      <Route path="/profile" exact component={Profile} />
-      <Route path="/mylearning" exact component={MyLearning} />
+    <>
+      <Switch>
+        <Route path="/setting" exact component={AccountSetting} />
+        <Route path="/profile" exact component={Profile} />
+        <Route path="/mylearning" exact component={MyLearning} />
 
-      {routes.map(({ path, as }) => {
-        return (
-          <Route key={path} path={path} exact>
-            {as}
-          </Route>
-        );
-      })}
-    </Switch>
+        {routes.map(({ path, as }) => {
+          return (
+            <Route key={path} path={path} exact>
+              {as}
+            </Route>
+          );
+        })}
+      </Switch>
+      <Footer />
+    </>
   );
 }
 
