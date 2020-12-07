@@ -4,13 +4,19 @@ const Sidebar = () => {
       <div className="sidebar-header">
         <h2>Related Content</h2>
       </div>
-      <div>
-        <ul>
-          <li>Help and Advice</li>
-          <li>OpenLearn</li>
-          <li>FAQs</li>
-          <li>Course</li>
-          <li>Posters</li>
+      <div className="vh-25-m h5">
+        <ul className="list pl0">
+          <li className="dib bg-light-gray black fl ma2 pa3 br-pill">
+            Help and Advice
+          </li>
+          <li className="dib bg-light-gray black fl ma2 pa3 br-pill">
+            OpenLearn
+          </li>
+          <li className="dib bg-light-gray black fl ma2 pa3 br-pill">FAQs</li>
+          <li className="dib bg-light-gray black fl ma2 pa3 br-pill">Course</li>
+          <li className="dib bg-light-gray black fl ma2 pa3 br-pill">
+            Posters
+          </li>
         </ul>
       </div>
     </div>
