@@ -18,44 +18,21 @@
 }
 
 .titlebar {
-  width: 100%;
-  height: 20px;
   border-bottom: 3px dotted pink;
-  text-align: left;
-  margin-top: 20px;
 }
 
-.video {
-  margin: 75px auto;
-  text-align: center;
-}
-
-.text li {
-  margin: 2px 0;
-}
-
-.sidebar-becomeStudent {
-  background-color: #fff;
-  padding: 25px 40px;
-}
 .sidebar-header {
   border-bottom: 1px solid;
   margin-top: -20px;
 }
-.sidebar-content ul {
-  padding-left: 0;
-}
+
 .sidebar-content li {
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   border-bottom: dashed 1px #000;
-  padding-bottom: 10px;
-  margin-bottom: 25px;
 }
-.sidebar-content li p {
-  margin: 0 auto;
-  margin-left: 10px;
-  font-size: 15px;
-  line-height: 20px;
+
+@media only screen and (max-width: 600px) {
+  iframe.blog-video {
+    width: 400px;
+    height: 250px;
+  }
 }
