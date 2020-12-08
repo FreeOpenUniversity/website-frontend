@@ -9,6 +9,7 @@ import { SubCategory } from "./SubCategory";
 
 export const Navbar = ({ signedIn }) => {
   signedIn = false;
+
   const UserControls = () => {
     const className = "ml-auto link white hover-green hover-animate h2";
     return signedIn ? (
@@ -28,7 +29,7 @@ export const Navbar = ({ signedIn }) => {
         <img src={logo} height="60px" />
       </Link>
       <Link to="#" className="link white hover-green hover-animate dropdown">
-        <p>Category</p>
+        <p className="pa2">Category</p>
         <SubCategory />
       </Link>
       <SearchBar className="fr" />
