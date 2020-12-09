@@ -1,4 +1,11 @@
-.nav_bar {
+<<<<<<< HEAD .dropdown:hover .visibility-hidden {
+  visibility: visible;
+}
+.visibility-hidden {
+  visibility: hidden;
+}
+
+======= .nav_bar {
   width: 100%;
   border-bottom: 2px black solid;
   background-color: #264773;
@@ -91,7 +98,7 @@ p {
   background-color: transparent;
   cursor: pointer;
 }
-* {
+>>>>>>>i8Header * {
   list-style-type: none;
   margin: 0;
   padding: 0;

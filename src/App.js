@@ -7,6 +7,8 @@ import MOCK_DATA from "./MOCK_DATA.json";
 import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
+import classPage from "./classPage";
+import Footer from "./components/Footer";
 
 function App() {
   const routes = [
@@ -20,21 +22,24 @@ function App() {
     },
     { path: "/", as: FrontPage },
     { path: "/about-us", as: AboutUs },
+    { path: "/my-classes", as: classPage },
+    { path: "/setting", as: AccountSetting },
+    { path: "/profile", as: Profile },
   ];
 
   return (
-    <Switch>
-      <Route path="/setting" exact component={AccountSetting} />
-      <Route path="/profile" exact component={Profile} />
-
-      {routes.map(({ path, as }) => {
-        return (
-          <Route key={path} path={path} exact>
-            {as}
-          </Route>
-        );
-      })}
-    </Switch>
+    <>
+      <Switch>
+        {routes.map(({ path, as }) => {
+          return (
+            <Route key={path} path={path} exact>
+              {as}
+            </Route>
+          );
+        })}
+      </Switch>
+      <Footer />
+    </>
   );
 }
 
