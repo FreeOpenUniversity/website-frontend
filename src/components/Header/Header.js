@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../Images/logo.png";
 import { SearchBar } from "../SearchBar";
 import { Navbar } from "../Navbar/Navbar";
-import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import DropdownMenu from "../UserDropdownMenu/UserDropdownMenu";
 import { FaBorderNone } from "react-icons/fa";
 
 function Header() {

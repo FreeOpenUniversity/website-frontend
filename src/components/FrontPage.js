@@ -1,12 +1,9 @@
 import React from "react";
 import { CategoryScroller } from "./CategoriesScroller";
-import data from "./MOCK_DATA.json";
-import _ from "lodash";
-import Footer from "./Footer";
 import data from "../MOCK_DATA.json";
 import _ from "lodash";
+import Footer from "./Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import Header from "./Header/Header";
 import frontpgImg from "../Images/frontpgImg.svg";
 

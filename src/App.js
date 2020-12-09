@@ -8,7 +8,6 @@ import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import classPage from "./classPage";
-import { Navbar } from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <Switch>
         {routes.map(({ path, as }) => {
           return (

@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 
 import { Link } from "react-router-dom";
-<<<<<<< HEAD:src/components/UserDropdownMenu/UserDropdownMenu.jsx
-import "./style.css";
-import { MenuData } from "../MenuData";
-=======
 import { MenuData } from "./MenuData";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
->>>>>>> i8Header:src/components/DropdownMenu/DropdownMenu.jsx
 
 function UserDropdownMenu() {
   const [userButton, setUserButton] = useState(false);
