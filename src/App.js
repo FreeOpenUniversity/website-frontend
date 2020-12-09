@@ -1,13 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { FrontPage } from "./FrontPage";
-import { Category } from "./Category";
-import { Book } from "./Book";
+import { FrontPage } from "./Components/FrontPage";
+import { Category } from "./Components/Category";
+import { Book } from "./Components/Book";
 import MOCK_DATA from "./MOCK_DATA.json";
 import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
-import { MyLearning } from "./components/MyLearning/MyLearning";
 
 function App() {
   const routes = [
