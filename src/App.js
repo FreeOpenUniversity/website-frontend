@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { FrontPage } from "./Components/FrontPage";
-import { Category } from "./Components/Category";
-import { Book } from "./Components/Book";
+import { FrontPage } from "./components/FrontPage";
+import { Category } from "./components/Category";
+import { Book } from "./components/Book";
 import MOCK_DATA from "./MOCK_DATA.json";
 import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
@@ -26,7 +26,6 @@ function App() {
     <Switch>
       <Route path="/setting" exact component={AccountSetting} />
       <Route path="/profile" exact component={Profile} />
-      <Route path="/mylearning" exact component={MyLearning} />
 
       {routes.map(({ path, as }) => {
         return (

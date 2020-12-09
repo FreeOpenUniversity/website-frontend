@@ -9,7 +9,7 @@ function Header() {
   return (
     <div className="">
       <div className="bg-light-silver w-100">
-        <div className="pa3 mh5 mh2-m flex items-center">
+        <div className="pa4 mh5 mh2-m flex items-center">
           <img
             id="CIS-logo"
             className="w3 h3 pr2 br"
@@ -19,10 +19,10 @@ function Header() {
           <span className="avenir f3 f5-m ttc pl1 fw6">
             Collegiate Independent Study
           </span>
-          <span className="dib pl6 dn-m">
+          <span className="dib pl5 dn-m">
             <SearchBar />
           </span>
-          <span>
+          <span className="pl2">
             <DropdownMenu />
           </span>
         </div>

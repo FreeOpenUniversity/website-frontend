@@ -7,7 +7,7 @@ import _ from "lodash";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import Header from "./Header/Header";
-import frontpgImg from "./frontpgImg.svg";
+import frontpgImg from "../Images/frontpgImg.svg";
 
 export const FrontPage = () => {
   const background = {
@@ -18,7 +18,10 @@ export const FrontPage = () => {
       <header>
         <Header />
       </header>
-      <div style={background} className="cover bg-near-white vh-75"></div>
+      <div
+        style={background}
+        className="cover bg-near-white mw-100 vh-75"
+      ></div>
       <CategoryScroller
         categories={_.uniq(
           data
