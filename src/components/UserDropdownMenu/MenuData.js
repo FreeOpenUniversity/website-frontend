@@ -8,20 +8,17 @@ export const MenuData = [
     title: "Acount Setting",
     path: "/setting",
     icon: <AiIcons.AiOutlineSetting />,
-    cName: "nav-text",
-  },
-
-  {
-    title: "MyLearing",
-    path: "/mylearning",
-    icon: <BsIcons.BsBook />,
-    cName: "nav-text",
   },
 
   {
     title: "Profile",
     path: "/profile",
     icon: <RiIcons.RiUserSettingsLine />,
-    cName: "nav-text",
+  },
+
+  {
+    title: "Log Out",
+    path: "/#",
+    icon: <AiIcons.AiOutlineLogout />,
   },
 ];

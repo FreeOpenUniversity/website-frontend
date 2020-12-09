@@ -1,13 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { FrontPage } from "./FrontPage";
-import { Category } from "./Category";
-import { Book } from "./Book";
+import { FrontPage } from "./components/FrontPage";
+import { Category } from "./components/Category";
+import { Book } from "./components/Book";
 import MOCK_DATA from "./MOCK_DATA.json";
 import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
-import { MyLearning } from "./components/MyLearning/MyLearning";
 import classPage from "./classPage";
 import { Navbar } from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
@@ -27,7 +26,6 @@ function App() {
     { path: "/my-classes", as: classPage },
     { path: "/setting", as: AccountSetting },
     { path: "/profile", as: Profile },
-    { path: "/mylearning", as: MyLearning },
   ];
 
   return (
