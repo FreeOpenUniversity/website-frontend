@@ -11,6 +11,7 @@ import { MyLearning } from "./components/MyLearning/MyLearning";
 import Footer from "./components/Footer";
 import classPage from "./classPage";
 import ContactUs from "./components/ContactUs";
+import FAQ from "./components/FAQ";
 
 function App() {
   const routes = [
@@ -26,6 +27,7 @@ function App() {
     { path: "/about-us", as: AboutUs },
     { path: "/contact-us", as: ContactUs },
     { path: "/my-classes", as: classPage },
+    { path: "/questions", as: FAQ },
   ];
 
   return (

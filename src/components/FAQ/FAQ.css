@@ -1,0 +1,29 @@
+.question {
+  background-color: #eee;
+  color: #444;
+  transition: 0.4s;
+}
+
+.active,
+.question:hover {
+  background-color: #ccc;
+  margin-bottom: 10px;
+}
+
+.question:after {
+  content: "\002B";
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
