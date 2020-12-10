@@ -1,13 +1,3 @@
-.nav a {
-  color: #000;
-}
-
-.nav .title::before {
-  color: #808080;
-  content: "⮞";
-  margin: 0 10px;
-}
-
 .banner img {
   z-index: -1;
 }
