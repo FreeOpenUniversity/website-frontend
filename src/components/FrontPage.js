@@ -2,7 +2,6 @@ import React from "react";
 import { CategoryScroller } from "./CategoriesScroller";
 import data from "../MOCK_DATA.json";
 import _ from "lodash";
-import Header from "./Header/Header";
 import frontpgImg from "../Images/frontpgImg.svg";
 
 export const FrontPage = () => {
@@ -11,9 +10,6 @@ export const FrontPage = () => {
   };
   return (
     <div className="avenir">
-      <header>
-        <Header />
-      </header>
       <div
         style={background}
         className="cover bg-near-white mw-100 vh-75"
