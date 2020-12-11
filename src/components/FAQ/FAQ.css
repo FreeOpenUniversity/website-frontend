@@ -1,13 +1,6 @@
-.question {
-  background-color: #eee;
-  color: #444;
-  transition: 0.4s;
-}
-
-.active,
-.question:hover {
+.selected {
   background-color: #ccc;
-  margin-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .question:after {
@@ -18,12 +11,11 @@
   margin-left: 5px;
 }
 
-.active:after {
+.selected:after {
   content: "\2212";
 }
 
 .answer {
   max-height: 0;
-  overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
