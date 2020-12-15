@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 
 const toggleItems = (e) => {
-  e.target.classList.toggle("active");
-  let menuItems = e.target.nextElementSibling;
-  console.log("menuItems ", e.target.nextElementSibling);
-  if (menuItems.style.display == "block") {
-    menuItems.style.display = "none";
+  if (window.innerWidth <= 600) {
+    e.target.classList.toggle("active");
+    let menuItems = e.target.nextElementSibling;
+
+    if (menuItems.style.display == "block") {
+      menuItems.style.display = "none";
+    } else {
+      menuItems.style.display = "block";
+    }
   } else {
-    menuItems.style.display = "block";
+    e.preventDefault();
   }
 };
 

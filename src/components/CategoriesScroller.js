@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export function CategoryScroller({ categories }) {
   return (
-    <div>
+    <div className="flex flex-wrap">
       {categories.map(({ id, name }) => (
-        <div key={name} className="f1 pa3 avenir black ttc fl mr2">
+        <div key={name} className="f1 pa3 avenir black ttc mr2">
           <Link
             to={{
               pathname: "/category/" + name.toLowerCase(),

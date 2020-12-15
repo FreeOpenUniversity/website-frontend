@@ -4,7 +4,7 @@ import BeingOU from "../../Images/BeingOU.jpg";
 
 const Sidebar = () => {
   return (
-    <div className="fl w-30 w-100-m ph3 ph0-m mv3">
+    <div>
       <div className="bg-white pv4 ph3">
         <div className="sidebar-header">
           <h2 className="f4">Become an OU Student</h2>

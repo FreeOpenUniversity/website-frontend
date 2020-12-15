@@ -9,6 +9,8 @@ import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import Footer from "./components/Footer";
 import classPage from "./classPage";
+import ContactUs from "./components/ContactUs";
+
 import { Navbar } from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 function App() {
@@ -23,6 +25,7 @@ function App() {
     },
     { path: "/", as: FrontPage },
     { path: "/about-us", as: AboutUs },
+    { path: "/contact-us", as: ContactUs },
     { path: "/my-classes", as: classPage },
     { path: "/setting", as: AccountSetting },
     { path: "/profile", as: Profile },
