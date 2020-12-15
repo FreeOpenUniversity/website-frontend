@@ -5,7 +5,7 @@ import BotFooter from "./botfooter";
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <div className="pt2 pb5 mv0 footer bg-dark-gray">
       <TopFooter />
       <BotFooter />
     </div>

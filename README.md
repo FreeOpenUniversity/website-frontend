@@ -2,8 +2,6 @@
 
 Check out the [contribution guidelines in the wiki](https://github.com/FreeOpenUniversity/website-frontend/wiki/contribution-guidelines).
 
-
-
 ## Running
 
 To run, `cd` into the directory, then execute either:
@@ -18,6 +16,7 @@ or
 to develop with npm.
 
 Your server should run be running locally on http://localhost:3000
+
 # CSS
 
 Please use [tachyons](tachyons.io) classes for styling. See

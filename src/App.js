@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { FrontPage } from "./components/FrontPage";
 import { Category } from "./components/Category";
 import { Book } from "./components/Book";
@@ -7,9 +7,10 @@ import MOCK_DATA from "./MOCK_DATA.json";
 import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
-import classPage from "./classPage";
 import Footer from "./components/Footer";
-
+import classPage from "./components/classPage/classPage";
+import ContactUs from "./components/ContactUs";
+import Header from "./components/Header/Header";
 function App() {
   const routes = [
     { path: "/category/:name", as: Category },
@@ -22,6 +23,7 @@ function App() {
     },
     { path: "/", as: FrontPage },
     { path: "/about-us", as: AboutUs },
+    { path: "/contact-us", as: ContactUs },
     { path: "/my-classes", as: classPage },
     { path: "/setting", as: AccountSetting },
     { path: "/profile", as: Profile },
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Switch>
         {routes.map(({ path, as }) => {
           return (

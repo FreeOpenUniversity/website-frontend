@@ -1,8 +1,5 @@
 /*Foot Menu*/
 .footer {
-  padding-top: 10px;
-  background-color: #1f253d;
-  padding-bottom: 20px;
   clear: both;
 }
 
@@ -13,32 +10,23 @@
 }
 
 .footer a:hover {
-  border-bottom: 1px solid #fec23d;
+  border-bottom: 1px solid rgb(4, 145, 102);
 }
 
 .footer--top {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   max-width: 85%;
-  margin: 5px auto;
-  color: #fff;
-  padding-bottom: 20px;
   border-bottom: 1px dashed #727272;
 }
 
 .menu {
-  padding-left: 30px;
   border-right: 1px solid #727272;
 }
 
-.menu_header {
-  text-transform: capitalize;
-  background-color: #1f253d;
-  color: #fff;
-}
 .active {
   background-color: #1e2c3f;
-  color: #fec23d;
+  color: rgb(4, 145, 102);
 }
 
 /* the right most menu has no border */
@@ -46,59 +34,33 @@
   border-right: none;
 }
 
-ul.list-item {
-  padding-left: 0;
-  list-style-type: none;
-}
 /* Bottom Footer */
 .footer--bot {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  color: #fff;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
   max-width: 85%;
-  margin: 10px auto;
-  padding: 0 15px;
 }
+
 #OU-logo {
   max-height: 60px;
 }
-#OL-logo {
-  margin-left: 20px;
-}
-.mid p {
-  font-size: 12px;
-}
-.mid ul {
-  padding-left: 0;
-  list-style-type: none;
-  text-align: center;
-}
-.mid li {
-  display: inline-block;
-  padding-right: 15px;
-}
 
-ul.social {
-  padding-left: 0;
-  list-style-type: none;
-  float: right;
-}
 .social li {
   min-width: 82px;
   text-align: center;
   display: inline-block;
 }
 .social li a {
-  color: #2a4d7f;
+  color: #fff;
   text-decoration: none;
 }
 .social li a:hover {
   border-bottom: none;
-  color: #fec23d;
+  color: rgb(4, 145, 102);
 }
-.social li i {
+/* .social li i {
   font-size: 50px;
-}
+} */
 
 @media only screen and (max-width: 1080px) {
   .footer--top,
@@ -134,10 +96,6 @@ ul.social {
   }
 
   /*Bottom Footer*/
-  .footer--bot {
-    display: flex;
-    flex-direction: column-reverse;
-  }
   ul.social {
     float: none;
     margin: 0 auto;
