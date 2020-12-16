@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { FrontPage } from "./components/FrontPage";
 import { Category } from "./components/Category";
 import { Book } from "./components/Book";
@@ -8,10 +8,8 @@ import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import Footer from "./components/Footer";
-import classPage from "./classPage";
+import classPage from "./components/classPage/classPage";
 import ContactUs from "./components/ContactUs";
-
-import { Navbar } from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 function App() {
   const routes = [
