@@ -1,4 +1,5 @@
 import { camelCase, keyBy, keys, mapValues, snakeCase, sn } from "lodash";
+import { crossProduct } from "./utils";
 
 /**
  * reducer factories. Simplifies the generation of reducers
@@ -37,6 +38,8 @@ export function fromStateMap(stateMap) {
     (k) => typeof stateMap[k] !== "function"
   );
   const verbs = keys(handlers);
+
+  // this returns an map from the keys in stateMap to a generic verb based reducer
   const reducers = resourceNames
     .map((resource) => {
       const defaultState = stateMap[resource];
@@ -48,49 +51,13 @@ export function fromStateMap(stateMap) {
     })
     .reduce((reducers, reducer) => ({ ...reducers, ...reducer }), {});
 
-  const actionTypes = resourceNames
-    .map((resource) =>
-      verbs.map((prefix) => ({
-        prefix,
-        type: snakeCase(`${prefix}_${resource}`).toUpperCase(),
-      }))
-    )
-    .flat();
-
-  const actions = actionTypes
-    .map(({ type }) => ({
-      fname: camelCase(type),
-      action: action(type),
+  //this retunss an object of action creators
+  const actions = crossProduct(verbs, resourceNames)
+    .map(([verb, resource]) => snakeCase(`${verb}_${resource}`).toUpperCase())
+    .map((type) => ({
+      [camelCase(type)]: action(type),
     }))
-    .reduce((obj, curr) => ({ ...obj, [curr.fname]: curr.action }), {});
+    .reduce((obj, curr) => ({ ...obj, ...curr }), {});
 
   return { actions, reducers };
-}
-
-/**
- *
- * @param {string[]} verbs list of verbs (set update)
- * @param {string} resource like a database table name, or a resource api endpoint
- * @param {*} defaultState how the resource should be initialized in redux
- * @returns {{[actionType: string]:()}}
- */
-function toHandlers(verbs, resource, defaultState) {
-  return verbs
-    .map((verb) => toHandler(verb, resource, defaultState))
-    .reduce((all, curr) => ({ ...all, ...curr }), {});
-}
-
-/**
- * @typedef {{type: string, payload:any}} Action
- * @typedef {{[actionType:string]:(state, action: Action)=>newState}} Handler
- *
- * @param {string} verb list of verbs [set update]
- * @param {string} resource like a database table name, or a resource api endpoint
- * @param {*} defaultState how the resource should be initialized in redux
- */
-function toHandler(verb, resource, defaultState) {
-  const type = snakeCase(`${verb}_${resource}`).toUpperCase();
-  return {
-    [type]: handlers[verb](defaultState),
-  };
 }
