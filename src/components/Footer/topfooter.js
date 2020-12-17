@@ -4,10 +4,10 @@ import FooterMenu from "./footerMenu";
 
 const sectionMenu1 = [
   { title: "About Us", link: "/about-us" },
+  { title: "Contact OpenLearn", link: "/contact-us" },
   { title: "Frequently asked questions", link: "/" },
   { title: "Study with The Open University", link: "/" },
   { title: "Subscribe to our newsletter", link: "/" },
-  { title: "Contact OpenLearn", link: "/" },
   { title: "OpenLearn Create", link: "/" },
   { title: "OpenLearn Cymru", link: "/" },
 ];

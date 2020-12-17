@@ -10,7 +10,7 @@ const TitleBar = ({ title }) => (
 
 export default function Content() {
   return (
-    <div className="fl w-70 w-100-m ph4 pv3 bg-white mv3">
+    <div>
       <p id="summary-content">
         <b>Welcome to OpenLearn</b>- the home of free learning from The Open
         University. Are you looking for a new topic to explore, or want to dig
@@ -27,7 +27,7 @@ export default function Content() {
           height="360"
           width="640"
           src="https://www.youtube.com/embed/oYkZkEjblUA"
-          className="mw100"
+          className="mw100 blog-video"
         ></iframe>
       </div>
       <div className="text">
@@ -62,7 +62,7 @@ export default function Content() {
           height="360"
           width="640"
           src="https://www.youtube.com/embed/vUxEC5c-Rc0"
-          className="mw100"
+          className="mw100 blog-video"
         ></iframe>
       </div>
       <div className="text">
