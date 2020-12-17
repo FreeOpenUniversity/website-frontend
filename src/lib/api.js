@@ -1,14 +1,12 @@
 import { camelCase, isArray, keyBy } from "lodash";
 import { fromStateMap } from "./stateToRedux";
 
-const baseURL = process.env.REACT_APP_API_URL || "localhost:8080";
-
 const toObject = (obj, { k, v }) => {
   obj[k] = v;
   return obj;
 };
 
-export const apiFactory = (stateMap, dispatch) => {
+export const apiFactory = (baseURL, stateMap, dispatch) => {
   const { actions } = fromStateMap(stateMap);
   const methods = {
     create: "post",
