@@ -17,7 +17,6 @@ const middleware = applyMiddleware(
   // createLogger({ collapsed: true })
 );
 const reduced = listOfReducersToReducer([fromStateMap(apiStateMap).reducers]);
-console.log(fromStateMap(apiStateMap).reducers);
 const reducers = combineReducers(reduced);
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
