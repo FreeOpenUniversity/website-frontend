@@ -7,7 +7,7 @@ import { FaBorderNone } from "react-icons/fa";
 
 function Header() {
   return (
-    <div className="">
+    <>
       <div className="bg-light-silver w-100">
         <div className="pa4 mh5 mh2-m flex items-center">
           <img
@@ -19,11 +19,8 @@ function Header() {
           <span className="avenir f3 f5-m ttc pl1 fw6">
             Collegiate Independent Study
           </span>
-          <span className="dib pl5 dn-m">
+          <span className="dib pl7 dn-m">
             <SearchBar />
-          </span>
-          <span className="pl2">
-            <DropdownMenu />
           </span>
         </div>
       </div>
@@ -31,7 +28,7 @@ function Header() {
         <SearchBar />
       </div>
       <Navbar />
-    </div>
+    </>
   );
 }
 

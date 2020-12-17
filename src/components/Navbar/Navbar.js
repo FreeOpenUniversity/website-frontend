@@ -21,12 +21,14 @@ export const Navbar = ({ signedIn }) => {
   };
 
   return (
-    <div className="w-100 fw5 f4 h-auto bg-dark-blue pa2 bb bw1 flex items-center avenir">
-      <div className="link white hover-green hover-animate dropdown">
-        <p className="pa2">Category</p>
+    <div className="w-100 fw5 f4 h-auto bg-dark-blue bb bw1 flex items-center avenir">
+      <div className="link white ml7 hover-green hover-animate dropdown">
+        <p>Category</p>
         <SubCategory />
       </div>
-      <UserControls />
+      <div className="pl7 fr ml6">
+        <UserControls />
+      </div>
     </div>
   );
 };
