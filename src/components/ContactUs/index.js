@@ -13,7 +13,7 @@ const ContactUs = () => (
       date="Friday, 25th October 2019"
       image={ContactUsBanner}
     />
-    <Template Main={Main} Sidebar={Sidebar} dir="default" />
+    <Template Main={Main} Sidebar={Sidebar} />
   </>
 );
 
