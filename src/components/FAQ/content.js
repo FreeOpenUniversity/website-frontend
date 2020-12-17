@@ -41,6 +41,14 @@ const toggleQuestions = (e) => {
 export default function Content() {
   return (
     <div>
+      <h1>Frequently Asked Questions</h1>
+      <div>
+        Do you have a question about our free courses, statements of
+        participation, digital badges or the My OpenLearn profile?
+      </div>
+      <div> The chances are that we may have already answered it.</div>
+
+      <h2>Using OpenLearn for the first time? We got you!</h2>
       {dummyData.map((data) => (
         <Question q={data.q} a={data.a} toggleQuestions={toggleQuestions} />
       ))}

@@ -3,7 +3,6 @@ import { SearchBar } from "./SearchBar";
 import { CategoryScroller } from "./CategoriesScroller";
 import data from "./MOCK_DATA.json";
 import _ from "lodash";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DropdownMenu from "./components/DropdownMenu/DropdownMenu";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { MyLearning } from "./components/MyLearning/MyLearning";
@@ -25,8 +24,6 @@ export const FrontPage = () => {
             .filter((cat) => !cat.includes("|"))
         ).map((name) => ({ name }))}
       />
-
-      <br />
     </div>
   );
 };
