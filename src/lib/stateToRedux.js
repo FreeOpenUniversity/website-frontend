@@ -1,13 +1,19 @@
 // getters, and setters/reducers
 
-import { camelCase, keyBy, keys, mapValues, snakeCase } from "lodash";
+import { camelCase, keyBy, keys, mapValues, snakeCase, sn } from "lodash";
 
 const baseReducers = {
-  set: (defaultState) => (state = defaultState, action) => action.payload,
-  update: (defaultState) => (state = defaultState, action) => ({
-    ...state,
-    ...action.payload,
-  }),
+  set: (defaultState) => {
+    return (state = defaultState, action) => {
+      return action.payload;
+    };
+  },
+  update: (defaultState) => (state = defaultState, action) => {
+    return {
+      ...state,
+      ...action.payload,
+    };
+  },
 };
 
 const action = (type) => (payload) => ({ type, payload });
@@ -35,11 +41,10 @@ export function fromStateMap(stateMap) {
 
   const reducers = resourceNames.reduce((reducers, name) => {
     const defaultState = stateMap[name];
-    const handlers = toHandlers(prefixes, name, defaultState);
-
     const reducer = (state = defaultState, action) => {
-      return handlers[action.actiontype]
-        ? handlers[action.actiontype](state, action)
+      const handlers = toHandlers(prefixes, name, defaultState);
+      return handlers[action.type]
+        ? handlers[action.type](state, action)
         : state;
     };
     return {
@@ -52,11 +57,10 @@ export function fromStateMap(stateMap) {
     .map((name) =>
       prefixes.map((prefix) => ({
         prefix,
-        type: snakeCase(`${prefix}_${name}`),
+        type: snakeCase(`${prefix}_${name}`).toUpperCase(),
       }))
     )
     .flat();
-
   const actions = actionTypes
     .map(({ type }) => ({
       fname: camelCase(type),
@@ -69,7 +73,10 @@ export function fromStateMap(stateMap) {
 
 function toHandlers(prefixes, name, defaultState) {
   return prefixes
-    .map((prefix) => ({ prefix, type: snakeCase(`${prefix}_${name}`) }))
+    .map((prefix) => ({
+      prefix,
+      type: snakeCase(`${prefix}_${name}`),
+    }))
     .reduce(
       (all, curr) => ({
         ...all,
@@ -78,5 +85,3 @@ function toHandlers(prefixes, name, defaultState) {
       {}
     );
 }
-
-console.log(fromStateMap({ catsAndMonkeys: [], dogs: {} }).reducers.dogs);
