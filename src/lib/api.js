@@ -41,7 +41,7 @@ export const apiFactory = (stateMap, dispatch) => {
     }).then(({ value }) => {
       isArray(value) && (value = keyBy(value, "id"));
       const key = camelCase("update_" + resourceName);
-      dispatch(actions[key](value));
+      return dispatch(actions[key](value));
       // return {
       //   post: dispatch(),
       //   update: dispatch(actions[k](data)),

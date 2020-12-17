@@ -31,5 +31,3 @@ const frontPage = (props) => {
   );
 };
 export default connect((state) => state, {})(frontPage);
-
-console.log(connect((state) => state, {})(frontPage));

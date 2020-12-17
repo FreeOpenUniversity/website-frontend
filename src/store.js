@@ -23,4 +23,3 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancer(middleware));
 
 export const api = apiFactory(apiStateMap, store.dispatch);
-store.dispatch({ type: "UPDATE_BOOK", payload: "what" });
