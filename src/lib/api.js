@@ -1,5 +1,6 @@
 import { camelCase, isArray, keyBy } from "lodash";
 import { fromStateMap } from "./stateToRedux";
+import { crossProduct } from "./utils";
 
 const toObject = (obj, [resource, method, func]) => {
   obj[resource]
@@ -7,9 +8,6 @@ const toObject = (obj, [resource, method, func]) => {
     : (obj[resource] = { [method]: func });
   return obj;
 };
-
-const crossProduct = (a1, a2) =>
-  a1.map((e1) => a2.map((e2) => [e1, e2])).flat();
 
 /**
  * @typedef {(data:{id?}, options?:{query})=>Promise<Response>} ApiCall
