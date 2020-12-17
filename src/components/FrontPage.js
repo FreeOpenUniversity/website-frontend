@@ -21,7 +21,6 @@ export const FrontPage = () => {
             .filter((cat) => !cat.includes("|"))
         ).map((name) => ({ name }))}
       />
-
       <br />
     </div>
   );

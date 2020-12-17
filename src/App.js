@@ -8,9 +8,10 @@ import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import Footer from "./components/Footer";
-import classPage from "./components/classPage/classPage";
 import ContactUs from "./components/ContactUs";
+import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
+
 function App() {
   const routes = [
     { path: "/category/:name", as: Category },
@@ -24,7 +25,7 @@ function App() {
     { path: "/", as: FrontPage },
     { path: "/about-us", as: AboutUs },
     { path: "/contact-us", as: ContactUs },
-    { path: "/my-classes", as: classPage },
+    { path: "/questions", as: FAQ },
     { path: "/setting", as: AccountSetting },
     { path: "/profile", as: Profile },
   ];
