@@ -11,7 +11,14 @@ import Footer from "./components/Footer";
 import classPage from "./components/classPage/classPage";
 import ContactUs from "./components/ContactUs";
 import Header from "./components/Header/Header";
+import { api } from "./store";
 function App() {
+  const l = api.book.read();
+  const r = api.book.create({
+    title: "Freshman Year",
+    author: "Catherine Weitz",
+    category: "calisthenics",
+  });
   const routes = [
     { path: "/category/:name", as: Category },
     {
