@@ -1,14 +1,13 @@
 import React, { memo } from "react";
 import { CategoryScroller } from "./CategoriesScroller";
 import data from "../MOCK_DATA.json";
-import _ from "lodash";
+import _, { isEmpty } from "lodash";
 import frontpgImg from "../Images/frontpgImg.svg";
 import { api } from "../store";
 import { connect } from "react-redux";
 
 const frontPage = (props) => {
-  console.log(props);
-  !props.category && api.category.read();
+  isEmpty(props.categories) && api.category.read();
   const background = {
     backgroundImage: `url(${frontpgImg})`,
   };
@@ -30,4 +29,7 @@ const frontPage = (props) => {
     </div>
   );
 };
-export default connect((state) => state, {})(frontPage);
+export default connect(
+  (state) => ({ categories: state.category }),
+  {}
+)(frontPage);
