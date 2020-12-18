@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AboutUs from "../AboutUs";
 import UserDropdownMenu from "../UserDropdownMenu/UserDropdownMenu";
 import "./Navbar.css";
 import { SubCategory } from "./SubCategory";
 
 export const Navbar = ({ signedIn }) => {
   signedIn = false;
-  const className = "link white hover-green hover-animate h2 pl4";
+  const className = "link white hover-green hover-animate h2 pl4  ";
   const UserControls = () => {
     return signedIn ? (
       <div className={className}>
@@ -27,9 +28,15 @@ export const Navbar = ({ signedIn }) => {
   return (
     <div className="w-100 fw5 f4 h-auto bg-dark-blue ph4 bb bw1 flex items-center avenir">
       <div className="link white hover-green hover-animate dropdown">
-        <p className="pa2">Category</p>
+        <p className="">Category</p>
         <SubCategory />
       </div>
+      <Link className={className} to="/about-us">
+        About
+      </Link>
+      <Link className={className} to="/contact-us">
+        Contact
+      </Link>
       <UserControls />
     </div>
   );
