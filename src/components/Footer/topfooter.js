@@ -5,7 +5,7 @@ import FooterMenu from "./footerMenu";
 const sectionMenu1 = [
   { title: "About Us", link: "/about-us" },
   { title: "Contact OpenLearn", link: "/contact-us" },
-  { title: "Frequently asked questions", link: "/" },
+  { title: "Frequently asked questions", link: "/questions" },
   { title: "Study with The Open University", link: "/" },
   { title: "Subscribe to our newsletter", link: "/" },
   { title: "OpenLearn Create", link: "/" },

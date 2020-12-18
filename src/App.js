@@ -8,8 +8,8 @@ import AboutUs from "./components/AboutUs";
 import { AccountSetting } from "./components/AccountSetting/AccountSetting";
 import { Profile } from "./components/Profile/Profile";
 import Footer from "./components/Footer";
-import classPage from "./components/classPage/classPage";
 import ContactUs from "./components/ContactUs";
+import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
 import { api } from "./store";
 import { Component } from "react";
@@ -17,13 +17,6 @@ class App extends Component {
   render() {
     const l = api.book.read();
     console.log(l);
-    // const r = api.book.create({
-    //   data: {
-    //     title: "Freshman Year",
-    //     author: "Catherine Weitz",
-    //     category: "calisthenics",
-    //   },
-    // });
     const routes = [
       { path: "/category/:name", as: Category },
       {
@@ -33,7 +26,7 @@ class App extends Component {
           return Book(MOCK_DATA[id - 1]);
         },
       },
-      { path: "/", as: <FrontPage></FrontPage> },
+      { path: "/", as: <FrontPage /> },
       { path: "/about-us", as: AboutUs },
       { path: "/contact-us", as: ContactUs },
       { path: "/my-classes", as: classPage },
