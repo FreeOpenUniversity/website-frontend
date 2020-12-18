@@ -11,9 +11,9 @@ import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
 import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
-<<<<<<< HEAD
 import { api } from "./store";
 import { Component } from "react";
+import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -29,19 +29,6 @@ class App extends Component {
           const id = props.location.state.id;
           return Book(MOCK_DATA[id - 1]);
         },
-=======
-import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
-import { Component } from "react";
-
-function App() {
-  const routes = [
-    { path: "/category/:name", as: Category },
-    {
-      path: "/book/:id",
-      as: (props) => {
-        const id = props.location.state.id;
-        return Book(MOCK_DATA[id - 1]);
->>>>>>> fb4b98c09e8bebbc6600049ed322882c4338d55d
       },
       { path: "/", as: <FrontPage /> },
       { path: "/about-us", as: AboutUs },
@@ -52,10 +39,10 @@ function App() {
       { path: "/questions", as: FAQ },
     ];
 
-<<<<<<< HEAD
     return (
       <>
         <Header />
+        <Breadcrumbs />
         <ScrollToTop>
           <Switch>
             {routes.map(({ path, as }) => {
@@ -71,25 +58,6 @@ function App() {
       </>
     );
   }
-=======
-  return (
-    <>
-      <Header />
-      <Breadcrumbs />
-      <Switch>
-        {routes.map(({ path, as }) => {
-          return (
-            <Route exact key={path} path={path}>
-              {as}
-            </Route>
-          );
-        })}
-      </Switch>
-
-      <Footer />
-    </>
-  );
->>>>>>> fb4b98c09e8bebbc6600049ed322882c4338d55d
 }
 
 export default App;
