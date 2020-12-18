@@ -11,6 +11,9 @@ import Footer from "./components/Footer";
 import classPage from "./classPage";
 import { Navbar } from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
+import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
+import { Component } from "react";
+
 function App() {
   const routes = [
     { path: "/category/:name", as: Category },
@@ -31,15 +34,17 @@ function App() {
   return (
     <>
       <Header />
+      <Breadcrumbs />
       <Switch>
         {routes.map(({ path, as }) => {
           return (
-            <Route key={path} path={path} exact>
+            <Route exact key={path} path={path}>
               {as}
             </Route>
           );
         })}
       </Switch>
+
       <Footer />
     </>
   );
