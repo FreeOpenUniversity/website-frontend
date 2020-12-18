@@ -1,5 +1,6 @@
 import "./aboutus.css";
 import AboutUs_Banner from "../../Images/about_us.jpg";
+import { Link } from "react-router-dom";
 import Content from "./content";
 import Sidebar from "./sidebar";
 import Template from "../BlogTemplate";
@@ -15,7 +16,7 @@ const AboutUs = () => {
         date="Friday, 25th October 2019"
         image={AboutUs_Banner}
       />
-      <Template Main={Content} Sidebar={Sidebar} />
+      <Template Main={Content} Sidebar={Sidebar} dir="default" />
     </div>
   );
 };
