@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export default function Template({ Main, Sidebar, dir }) {
   return (
     <div className="center mw8-l mw100 min-vh-100">
-      {!dir ? (
+      {dir == "default" ? (
         <>
           <div className="fl w-70 w-100-m ph4 pv3 bg-white mv3 min-vh-100">
             <Main />

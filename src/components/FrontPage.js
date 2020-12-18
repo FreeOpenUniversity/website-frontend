@@ -1,17 +1,13 @@
-import React, { memo } from "react";
+import React from "react";
 import { CategoryScroller } from "./CategoriesScroller";
 import data from "../MOCK_DATA.json";
-import _, { isEmpty } from "lodash";
+import _ from "lodash";
 import frontpgImg from "../Images/frontpgImg.svg";
-import { api } from "../store";
-import { connect } from "react-redux";
 
-const frontPage = (props) => {
-  isEmpty(props.categories) && api.category.read();
+export const FrontPage = () => {
   const background = {
     backgroundImage: `url(${frontpgImg})`,
   };
-
   return (
     <div className="avenir">
       <div
@@ -25,11 +21,8 @@ const frontPage = (props) => {
             .filter((cat) => !cat.includes("|"))
         ).map((name) => ({ name }))}
       />
+
       <br />
     </div>
   );
 };
-export default connect(
-  (state) => ({ categories: state.category }),
-  {}
-)(frontPage);
