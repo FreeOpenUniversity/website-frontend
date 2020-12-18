@@ -16,6 +16,8 @@ import { Component } from "react";
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
+import Placeholder1 from "./components/Category/Placeholder1";
+import Placeholder2 from "./components/Category/Placeholder2";
 
 class App extends Component {
   render() {
@@ -37,6 +39,8 @@ class App extends Component {
       { path: "/setting", as: AccountSetting },
       { path: "/profile", as: Profile },
       { path: "/questions", as: FAQ },
+      { path: "/placeholder1", as: Placeholder1 },
+      { path: "/placeholder2", as: Placeholder2 },
     ];
 
     return (

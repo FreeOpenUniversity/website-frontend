@@ -7,7 +7,7 @@ import Banner from "../BlogTemplate/Banner";
 
 const ContactUs = () => (
   <>
-    <BreadCrumb title="Contact Us" />
+    {/* <BreadCrumb title="Contact Us" /> */}
     <Banner
       title="Contact Us"
       date="Friday, 25th October 2019"

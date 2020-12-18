@@ -15,23 +15,25 @@ const Breadcrumbs = (props) => {
           className="no-underline avenirlink hover-green hover-animate"
           onClick={() => history.push("/")}
         >
-          Home
+          <i className="fas fa-home link black"></i>
         </Link>
       ) : (
-        <div> Home </div>
+        <i className="fas fa-home link black"></i>
       )}
       {pathnames.map((name, index) => {
         const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
         const isLast = index === pathnames.length - 1;
         return isLast ? (
-          <div key={name}>{name}</div>
+          <div className="ttc" key={name}>
+            {name}
+          </div>
         ) : (
           <Link
             key={name}
-            className="no-underline fw4 avenirlink hover-green hover-animate "
+            className="no-underline fw4 avenirlink hover-green hover-animate"
             onClick={() => history.push(routeTo)}
           >
-            {name}
+            <div className="ttc"> {name}</div>
           </Link>
         );
       })}

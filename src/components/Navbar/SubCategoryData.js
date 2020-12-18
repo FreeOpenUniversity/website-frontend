@@ -68,4 +68,7 @@ export const SubCategoryData = [
     title: "placeholder16",
     path: "/category/placeholder16",
   },
+  { title: "About Us", path: "/about-us" },
+  { title: "Contact OpenLearn", path: "/contact-us" },
+  { title: "FAQ", path: "/questions" },
 ];

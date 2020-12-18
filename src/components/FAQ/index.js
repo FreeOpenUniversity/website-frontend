@@ -9,7 +9,7 @@ import "./FAQ.css";
 export default function FAQ() {
   return (
     <>
-      <BreadCrumb title="Frequently Asked Questions" />
+      {/* <BreadCrumb title="Frequently Asked Questions" /> */}
       <Banner title="FAQ" date="Friday, 25th October 2019" image={FAQBanner} />
       <Template Main={Content} Sidebar={Sidebar} />
     </>
