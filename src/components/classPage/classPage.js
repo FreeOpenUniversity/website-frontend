@@ -1,10 +1,8 @@
 import React from "react";
 import ClassList from "./ClassList";
-import Footer from "../Footer/index";
-import Header from "../Header/Header"; 
 import dumData from "./classDumData.json";
 
-function App() {
+function classPage() {
   let inProg = [],
     compl = [],
     favorts = [];
@@ -20,7 +18,6 @@ function App() {
 
   return (
     <div>
-      <Header />
       <h1 className="mid-gray athelas tracked-tight pl4 f3"> In Progress </h1>
       {inProg.map((data) => (
         <ClassList {...data} />
@@ -37,9 +34,8 @@ function App() {
       {favorts.map((data) => (
         <ClassList {...data} />
       ))}
-      <Footer />
     </div>
   );
 }
 
-export default App;
+export default classPage;
