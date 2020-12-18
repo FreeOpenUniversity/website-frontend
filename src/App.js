@@ -13,6 +13,9 @@ import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
 import { api } from "./store";
 import { Component } from "react";
+import classPage from "./components/classPage/classPage";
+import ScrollToTop from "./components/ScrollToTop";
+
 class App extends Component {
   render() {
     const l = api.book.read();
@@ -32,20 +35,23 @@ class App extends Component {
       { path: "/my-classes", as: classPage },
       { path: "/setting", as: AccountSetting },
       { path: "/profile", as: Profile },
+      { path: "/questions", as: FAQ },
     ];
 
     return (
       <>
         <Header />
-        <Switch>
-          {routes.map(({ path, as }) => {
-            return (
-              <Route key={path} path={path} exact>
-                {as}
-              </Route>
-            );
-          })}
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            {routes.map(({ path, as }) => {
+              return (
+                <Route key={path} path={path} exact>
+                  {as}
+                </Route>
+              );
+            })}
+          </Switch>
+        </ScrollToTop>
         <Footer />
       </>
     );
