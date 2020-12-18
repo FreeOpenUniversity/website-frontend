@@ -23,5 +23,5 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancer(middleware));
 
 // initializing the api object
-const baseURL = process.env.REACT_APP_API_URL || "localhost:8080";
+const baseURL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 export const api = apiFactory(baseURL, apiStateMap, store.dispatch);
