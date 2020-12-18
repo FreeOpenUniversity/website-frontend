@@ -1,0 +1,21 @@
+.selected {
+  background-color: #eee;
+  padding-bottom: 20px;
+}
+
+.question:after {
+  content: "\002B";
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.selected:after {
+  content: "\2212";
+}
+
+.answer {
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}

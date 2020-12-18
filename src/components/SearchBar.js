@@ -1,6 +1,10 @@
+import { isEmpty } from "lodash";
 import React from "react";
+import { connect } from "react-redux";
+import { api } from "../store";
 
-export function SearchBar({ books, className }) {
+function searchBar({ books, className }) {
+  isEmpty(books) && api.book.read();
   return (
     <div className={"ma2 tc " + className}>
       <input
@@ -13,3 +17,8 @@ export function SearchBar({ books, className }) {
     </div>
   );
 }
+
+export const SearchBar = connect(
+  (state, props) => ({ books: state.book, ...props }),
+  {}
+)(searchBar);

@@ -1,7 +1,7 @@
 # Stage 1 - the build process
 FROM node:15.3.0-alpine3.12 as build-deps
 WORKDIR /usr/src/app
-COPY package.json package.lock ./
+COPY package.json package-lock.json ./
 RUN npm install --ignore-engine
 COPY . ./
 RUN npm run build
