@@ -31,12 +31,6 @@ export const Navbar = ({ signedIn }) => {
         <p className="">Category</p>
         <SubCategory />
       </div>
-      <Link className={className} to="/about-us">
-        About
-      </Link>
-      <Link className={className} to="/contact-us">
-        Contact
-      </Link>
       <UserControls />
     </div>
   );

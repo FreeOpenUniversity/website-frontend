@@ -1,5 +1,4 @@
 import React from "react";
-import { Breadcrumbs as MUIBreadcrumbs } from "@material-ui/core";
 import { withRouter, Link } from "react-router-dom";
 
 const Breadcrumbs = (props) => {
@@ -9,14 +8,18 @@ const Breadcrumbs = (props) => {
   } = props;
   const pathnames = pathname.split("/").filter((x) => x);
   return (
-    <MUIBreadcrumbs className="avenir pa2 ph5 link green" separator=">">
+    <div className="avenir pa2 ph5 link flex">
       {pathnames.length > 0 ? (
-        <Link
-          className="no-underline avenirlink hover-green hover-animate"
-          onClick={() => history.push("/")}
-        >
-          <i className="fas fa-home link black"></i>
-        </Link>
+        <div>
+          <Link
+            className="no-underline avenirlink hover-green hover-animate"
+            onClick={() => history.push("/")}
+          >
+            <i className="fas fa-home link black"></i> {/*home logo*/}
+          </Link>
+          <span className="ph2"> > </span>{" "}
+          {/* breadcrumb separator after home*/}
+        </div>
       ) : (
         <i className="fas fa-home link black"></i>
       )}
@@ -28,16 +31,19 @@ const Breadcrumbs = (props) => {
             {name}
           </div>
         ) : (
-          <Link
-            key={name}
-            className="no-underline fw4 avenirlink hover-green hover-animate"
-            onClick={() => history.push(routeTo)}
-          >
-            <div className="ttc"> {name}</div>
-          </Link>
+          <div className="flex">
+            <Link
+              key={name}
+              className="no-underline  fw4 avenirlink hover-green hover-animate flex"
+              onClick={() => history.push(routeTo)}
+            >
+              <div className="ttc"> {name} </div>
+            </Link>
+            <span className="ph2"> > </span> {/* breadcrumb separator*/}
+          </div>
         );
       })}
-    </MUIBreadcrumbs>
+    </div>
   );
 };
 
