@@ -4,7 +4,7 @@ import { crossProduct } from "./utils";
 /**
  * reducer factories. Simplifies the generation of reducers
  */
-const handlers = {
+const defHandlers = {
   set: (state, action) => {
     return action.payload;
   },
@@ -18,6 +18,7 @@ const handlers = {
 
 const action = (type) => (payload) => ({ type, payload });
 const getVerb = (actionType) => actionType.split("_")[0].toLowerCase();
+
 /**
  * @description
  * A statemap is an object where keys are state names, and values are default values.
@@ -33,31 +34,37 @@ const getVerb = (actionType) => actionType.split("_")[0].toLowerCase();
  * and reducers for types "SET_CAT", and "UPDATE_CAT"
  *
  */
-export function fromStateMap(stateMap) {
-  const resourceNames = Object.keys(stateMap).filter(
-    (k) => typeof stateMap[k] !== "function"
-  );
+export const fromStateMap = (stateMap, handlers = defHandlers) => {
+  const resourceNames = keys(stateMap);
   const verbs = keys(handlers);
+  return {
+    actions: makeActions(verbs, resourceNames),
+    reducers: makeReducers(stateMap, resourceNames, handlers),
+  };
+};
 
-  // this returns an map from the keys in stateMap to a generic verb based reducer
-  const reducers = resourceNames
-    .map((resource) => {
-      const defaultState = stateMap[resource];
-      const reducer = (state = defaultState, action) => {
-        const verb = getVerb(action.type);
-        return handlers[verb] ? handlers[verb](state, action) : state;
-      };
-      return { [resource]: reducer };
-    })
-    .reduce((reducers, reducer) => ({ ...reducers, ...reducer }), {});
+function makeActions(verbs, resourceNames) {
+  const actionList = crossProduct(verbs, resourceNames).map(
+    ([verb, resource]) => {
+      const type = snakeCase(`${verb}_${resource}`).toUpperCase();
+      return { [camelCase(type)]: action(type) };
+    }
+  );
+  return Object.assign({}, ...actionList);
+}
 
-  //this retunss an object of action creators
-  const actions = crossProduct(verbs, resourceNames)
-    .map(([verb, resource]) => snakeCase(`${verb}_${resource}`).toUpperCase())
-    .map((type) => ({
-      [camelCase(type)]: action(type),
-    }))
-    .reduce((obj, curr) => ({ ...obj, ...curr }), {});
+function makeReducers(stateMap, resourceNames, handlers = defHandlers) {
+  // this returns a map from the keys in stateMap to a generic verb based reducer
+  const reducerList = resourceNames.map((resource) => {
+    const defaultState = stateMap[resource];
 
-  return { actions, reducers };
+    const reducer = (state = defaultState, action) => {
+      const verb = getVerb(action.type);
+      return handlers[verb] ? handlers[verb](state, action) : state;
+    };
+
+    return { [resource]: reducer };
+  });
+
+  return Object.assign({}, ...reducerList);
 }
