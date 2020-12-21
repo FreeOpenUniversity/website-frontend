@@ -9,7 +9,7 @@ const Breadcrumbs = (props) => {
   const pathnames = pathname.split("/").filter((x) => x);
   return (
     <div className="avenir pa2 ph5 link flex">
-      {pathnames.length > 0 ? (
+      {pathnames.length > 0 && (
         <div>
           <Link
             className="no-underline avenirlink hover-green hover-animate"
@@ -20,12 +20,12 @@ const Breadcrumbs = (props) => {
           <span className="ph2"> > </span>{" "}
           {/* breadcrumb separator after home*/}
         </div>
-      ) : (
-        <i className="fas fa-home link black"></i>
       )}
+
       {pathnames.map((name, index) => {
         const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
         const isLast = index === pathnames.length - 1;
+
         return isLast ? (
           <div className="ttc" key={name}>
             {name}
