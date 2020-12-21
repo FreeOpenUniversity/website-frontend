@@ -2,7 +2,7 @@ import Question from "./Questions";
 
 const dummyData = [
   {
-    q: "What is OpenLearn courses?",
+    q: "What is CIS courses?",
     a:
       '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
   },
@@ -54,11 +54,11 @@ export default function Content() {
       <h1>Frequently Asked Questions</h1>
       <div>
         Do you have a question about our free courses, statements of
-        participation, digital badges or the My OpenLearn profile?
+        participation, digital badges or the My CIS profile?
       </div>
       <div> The chances are that we may have already answered it.</div>
 
-      <h2>Using OpenLearn for the first time? We got you!</h2>
+      <h2>Using CIS for the first time? We got you!</h2>
       {dummyData.map((data) => (
         <Question q={data.q} a={data.a} toggleQuestions={toggleQuestions} />
       ))}

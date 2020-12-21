@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export function Book({ title, author, id, link: image, category }) {
+export function Book({ data }) {
+  const { title, author, id, link, category } = data;
   // title
   // description
   // ratings
@@ -14,9 +16,13 @@ export function Book({ title, author, id, link: image, category }) {
         <div className="f1">{title}</div>
         <div className="i">{author}</div>
       </div>
-
-      <img src={image} alt="" srcset="" className="h4 w4 db center mb3" />
-      <a href={image} download className="f3 link orange dim">
+      <img
+        src={link}
+        alt={`Cover of ${title}`}
+        srcSet=""
+        className="h4 w4 db center mb3"
+      />
+      <a href={link} download className="f3 link orange dim">
         Download
       </a>
     </div>

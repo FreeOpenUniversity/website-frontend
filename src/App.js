@@ -17,16 +17,28 @@ import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: {},
+      categories: {},
+    };
+  }
+
+  componentDidMount() {
+    //get book data from API
+    api.book.read().then((result) => this.setState({ books: result.payload }));
+  }
   render() {
-    const l = api.book.read();
-    console.log(l);
+    const { books } = this.state;
+    // console.log(l.then(result => console.log('result', result.payload)));
     const routes = [
       { path: "/category/:name", as: Category },
       {
         path: "/book/:id",
         as: (props) => {
-          const id = props.location.state.id;
-          return Book(MOCK_DATA[id - 1]);
+          const id = props.match.params.id;
+          return <Book data={books[id] ? books[id] : MOCK_DATA[id - 1]}></Book>;
         },
       },
       { path: "/", as: <FrontPage /> },
