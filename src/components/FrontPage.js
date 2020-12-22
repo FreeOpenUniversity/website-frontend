@@ -14,10 +14,19 @@ const frontPage = (props) => {
 
   return (
     <div className="avenir">
-      <div
+      {/* <div
         style={background}
         className="cover bg-near-white mw-100 vh-75"
-      ></div>
+      ></div> */}
+      <h1 className="tc f1 fw9">Welcome to Collegiate Independent Study</h1>
+      <div className="tc">
+        <img
+          src={frontpgImg}
+          alt="front page header"
+          className="center vh-75"
+        />
+      </div>
+
       <CategoryScroller
         categories={_.uniq(
           data

@@ -7,7 +7,7 @@ const Sidebar = () => {
     <div>
       <div className="bg-white pv4 ph3">
         <div className="sidebar-header">
-          <h2 className="f4">Become an OU Student</h2>
+          <h2 className="f4">Become an CIS Student</h2>
         </div>
         <div className="sidebar-content">
           <ul className="list pl0">
