@@ -18,7 +18,7 @@ function Header() {
               alt="School of Collegiate Independent Study"
             />
           </Link>
-          <span className="avenir f3 f5-m ttc pl1 fw6">
+          <span className="avenir f3 f5-m ttc pl2 fw6">
             Collegiate Independent Study
           </span>
           <span className="dib pl5 dn-m">

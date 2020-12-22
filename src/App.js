@@ -28,6 +28,7 @@ class App extends Component {
   componentDidMount() {
     //get book data from API
     api.book.read().then((result) => this.setState({ books: result.payload }));
+    api.category.read().then((result) => console.log("result", result));
   }
   render() {
     const { books } = this.state;
