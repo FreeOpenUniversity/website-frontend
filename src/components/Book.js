@@ -1,7 +1,8 @@
 import React from "react";
 
 export function Book({ data }) {
-  const { title, author, id, link, category } = data;
+  const { title, author, id, link, category, ip_address } = data;
+  const isAPI = !ip_address;
   const dummyImg = "https://dummyimage.com/600x400/00ff40/fafafa";
   // title
   // description
@@ -17,7 +18,7 @@ export function Book({ data }) {
         <div className="i ttc">{author}</div>
       </div>
       <img
-        src={link.includes("http") ? link : dummyImg}
+        src={isAPI ? dummyImg : link}
         alt={`Cover of ${title}`}
         srcSet=""
         className="h4 w4 db center mb3"
@@ -25,6 +26,9 @@ export function Book({ data }) {
       <a href={link} download className="f3 link orange dim">
         Download
       </a>
+      <div className="f6">
+        {isAPI ? "Provided by Backend API" : "Provided by MOCK_DATA"}
+      </div>
     </div>
   );
 }
