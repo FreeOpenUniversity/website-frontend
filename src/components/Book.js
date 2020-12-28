@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Book({ title, author, id, link: image, category }) {
+export function Book({ title, author, link: image }) {
   // title
   // description
   // ratings
@@ -8,6 +8,7 @@ export function Book({ title, author, id, link: image, category }) {
   // id
   // download link
   // category
+  console.log("ping");
   return (
     <div className="center tc items-center justify-center pa4 bg-gray w-50 min-vh-100">
       <div className="mb4">
@@ -15,7 +16,7 @@ export function Book({ title, author, id, link: image, category }) {
         <div className="i">{author}</div>
       </div>
 
-      <img src={image} alt="" srcset="" className="h4 w4 db center mb3" />
+      <img src={image} alt="" className="h4 w4 db center mb3" />
       <a href={image} download className="f3 link orange dim">
         Download
       </a>

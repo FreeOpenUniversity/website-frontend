@@ -12,56 +12,78 @@ import ContactUs from "./components/ContactUs";
 import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
 import { api } from "./store";
-import { Component } from "react";
-import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
-import Placeholder1 from "./components/Category/Placeholder1";
-import Placeholder2 from "./components/Category/Placeholder2";
+import { connect } from "react-redux";
+import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
+import { apiFactory } from "./lib/api";
 
-class App extends Component {
-  render() {
-    const l = api.book.read();
-    console.log(l);
-    const routes = [
-      { path: "/category/:name", as: Category },
-      {
-        path: "/book/:id",
-        as: (props) => {
-          const id = props.location.state.id;
-          return Book(MOCK_DATA[id - 1]);
-        },
+function App(props) {
+  const { books } = props;
+  apiFactory.book.read();
+  const routes = [
+    {
+      title: (props) => props.match.params.name,
+      path: "/category/:name",
+      as: Category,
+    },
+    {
+      title: (props) => {
+        const id = props.match.params.id;
+        const book = books[id] ? books[id] : MOCK_DATA[id - 1];
+        return book.title;
       },
-      { path: "/", as: <FrontPage /> },
-      { path: "/about-us", as: AboutUs },
-      { path: "/contact-us", as: ContactUs },
-      { path: "/my-classes", as: classPage },
-      { path: "/setting", as: AccountSetting },
-      { path: "/profile", as: Profile },
-      { path: "/questions", as: FAQ },
-      { path: "/placeholder1", as: Placeholder1 },
-      { path: "/placeholder2", as: Placeholder2 },
-    ];
+      path: "/book/:id",
+      as: (props) => {
+        const id = props.match.params.id;
+        return <Book {...(books[id] ? books[id] : MOCK_DATA[id - 1])}></Book>;
+      },
+    },
+    { title: "Home", path: "/", as: FrontPage },
+    { title: "About", path: "/about-us", as: AboutUs },
+    { title: "Contact", path: "/contact-us", as: ContactUs },
+    { title: "My Classes", path: "/my-classes", as: classPage },
+    { title: "Settings", path: "/setting", as: AccountSetting },
+    { title: "Profile", path: "/profile", as: Profile },
+    { title: "Questions", path: "/questions", as: FAQ },
+  ]
+    .map((v) => ({ exact: true, ...v }))
+    .map(({ as: As, title, path }, _, routes) => {
+      return {
+        as: (props) => {
+          return (
+            <>
+              {BreadCrumb({ title, ...props, routes })}
+              <As {...props} />
+            </>
+          );
+        },
+        title,
+        path,
+      };
+    });
 
-    return (
-      <>
-        <Header />
-        <Breadcrumbs />
-        <ScrollToTop>
-          <Switch>
-            {routes.map(({ path, as }) => {
-              return (
-                <Route key={path} path={path} exact>
-                  {as}
-                </Route>
-              );
-            })}
-          </Switch>
-        </ScrollToTop>
-        <Footer />
-      </>
-    );
-  }
+  return (
+    <>
+      <Header />
+      <ScrollToTop>
+        <Switch>
+          {routes.map(({ path, as }, index) => {
+            return (
+              <Route key={index} path={path} exact>
+                {as}
+              </Route>
+            );
+          })}
+        </Switch>
+      </ScrollToTop>
+      <Footer />
+    </>
+  );
 }
 
-export default App;
+function mapStateToProps(state, props) {
+  return { categories: state.category, books: state.book, ...props };
+}
+
+export default connect(mapStateToProps)(App);

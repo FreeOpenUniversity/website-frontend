@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AboutUs from "../AboutUs";
+
 import UserDropdownMenu from "../UserDropdownMenu/UserDropdownMenu";
 import "./Navbar.css";
 import { SubCategory } from "./SubCategory";

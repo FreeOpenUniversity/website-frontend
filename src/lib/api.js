@@ -61,12 +61,14 @@ export const apiFactory = (baseURL, stateMap, dispatch) => {
   ) => {
     const id = data?.id;
     if (method === "post" && id)
-      throw "can't post with an id. Id creation is the responsibility of the backend";
+      throw new Error(
+        "can't post with an id. Id creation is the responsibility of the backend"
+      );
 
     if (["patch", "delete"].includes(method) && id === undefined) {
-      throw `missing id in call:
+      throw new Error(`missing id in call:
        resource: ${resourceName}
-       method: ${method}`;
+       method: ${method}`);
     }
     const url = [baseURL, resourceName, id || ""].join("/");
     let options = {

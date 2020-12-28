@@ -11,7 +11,7 @@ import data from "../MOCK_DATA.json";
  * @param {{book:book}} param0
  */
 export function Book({ book, key }) {
-  const { title, author, link: download, category, id } = book;
+  const { title, author, link: download, id } = book;
   const cutLength = 24;
   return (
     <div
@@ -26,7 +26,7 @@ export function Book({ book, key }) {
           {title.length > cutLength ? title.slice(0, cutLength) + "..." : title}
         </div>
         <span className="i f5 tc">{author}</span>
-        <img src={download} alt="" srcset="" className="h4 w4 db center" />
+        <img src={download} alt="" className="h4 w4 db center" />
       </Link>
     </div>
   );
