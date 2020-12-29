@@ -8,7 +8,7 @@ export function Book({ title, author, link: image }) {
   // id
   // download link
   // category
-  console.log("ping");
+
   return (
     <div className="center tc items-center justify-center pa4 bg-gray w-50 min-vh-100">
       <div className="mb4">

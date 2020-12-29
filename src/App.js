@@ -16,11 +16,10 @@ import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
 import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
-import { apiFactory } from "./lib/api";
 
 function App(props) {
   const { books } = props;
-  apiFactory.book.read();
+  api.book.read();
   const routes = [
     {
       title: (props) => props.match.params.name,

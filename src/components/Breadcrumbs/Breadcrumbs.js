@@ -35,7 +35,6 @@ const Breadcrumbs = (props) => {
                 : route.title
               : name;
             const isLast = index === pathnames.length - 1;
-            console.log({ name, route });
             return isLast ? (
               // make the end the crumbs text , not link
               <div className="ttc" key={name}>
