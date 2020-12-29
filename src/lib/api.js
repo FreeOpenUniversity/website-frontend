@@ -2,6 +2,14 @@ import { camelCase, isArray, keyBy, keys } from "lodash";
 import { fromStateMap } from "./stateToRedux";
 import { crossProduct, trie } from "./utils";
 
+const methods = {
+  create: "post",
+  read: "get",
+  get: "get",
+  update: "patch",
+  delete: "delete",
+};
+
 /**
  * @typedef {(data:{id?}, options?:{query})=>Promise<Response>} ApiCall
  */
@@ -18,9 +26,10 @@ const requestFactory = (
   resourceName,
   method,
   dispatch,
-  actions
-) => async (data, userOptions = {}) => {
-  const { query } = userOptions;
+  actions,
+  cache
+) => async (data, requestOptions = {}) => {
+  const { query } = requestOptions;
 
   const urlQuery = query
     ? Object.entries(query)
@@ -38,6 +47,9 @@ const requestFactory = (
        method: ${method}`;
   }
 
+  const cacheKey = [resourceName, method].join(".");
+  if (!requestOptions.force && methods[method] === "get" && cache[cacheKey])
+    return;
   const url = [baseURL, resourceName, id || ""].join("/") + "?" + urlQuery;
   let options = {
     method,
@@ -53,6 +65,7 @@ const requestFactory = (
     payload: (await fetch(url, options)).json(),
   };
   return dispatch(requestAction).then(({ value }) => {
+    cache[cacheKey] = true;
     isArray(value) && (value = keyBy(value, "id"));
     const key = camelCase("update_" + resourceName);
     return dispatch(actions[key](value));
@@ -86,16 +99,9 @@ const requestFactory = (
  */
 export const apiFactory = (baseURL, stateMap, dispatch) => {
   const { actions } = fromStateMap(stateMap);
-  const methods = {
-    create: "post",
-    read: "get",
-    get: "get",
-    update: "patch",
-    delete: "delete",
-  };
 
   const resourceNames = keys(stateMap);
-
+  const cache = {};
   // From [resource, method, function] triplets, we create a trie (https://en.wikipedia.org/wiki/Trie)
   const paths = crossProduct(
     resourceNames,
@@ -103,7 +109,14 @@ export const apiFactory = (baseURL, stateMap, dispatch) => {
   ).map(([resource, method]) => [
     resource,
     method,
-    requestFactory(baseURL, resource, methods[method], dispatch, actions),
+    requestFactory(
+      baseURL,
+      resource,
+      methods[method],
+      dispatch,
+      actions,
+      cache
+    ),
   ]);
 
   return trie(paths).tree;
