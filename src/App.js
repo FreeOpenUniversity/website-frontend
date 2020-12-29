@@ -18,8 +18,18 @@ import { connect } from "react-redux";
 import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
 
 function App(props) {
+  const getBookTitle = (props) => {
+    const id = props.match.params.id;
+    const book = books[id] ? books[id] : MOCK_DATA[id - 1];
+    return book.title;
+  };
+  const getBook = (props) => {
+    const id = props.match.params.id;
+    return <Book {...(books[id] ? books[id] : MOCK_DATA[id - 1])}></Book>;
+  };
   const { books } = props;
   api.book.read();
+  api.category.read();
   const routes = [
     {
       title: (props) => props.match.params.name,
@@ -27,16 +37,14 @@ function App(props) {
       as: Category,
     },
     {
-      title: (props) => {
-        const id = props.match.params.id;
-        const book = books[id] ? books[id] : MOCK_DATA[id - 1];
-        return book.title;
-      },
+      title: getBookTitle,
+      path: "/category/:name/book/:id",
+      as: getBook,
+    },
+    {
+      title: getBookTitle,
       path: "/book/:id",
-      as: (props) => {
-        const id = props.match.params.id;
-        return <Book {...(books[id] ? books[id] : MOCK_DATA[id - 1])}></Book>;
-      },
+      as: getBook,
     },
     { title: "Home", path: "/", as: FrontPage },
     { title: "About", path: "/about-us", as: AboutUs },
