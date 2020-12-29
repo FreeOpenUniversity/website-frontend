@@ -27,7 +27,7 @@ const Breadcrumbs = (props) => {
           {pathnames.map((name, index) => {
             const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
             const route = matchRoutes(routeTo, routes);
-            // if (!route) return null;
+            if (!route) return null;
 
             const title = route
               ? typeof route.title == "function"
