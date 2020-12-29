@@ -4,12 +4,10 @@ import FooterMenu from "./footerMenu";
 
 const sectionMenu1 = [
   { title: "About Us", link: "/about-us" },
-  { title: "Contact OpenLearn", link: "/contact-us" },
-  { title: "Frequently asked questions", link: "/questions" },
-  { title: "Study with The Open University", link: "/" },
+  { title: "Contact CIS", link: "/contact-us" },
+  { title: "Frequently Asked Questions", link: "/questions" },
+  { title: "Study with CIS", link: "/" },
   { title: "Subscribe to our newsletter", link: "/" },
-  { title: "OpenLearn Create", link: "/" },
-  { title: "OpenLearn Cymru", link: "/" },
 ];
 
 const sectionMenu2 = [
@@ -19,26 +17,25 @@ const sectionMenu2 = [
   { title: "History & The Arts", link: "/" },
   { title: "Languages", link: "/" },
   { title: "Nature & Environment", link: "/" },
-  { title: "OpenLearn Cymru", link: "/" },
   { title: "Science, Maths & Technology", link: "/" },
   { title: "Society, Politics & Law", link: "/" },
 ];
 
 const sectionMenu3 = [
-  { title: "Latest from OpenLearn", link: "/" },
+  { title: "Latest from CIS", link: "/" },
   { title: "Try something popular", link: "/" },
   { title: "Free courses", link: "/" },
   { title: "For Study", link: "/" },
   { title: "For Life", link: "/" },
   { title: "OU on TV & radio", link: "/" },
   { title: "Order our free print items", link: "/" },
-  { title: "My OpenLearn profile", link: "/" },
+  { title: "My profile", link: "/" },
 ];
 
 const sectionMenu4 = [
   {
     title:
-      "OpenLearn works with other organisations by providing free courses and resources that support our mission of opening up educational opportunities to more people in more places.",
+      "CIS works with other organisations by providing free courses and resources that support our mission of opening up educational opportunities to more people in more places.",
     link: "none",
   },
   { title: "Find Out More", link: "/" },
@@ -48,11 +45,7 @@ const sectionMenu4 = [
 const TopFooter = () => {
   return (
     <div className="footer--top white center mv3 pb3">
-      <FooterMenu
-        title="About OpenLearn"
-        items={sectionMenu1}
-        hasBorder={true}
-      />
+      <FooterMenu title="About CIS" items={sectionMenu1} hasBorder={true} />
       <FooterMenu
         title="Explore subjects"
         items={sectionMenu2}

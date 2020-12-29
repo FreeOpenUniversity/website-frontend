@@ -12,17 +12,17 @@ export default function Content() {
   return (
     <div>
       <p id="summary-content">
-        <b>Welcome to OpenLearn</b>- the home of free learning from The Open
-        University. Are you looking for a new topic to explore, or want to dig
-        deeper into something you've already discovered? Whether it’s a
-        60-second animated video or a 24-hour course you are after, you will
-        find it on OpenLearn for free.
+        <b>Welcome to Collegiate Independent Study</b>- the home of free
+        learning from The Open University. Are you looking for a new topic to
+        explore, or want to dig deeper into something you've already discovered?
+        Whether it’s a 60-second animated video or a 24-hour course you are
+        after, you will find it on Collegiate Independent Study for free.
       </p>
       {/* Section: Who We Are */}
       <TitleBar title="Who We Are" />
       <div className="tc center mv4">
         <iframe
-          title="OpenLearn Introduction"
+          title="Collegiate Independent Study Introduction"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           height="360"
           width="640"
@@ -32,32 +32,32 @@ export default function Content() {
       </div>
       <div className="text">
         <p>
-          OpenLearn is a free learning platform, delivered by The Open
-          University as part of its Royal Charter commitment to support the
-          wellbeing of the community.
+          Collegiate Independent Study is a free learning platform, delivered by
+          The Open University as part of its Royal Charter commitment to support
+          the wellbeing of the community.
         </p>
 
         <p>
-          Since its launch in 2006, OpenLearn has become an integrated part of
-          The Open University, with the site attracting almost 75 million
-          visitors – many of which go on to make an enquiry about becoming a
-          formal student, strengthening the journey between informal and formal
-          learning.
+          Since its launch in 2006, Collegiate Independent Study has become an
+          integrated part of The Open University, with the site attracting
+          almost 75 million visitors – many of which go on to make an enquiry
+          about becoming a formal student, strengthening the journey between
+          informal and formal learning.
         </p>
         <p>
-          The OpenLearn team originate, commission and develop content that
-          unites faculty and University priorities with areas of topical and
-          general interest. This is in support of our own student population in
-          their academic, skills and career and personal development (CPD)
-          endeavours, delivering quality assets openly available for teaching
-          and learning.
+          The Collegiate Independent Study team originate, commission and
+          develop content that unites faculty and University priorities with
+          areas of topical and general interest. This is in support of our own
+          student population in their academic, skills and career and personal
+          development (CPD) endeavours, delivering quality assets openly
+          available for teaching and learning.
         </p>
       </div>
       {/* Section: What We Do */}
       <TitleBar title=" What We Do" />
       <div className="tc center mv4">
         <iframe
-          title="OpenLearn Introduction"
+          title="Collegiate Independent Study Introduction"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           height="360"
           width="640"
@@ -88,7 +88,7 @@ export default function Content() {
         </ul>
         <p>
           Our content covers a wide range of subjects, with many of our free
-          courses being adapted extractions from OU modules. All of our courses
+          courses being adapted extractions from CIS modules. All of our courses
           enable you to earn a Statement of participation and some also allow
           you to earn a free digital badge. You can use your badge or statement
           of participation to share your achievement with others although they
@@ -168,16 +168,17 @@ export default function Content() {
           </li>
           <li>
             Check out our other initiatives such as our collaborative courses
-            with the Social Partnership Network and OpenLearn Create, where
-            individuals and organisations can publish their own free courses and
-            resources
+            with the Social Partnership Network and Collegiate Independent Study
+            Create, where individuals and organisations can publish their own
+            free courses and resources
           </li>
           <li>
             follow us on social media - @ouopenlearn on Facebook,
             @oufreelearning on Twitter and @openlearn on Instagram
           </li>
           <li>
-            subscribe to our monthly newsletter to get the latest from OpenLearn
+            subscribe to our monthly newsletter to get the latest from
+            Collegiate Independent Study
           </li>
           <li>
             learn what new courses and content are in the pipeline with our
