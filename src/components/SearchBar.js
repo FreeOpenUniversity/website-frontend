@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { api } from "../store";
 
 function searchBar({ books, className }) {
-  isEmpty(books) && api.book.read();
+  api.book.read();
   return (
     <div className={"ma2 tc " + className}>
       <input

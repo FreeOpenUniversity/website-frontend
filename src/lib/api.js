@@ -47,10 +47,9 @@ const requestFactory = (
        method: ${method}`;
   }
 
-  const cacheKey = [resourceName, method].join(".");
-  if (!requestOptions.force && methods[method] === "get" && cache[cacheKey])
-    return;
   const url = [baseURL, resourceName, id || ""].join("/") + "?" + urlQuery;
+  if (!requestOptions.force && methods[method] === "get" && cache[url]) return;
+
   let options = {
     method,
     headers: {
@@ -65,7 +64,7 @@ const requestFactory = (
     payload: (await fetch(url, options)).json(),
   };
   return dispatch(requestAction).then(({ value }) => {
-    cache[cacheKey] = true;
+    cache[url] = true;
     isArray(value) && (value = keyBy(value, "id"));
     const key = camelCase("update_" + resourceName);
     return dispatch(actions[key](value));
