@@ -15,6 +15,9 @@ import { api } from "./store";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register"
+
 
 function App(props) {
   const { books } = props;
@@ -34,6 +37,8 @@ function App(props) {
     { path: "/setting", as: AccountSetting },
     { path: "/profile", as: Profile },
     { path: "/questions", as: FAQ },
+    { path: "/login", as:  Login },
+    { path: "/register", as: Register }
   ];
 
   return (

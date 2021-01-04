@@ -14,8 +14,8 @@ export const Navbar = ({ signedIn }) => {
         <UserDropdownMenu />
       </div>
     ) : (
-      <Link className={className} to="#">
-        Sign In
+      <Link className={className} to="/register">
+        Sign up/Login
       </Link>
     );
   };
