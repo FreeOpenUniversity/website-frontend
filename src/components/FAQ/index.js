@@ -1,5 +1,4 @@
 import Template from "../BlogTemplate";
-import BreadCrumb from "../BlogTemplate/BreadCrumb";
 import Banner from "../BlogTemplate/Banner";
 import FAQBanner from "../../Images/faq-Banner.png";
 import Content from "./content";

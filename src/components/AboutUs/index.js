@@ -3,7 +3,6 @@ import AboutUs_Banner from "../../Images/about_us.jpg";
 import Content from "./content";
 import Sidebar from "./sidebar";
 import Template from "../BlogTemplate";
-import BreadCrumb from "../BlogTemplate/BreadCrumb";
 import Banner from "../BlogTemplate/Banner";
 
 const AboutUs = () => {
