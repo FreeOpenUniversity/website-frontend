@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { CategoryScroller } from "./CategoriesScroller";
 import data from "../MOCK_DATA.json";
 import _, { isEmpty } from "lodash";

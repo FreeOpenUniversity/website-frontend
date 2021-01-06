@@ -17,14 +17,15 @@ export const SubCategory = () => {
 
         {SubCategoryData.map((item, index) => {
           return (
-            <li key={index} className={item.title}>
-              <Link
-                to={{ pathname: item.path, state: { id: item.title } }}
-                className="fl w-25-l pa2 v-mid "
-              >
-                <div>{item.title}</div>
-              </Link>
-            </li>
+            <ul key={index}>
+              <li className="list fl w-25 pa2 v-mid ">
+                <Link to={{ pathname: item.path, state: { id: item.title } }}>
+                  <div className="link black hover-green hover-animate  ">
+                    {item.title}
+                  </div>
+                </Link>
+              </li>
+            </ul>
           );
         })}
       </div>
