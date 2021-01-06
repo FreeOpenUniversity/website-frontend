@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import HomepageIntro from "./Intro";
 
 const frontPage = (props) => {
-  isEmpty(props.categories) && api.category.read();
+  api.category.read();
   const background = {
     backgroundImage: `url(${frontpgImg})`,
   };
