@@ -12,7 +12,7 @@ import ContactUs from "./components/ContactUs";
 import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
 import { api } from "./store";
-import classPage from "./components/classPage/classPage";
+import ClassPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
 
@@ -30,7 +30,7 @@ function App(props) {
     { path: "/", as: <FrontPage /> },
     { path: "/about-us", as: AboutUs },
     { path: "/contact-us", as: ContactUs },
-    { path: "/my-classes", as: classPage },
+    { path: "/my-classes", as: <ClassPage/> },
     { path: "/setting", as: AccountSetting },
     { path: "/profile", as: Profile },
     { path: "/questions", as: FAQ },
