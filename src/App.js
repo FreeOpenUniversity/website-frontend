@@ -17,6 +17,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
 
 function App(props) {
+  api.book.get();
   const { books } = props;
   const routes = [
     { path: "/category/:name", as: Category },
