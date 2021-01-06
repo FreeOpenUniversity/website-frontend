@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Class 1: Intro to Something",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque augue quis ligula dignissim porttitor. Quisque eu enim efficitur, tincidunt eros eu, bibendum nunc. Donec ornare mauris a lorem dignissim, vitae rhoncus sem lobortis. Cras in leo dapibus, finibus turpis eu, pellentesque turpis. Nunc sit amet mauris semper, pharetra erat a, fringilla urna.",
+    "imgLink": "https://insektenliebe.com/wp-content/uploads/2018/05/Cubaris-spec.-Rubber-Ducky-9-bearbeitet.jpg",
+    "imgAlt": "Rubber ducky",
+    "progress": 0.32,
+    "links": {
+      "chapters": "#",
+      "scores": "#",
+      "keepG": "#"
+    }
+  },
+  {
+    "title": "Class 1: Intro to Something",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque augue quis ligula dignissim porttitor. Quisque eu enim efficitur, tincidunt eros eu, bibendum nunc. Donec ornare mauris a lorem dignissim, vitae rhoncus sem lobortis. Cras in leo dapibus, finibus turpis eu, pellentesque turpis. Nunc sit amet mauris semper, pharetra erat a, fringilla urna.",
+    "imgLink": "https://insektenliebe.com/wp-content/uploads/2018/05/Cubaris-spec.-Rubber-Ducky-9-bearbeitet.jpg",
+    "imgAlt": "Rubber ducky",
+    "progress": 0.98,
+    "links": {
+      "chapters": "#",
+      "scores": "#",
+      "keepG": "#"
+    }
+  },
+  {
+    "title": "Class 1: Intro to Something",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque augue quis ligula dignissim porttitor. Quisque eu enim efficitur, tincidunt eros eu, bibendum nunc. Donec ornare mauris a lorem dignissim, vitae rhoncus sem lobortis. Cras in leo dapibus, finibus turpis eu, pellentesque turpis. Nunc sit amet mauris semper, pharetra erat a, fringilla urna.",
+    "imgLink": "https://insektenliebe.com/wp-content/uploads/2018/05/Cubaris-spec.-Rubber-Ducky-9-bearbeitet.jpg",
+    "imgAlt": "Rubber ducky",
+    "progress": 0.42,
+    "links": {
+      "chapters": "#",
+      "scores": "#",
+      "keepG": "#"
+    }
+  },
+  {
+    "title": "Class 2: Intro to AAAA",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque augue quis ligula dignissim porttitor. Quisque eu enim efficitur, tincidunt eros eu, bibendum nunc. Donec ornare mauris a lorem dignissim, vitae rhoncus sem lobortis. Cras in leo dapibus, finibus turpis eu, pellentesque turpis. Nunc sit amet mauris semper, pharetra erat a, fringilla urna.",
+    "imgLink": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+    "imgAlt": "Rubber ducky",
+    "progress": 0,
+    "links": {
+      "chapters": "#",
+      "scores": "#",
+      "keepG": "#"
+    }
+  },
+  {
+    "title": "Class 2: Intro to AAAA",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque augue quis ligula dignissim porttitor. Quisque eu enim efficitur, tincidunt eros eu, bibendum nunc. Donec ornare mauris a lorem dignissim, vitae rhoncus sem lobortis. Cras in leo dapibus, finibus turpis eu, pellentesque turpis. Nunc sit amet mauris semper, pharetra erat a, fringilla urna.",
+    "imgLink": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+    "imgAlt": "Rubber ducky",
+    "progress": 0,
+    "links": {
+      "chapters": "#",
+      "scores": "#",
+      "keepG": "#"
+    }
+  },
+  {
+    "title": "Class 2: Intro to AAAA",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque augue quis ligula dignissim porttitor. Quisque eu enim efficitur, tincidunt eros eu, bibendum nunc. Donec ornare mauris a lorem dignissim, vitae rhoncus sem lobortis. Cras in leo dapibus, finibus turpis eu, pellentesque turpis. Nunc sit amet mauris semper, pharetra erat a, fringilla urna.",
+    "imgLink": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+    "imgAlt": "Rubber ducky",
+    "progress": 0,
+    "links": {
+      "chapters": "#",
+      "scores": "#",
+      "keepG": "#"
+    }
+  },
+  {
+    "title": "Class 3: Intro to BBBB",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque augue quis ligula dignissim porttitor. Quisque eu enim efficitur, tincidunt eros eu, bibendum nunc. Donec ornare mauris a lorem dignissim, vitae rhoncus sem lobortis. Cras in leo dapibus, finibus turpis eu, pellentesque turpis. Nunc sit amet mauris semper, pharetra erat a, fringilla urna",
+    "imgLink": "https://images.unsplash.com/photo-1471922694854-ff1b63b20054?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1052&q=80",
+    "imgAlt": "Rubber ducky",
+    "progress": 1,
+    "links": {
+      "chapters": "#",
+      "scores": "#",
+      "keepG": "#"
+    }
+  }
+]
