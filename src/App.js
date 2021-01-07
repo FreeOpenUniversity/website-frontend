@@ -16,8 +16,7 @@ import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
 import Login from "./components/auth/Login";
-import Register from "./components/auth/Register"
-
+import SignUp from "./components/auth/SignUp";
 
 function App(props) {
   const { books } = props;
@@ -37,8 +36,8 @@ function App(props) {
     { path: "/setting", as: AccountSetting },
     { path: "/profile", as: Profile },
     { path: "/questions", as: FAQ },
-    { path: "/login", as:  Login },
-    { path: "/register", as: Register }
+    { path: "/login", as: Login },
+    { path: "/signup", as: SignUp },
   ];
 
   return (

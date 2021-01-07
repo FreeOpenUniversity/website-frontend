@@ -14,7 +14,7 @@ export const Navbar = ({ signedIn }) => {
         <UserDropdownMenu />
       </div>
     ) : (
-      <Link className={className} to="/register">
+      <Link className={className} to="/signup">
         Sign up/Login
       </Link>
     );
@@ -22,11 +22,11 @@ export const Navbar = ({ signedIn }) => {
 
   return (
     <div className="w-100 fw5 f4 h-auto bg-dark-blue bb bw1 flex items-center avenir">
-      <div className="link white ml7 hover-green hover-animate dropdown">
+      <div className="link w3 center white hover-green hover-animate dropdown">
         <p>Category</p>
         <SubCategory />
       </div>
-      <div className="pl7 fr ml6">
+      <div className="w4 center">
         <UserControls />
       </div>
     </div>
