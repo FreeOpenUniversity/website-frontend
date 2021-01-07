@@ -16,8 +16,13 @@ import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
 import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
+import Cat from "./components/Cat";
 
 function App(props) {
+  const { books, categories } = props;
+  api.book.read();
+  api.category.read();
+  let cats = Object.values(categories); // covert categories to array
   const getBookTitle = (props) => {
     const id = props.match.params.id;
     const book = books[id] ? books[id] : MOCK_DATA[id - 1];
@@ -27,14 +32,20 @@ function App(props) {
     const id = props.match.params.id;
     return <Book {...(books[id] ? books[id] : MOCK_DATA[id - 1])}></Book>;
   };
-  const { books } = props;
-  api.book.read();
-  api.category.read();
+  const getCat = (props) => {
+    const name = props.match.params.name;
+    return <Cat data={cats.filter((cat) => cat.name == name)}></Cat>;
+  };
   const routes = [
     {
       title: (props) => props.match.params.name,
       path: "/category/:name",
       as: Category,
+    },
+    {
+      title: (props) => props.match.params.name,
+      path: "/cat/:name",
+      as: getCat,
     },
     {
       title: getBookTitle,

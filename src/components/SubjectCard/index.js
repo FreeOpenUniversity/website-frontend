@@ -1,15 +1,15 @@
 import COVER from "../../Images/card_cover.png";
 
-export default function SubjectCard({ title }) {
+export default function SubjectCard({ title, img }) {
   return (
-    <div className="">
-      <div className="tc bg-red b f3 h3 flex items-center justify-center">
+    <div className="mv3">
+      <div className="tc bg-dark-blue b f4 h3 flex mh1 items-center justify-center">
         {title}
       </div>
-      <div className="tc">
+      <div className="tc ph1">
         <img
-          src={COVER}
-          className="h4 w-100"
+          src={img}
+          className="w-100 h-100"
           alt={`cover of subject ${title}`}
         />
       </div>
