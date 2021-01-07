@@ -15,52 +15,67 @@ import { api } from "./store";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
-import React, { useEffect, useState } from "react";
-import Cat from "./components/Cat";
+import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
 
 function App(props) {
-  const { books, categories } = props;
-  const [cats, setCats] = useState([]);
-  // fetch category data manually since redux cannot provide the correct data
-  useEffect(() => {
-    fetch("http://66.76.242.195:8180/category")
-      .then((res) => res.json())
-      .then((result) => {
-        setCats(result);
-      });
-  });
-
+  const getBookTitle = (props) => {
+    const id = props.match.params.id;
+    const book = books[id] ? books[id] : MOCK_DATA[id - 1];
+    return book.title;
+  };
+  const getBook = (props) => {
+    const id = props.match.params.id;
+    return <Book {...(books[id] ? books[id] : MOCK_DATA[id - 1])}></Book>;
+  };
+  const { books } = props;
+  api.book.read();
+  api.category.read();
   const routes = [
-    { path: "/category/:name", as: Category },
     {
+      title: (props) => props.match.params.name,
+      path: "/category/:name",
+      as: Category,
+    },
+    {
+      title: getBookTitle,
+      path: "/category/:name/book/:id",
+      as: getBook,
+    },
+    {
+      title: getBookTitle,
       path: "/book/:id",
-      as: (props) => {
-        const id = props.match.params.id;
-        return <Book data={books[id] ? books[id] : MOCK_DATA[id - 1]}></Book>;
-      },
+      as: getBook,
     },
-    {
-      path: "/cat/:id",
-      as: (props) => {
-        const id = props.match.params.id;
-        return <Cat data={cats[id - 1]}></Cat>;
-      },
-    },
-    { path: "/", as: <FrontPage /> },
-    { path: "/about-us", as: AboutUs },
-    { path: "/contact-us", as: ContactUs },
-    { path: "/my-classes", as: classPage },
-    { path: "/setting", as: AccountSetting },
-    { path: "/profile", as: Profile },
-    { path: "/questions", as: FAQ },
-  ];
+    { title: "Home", path: "/", as: FrontPage },
+    { title: "About", path: "/about-us", as: AboutUs },
+    { title: "Contact", path: "/contact-us", as: ContactUs },
+    { title: "My Classes", path: "/my-classes", as: classPage },
+    { title: "Settings", path: "/setting", as: AccountSetting },
+    { title: "Profile", path: "/profile", as: Profile },
+    { title: "Questions", path: "/questions", as: FAQ },
+  ]
+    .map((v) => ({ exact: true, ...v }))
+    .map(({ as: As, title, path }, _, routes) => {
+      return {
+        as: (props) => {
+          return (
+            <>
+              {BreadCrumb({ title, ...props, routes })}
+              <As {...props} />
+            </>
+          );
+        },
+        title,
+        path,
+      };
+    });
 
   return (
     <>
       <Header />
       <ScrollToTop>
         <Switch>
-          {routes.map(({ path, as, index }) => {
+          {routes.map(({ path, as }, index) => {
             return (
               <Route key={index} path={path} exact>
                 {as}

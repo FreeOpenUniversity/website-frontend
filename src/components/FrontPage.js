@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { CategoryScroller } from "./CategoriesScroller";
 import data from "../MOCK_DATA.json";
 import _, { isEmpty } from "lodash";
@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import HomepageIntro from "./Intro";
 
 const frontPage = (props) => {
-  isEmpty(props.categories) && api.category.read();
+  api.category.read();
   const background = {
     backgroundImage: `url(${frontpgImg})`,
   };

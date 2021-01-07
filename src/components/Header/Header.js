@@ -29,9 +29,6 @@ function Header() {
           </span>
         </div>
       </div>
-      <div className="dn dib-m bg-dark-gray pa2 w-100">
-        <SearchBar />
-      </div>
       <Navbar />
     </div>
   );
