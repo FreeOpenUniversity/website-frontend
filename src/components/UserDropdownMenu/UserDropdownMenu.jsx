@@ -12,38 +12,41 @@ function UserDropdownMenu() {
   return (
     <div>
       <div
-        onMouseEnter={() => setUserButton(true)}
-        onMouseLeave={() => setUserButton(false)}
+
+        className="ml5 f1 pl5"
+        onMouseEnter={() => showMenu()}
+        onMouseLeave={() => showMenu()}
       >
-        <Link to="#" className="dark-green pb2">
-          <span className="f1 no-underline">
+        <div className="">
+          <Link to="#" className="dark-green">
             <FaIcons.FaUserAlt />
-          </span>
-          <nav className={userButton ? "flex bg-green w-auto" : "dn"}>
+          </Link>
+
+          <nav
+            className={userButton ? "flex bg-green fixed pv0 ma0 ph1 " : "dn"}
+          >
             <ul
-              className="w-auto ph3"
-              onMouseEnter={() => setUserButton(true)}
-              onMouseLeave={() => setUserButton(false)}
+              className="pl0 ml2"
+              // onMouseEnter={() => setUserButton(true)}
+              // onMouseLeave={() => setUserButton(false)}
             >
               {MenuData.map((item, index) => {
                 return (
-                  <li
-                    key={index}
-                    className="items-center h2 pv1 no-underline list"
-                  >
+                  <li key={index} className="items-center h2 list ">
                     <Link
                       to={item.path}
-                      className="no-underline washed-blue f4 h-100 flex grow br2"
+                      className="no-underline washed-blue f5 h-100 flex grow items-center ph1 br1"
                     >
-                      <span className="">{item.icon}</span>
-                      <span className="">{item.title}</span>
+                      {item.icon}
+
                     </Link>
                   </li>
                 );
               })}
             </ul>
           </nav>
-        </Link>
+
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { camelCase, keyBy, keys, mapValues, snakeCase, sn } from "lodash";
+import { camelCase, keys, snakeCase } from "lodash";
 import { crossProduct } from "./utils";
 
 /**
@@ -18,7 +18,7 @@ const defHandlers = {
 
 const action = (type) => (payload) => ({ type, payload });
 const getVerb = (actionType) => actionType.split("_")[0].toLowerCase();
-
+const getResource = (actionType) => actionType.split("_")[1]?.toLowerCase();
 /**
  * @description
  * A statemap is an object where keys are state names, and values are default values.
@@ -59,8 +59,9 @@ function makeReducers(stateMap, resourceNames, handlers = defHandlers) {
     const defaultState = stateMap[resource];
 
     const reducer = (state = defaultState, action) => {
-      const verb = getVerb(action.type);
-      return handlers[verb] ? handlers[verb](state, action) : state;
+      if (getResource(action.type) !== resource) return state;
+      const handler = handlers[getVerb(action.type)];
+      return handler ? handler(state, action) : state;
     };
 
     return { [resource]: reducer };
