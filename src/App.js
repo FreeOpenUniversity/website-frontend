@@ -15,9 +15,21 @@ import { api } from "./store";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
+import Cat from "./components/Cat";
 
 function App(props) {
-  const { books } = props;
+  const { books, categories } = props;
+  const [cats, setCats] = useState([]);
+  // fetch category data manually since redux cannot provide the correct data
+  useEffect(() => {
+    fetch("http://66.76.242.195:8180/category")
+      .then((res) => res.json())
+      .then((result) => {
+        setCats(result);
+      });
+  });
+
   const routes = [
     { path: "/category/:name", as: Category },
     {
@@ -25,6 +37,13 @@ function App(props) {
       as: (props) => {
         const id = props.match.params.id;
         return <Book data={books[id] ? books[id] : MOCK_DATA[id - 1]}></Book>;
+      },
+    },
+    {
+      path: "/cat/:id",
+      as: (props) => {
+        const id = props.match.params.id;
+        return <Cat data={cats[id - 1]}></Cat>;
       },
     },
     { path: "/", as: <FrontPage /> },
@@ -55,8 +74,8 @@ function App(props) {
   );
 }
 
-function mapStateToProps(state, props) {
-  return { categories: state.category, books: state.book, ...props };
+function mapStateToProps(state) {
+  return { categories: state.category, books: state.book };
 }
 
 export default connect(mapStateToProps)(App);
