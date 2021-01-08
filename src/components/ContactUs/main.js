@@ -22,7 +22,7 @@ const Main = () => (
         </p>
       </div>
       <div className="w-25">
-        <img src={ContactUsLogo} alit="Logo of contact us" />
+        <img src={ContactUsLogo} alt="Logo of contact us" />
       </div>
     </div>
 

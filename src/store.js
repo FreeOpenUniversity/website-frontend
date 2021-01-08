@@ -10,6 +10,10 @@ import promise from "redux-promise-middleware";
 const apiStateMap = {
   book: {},
   category: {},
+  image: {},
+  user: {},
+  userhistory: {},
+  image: {},
 };
 
 // add new reducers here

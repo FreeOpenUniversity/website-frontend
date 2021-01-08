@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 import { api } from "../store";
 
 function searchBar({ books, className }) {
-  isEmpty(books) && api.book.read();
+  api.book.read();
   return (
     <div className={"ma2 tc " + className}>
       <input
         type="text"
-        className="fw5 avenir pv2 ph5 br-pill mr2 b-dark-green bw0"
+        className="fw5 avenir pv2 ph5 ph3-m br-pill mr2 b-dark-green bw0"
       ></input>
-      <button className="fw6 avenir pa2 ph4 br-pill  f4 ttc bg-dark-green b-dark-green bw0">
+      <button className="fw6 avenir pa2 ph4 ph3-m br-pill  f4 ttc bg-dark-green b-dark-green bw0">
         search
       </button>
     </div>
