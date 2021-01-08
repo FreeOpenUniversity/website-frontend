@@ -1,5 +1,3 @@
-import COVER from "../../Images/card_cover.png";
-
 export default function SubjectCard({ title, img }) {
   return (
     <div className="mv3">
