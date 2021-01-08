@@ -15,6 +15,8 @@ import { api } from "./store";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
 import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
 import Cat from "./components/Cat";
 
@@ -57,6 +59,7 @@ function App(props) {
       path: "/book/:id",
       as: getBook,
     },
+
     { title: "Home", path: "/", as: FrontPage },
     { title: "About", path: "/about-us", as: AboutUs },
     { title: "Contact", path: "/contact-us", as: ContactUs },
@@ -64,7 +67,10 @@ function App(props) {
     { title: "Settings", path: "/setting", as: AccountSetting },
     { title: "Profile", path: "/profile", as: Profile },
     { title: "Questions", path: "/questions", as: FAQ },
+    { title: "Log in ", path: "/login", as: Login },
+    { title: "Sign up",path: "/signup", as: SignUp },
   ]
+  
     .map((v) => ({ exact: true, ...v }))
     .map(({ as: As, title, path }, _, routes) => {
       return {

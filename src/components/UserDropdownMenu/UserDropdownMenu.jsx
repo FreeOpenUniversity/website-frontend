@@ -12,6 +12,7 @@ function UserDropdownMenu() {
   return (
     <div>
       <div
+
         className="ml5 f1 pl5"
         onMouseEnter={() => showMenu()}
         onMouseLeave={() => showMenu()}
@@ -37,13 +38,14 @@ function UserDropdownMenu() {
                       className="no-underline washed-blue f5 h-100 flex grow items-center ph1 br1"
                     >
                       {item.icon}
-                      <span className="ml2">{item.title}</span>
+
                     </Link>
                   </li>
                 );
               })}
             </ul>
           </nav>
+
         </div>
       </div>
     </div>
