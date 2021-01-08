@@ -23,7 +23,6 @@ const FooterMenu = ({ title, items, hasBorder }) => {
       </h2>
       <ul className="db-l dn list pl0 pl4-m">
         {items.map((menu, index) =>
-
           menu.link == "none" ? (
             <p key={index}>{menu.title}</p>
           ) : (
