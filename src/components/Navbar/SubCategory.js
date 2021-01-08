@@ -8,9 +8,9 @@ export const SubCategory = () => {
   return (
     <>
       <div className="pa4 bg-white shadow-5 fl w-50-l visibility-hidden absolute black">
-        <div className="pb4 flex mb2 w-100 bb bw1 justify-between ">
-          <h2>Categories</h2>
-          <button className="fw5 avenir pa3 br-pill b-dark-green bw0 ">
+        <div className="pb2 flex mb2 bb bw1 justify-between items-center">
+          <h2 className= "dib w-75-ns">Categories</h2>
+          <button className="avenir fw5 f5-ns f4-l link dim br-pill bn ph4 dib mv3-l h3-l h-50-ns bg-near-white">
             View all
           </button>
         </div>
