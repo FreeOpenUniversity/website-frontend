@@ -15,14 +15,13 @@ const apiStateMap = {
   userhistory: {},
   image: {},
 };
-
-// add new reducers here
-const reducerList = [fromStateMap(apiStateMap).reducers];
-
+const otherStateMap = {
+  // add new state here
+};
+const stateMap = { ...apiStateMap, ...otherStateMap };
 // create the redux store
 const middleware = applyMiddleware(thunk, promise);
-const reduced = listOfReducersToReducer(reducerList);
-const reducers = combineReducers(reduced);
+const reducers = combineReducers(fromStateMap(stateMap).reducers);
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancer(middleware));
 
