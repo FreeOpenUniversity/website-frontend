@@ -1,5 +1,6 @@
 import { camelCase, keyBy, keys, mapValues, snakeCase, sn } from "lodash";
 import { crossProduct } from "./utils";
+import { listOfReducersToReducer } from "./lib/ListToReducer";
 
 /**
  * reducer factories. Simplifies the generation of reducers
@@ -67,5 +68,5 @@ function makeReducers(stateMap, resourceNames, handlers = defHandlers) {
     return { [resource]: reducer };
   });
 
-  return Object.assign({}, ...reducerList);
+  return listOfReducersToReducer([Object.assign({}, ...reducerList)]);
 }
