@@ -33,3 +33,40 @@ Read [here](https://paper.dropbox.com/doc/Design-Stuff--A_8pXuF0m7FiuMgbBPDvnAFu
 # Linting
 
 I've set up Prettier as a pre-commit hook. I recommend using it on save as well.
+
+# State To Redux Library
+
+## Example use
+
+Declare the resources you'd like in your state map.
+
+```js
+const stateMap = {
+  book: {},
+  category: {},
+  image: {},
+  user: {},
+  userhistory: {},
+  image: {},
+};
+```
+
+generate reducers and actions
+
+```js
+const { reducers, actions } = fromStateMap(stateMap);
+```
+
+use them in your code
+
+```js
+export const store = createStore(reducers, composeEnhancer(middleware));
+---
+
+actions.setUserhistory({...})
+actions.updateUserhistory({...})
+actions.setCategory({...})
+actions.updateCategory({...})
+...
+
+```

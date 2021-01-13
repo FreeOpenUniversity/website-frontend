@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import { fromStateMap } from "./lib/stateToRedux";
-import { listOfReducersToReducer } from "./lib/ListToReducer";
 import { apiFactory } from "./lib/api";
 import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
@@ -13,12 +12,26 @@ const apiStateMap = {
   image: {},
   user: {},
   userhistory: {},
-  image: {},
 };
-const otherStateMap = {
+
+// create, read, update, delete
+
+// api.chocolate.create({name:"dark"})
+// api.chocolate.update({id: "123", name:"extra dark"})
+// api.chocolate.read({id: "123"})
+// api.chocolate.read()
+// api.chocolate.delete({id: "123"})
+
+const UIStateMap = {
+  // user: { loggedIn: false, currentPage: "/home" },
+  // searchOptions: {},
   // add new state here
 };
-const stateMap = { ...apiStateMap, ...otherStateMap };
+
+const stateMap = { ...apiStateMap, ...UIStateMap };
+const { reducers, actions: _actions } = fromStateMap(stateMap);
+export const actions = _actions;
+
 // create the redux store
 const middleware = applyMiddleware(thunk, promise);
 const reducers = combineReducers(fromStateMap(stateMap).reducers);

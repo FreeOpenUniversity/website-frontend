@@ -68,9 +68,9 @@ function App(props) {
     { title: "Profile", path: "/profile", as: Profile },
     { title: "Questions", path: "/questions", as: FAQ },
     { title: "Log in ", path: "/login", as: Login },
-    { title: "Sign up",path: "/signup", as: SignUp },
+    { title: "Sign up", path: "/signup", as: SignUp },
   ]
-  
+
     .map((v) => ({ exact: true, ...v }))
     .map(({ as: As, title, path }, _, routes) => {
       return {
