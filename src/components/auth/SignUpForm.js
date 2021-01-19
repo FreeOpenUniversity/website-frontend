@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import useForm from "./useForm";
-import validate from "./validateInfo";
+import { register } from "../../actions/auth";
+import PropTypes from "prop-types";
 
-const SignUpForm = ({ submitForm }) => {
-  const { handleChange, values, handleSubmit, errors } = useForm(
-    submitForm,
-    validate
-  );
+const SignUpForm = ({ register }) => {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const { username, email, password, password2 } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password !== password2) {
+      console.log("passwords don't match");
+    } else {
+      register({ username, email, password });
+    }
+  };
   return (
     <div className="w-60 vh-100 mt5 center">
       <h1 className="f1 measure green">Sign Up</h1>
@@ -15,18 +33,16 @@ const SignUpForm = ({ submitForm }) => {
         <i className="fas fa-user"></i> Create Your Account
       </p>
 
-      <form className="" onSubmit={handleSubmit}>
+      <form className="" onSubmit={(e) => onSubmit(e)}>
         <div>
           <input
             className="w-100 h2 mv2 f4"
             type="text"
             placeholder="Name"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
+            name="username"
+            value={username}
+            onChange={(e) => onChange(e)}
           />
-
-          {errors.name && <p className="red">{errors.name}</p>}
         </div>
 
         <div>
@@ -35,10 +51,9 @@ const SignUpForm = ({ submitForm }) => {
             placeholder="Email Address"
             name="email"
             className="w-100 h2 f4 mv2"
-            value={values.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => onChange(e)}
           />
-          {errors.email && <p className="red">{errors.email}</p>}
         </div>
         <div>
           <input
@@ -46,10 +61,9 @@ const SignUpForm = ({ submitForm }) => {
             placeholder="Password"
             name="password"
             className="w-100 h2 f4 mv2"
-            value={values.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => onChange(e)}
           />
-          {errors.password && <p className="red">{errors.password}</p>}
         </div>
         <div>
           <input
@@ -57,21 +71,19 @@ const SignUpForm = ({ submitForm }) => {
             placeholder="Confirm Password"
             name="password2"
             className="w-100 f4 h2 mv2"
-            value={values.password2}
-            onChange={handleChange}
+            value={password2}
+            onChange={(e) => onChange(e)}
           />
-          {errors.password2 && <p className="red">{errors.password2}</p>}
         </div>
 
-        <button
+        <input
           type="submit"
           className="washed-green bg-green f3 measure br1 pv1 ph3 bw0 mt2"
-        >
-          Submit
-        </button>
+          value="Register"
+        />
       </form>
       <p className="f3 measure">
-        Already have an account?{" "}
+        Already have an account?
         <Link className="no-underline green" to="/login">
           Sign In
         </Link>
@@ -80,4 +92,8 @@ const SignUpForm = ({ submitForm }) => {
   );
 };
 
-export default SignUpForm;
+SignUpForm.propTypes = {
+  register: PropTypes.func.isRequired,
+};
+
+export default connect(null, { register })(SignUpForm);

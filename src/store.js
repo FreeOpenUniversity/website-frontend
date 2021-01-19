@@ -5,6 +5,7 @@ import { apiFactory } from "./lib/api";
 import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
 import promise from "redux-promise-middleware";
+import rootReducer from "./reducers";
 
 // Add api endpoints here
 const apiStateMap = {
