@@ -39,7 +39,7 @@ const covers = [
 ];
 
 export function CategoryScroller({ categories }) {
-  console.log("Categories", categories);
+  // console.log("Categories", categories);
   return (
     <div className="flex flex-wrap mw8-l mw100 center">
       {categories

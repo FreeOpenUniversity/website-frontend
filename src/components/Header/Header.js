@@ -8,10 +8,7 @@ function Header() {
     <>
       <div className="bg-light-silver w-100">
         <div className="pa4 mh5 mh2-m flex items-center justify-between">
-          <Link
-            to="/"
-            className="link black hover-black no-underline flex items-center"
-          >
+          <Link to="/" className="black no-underline flex items-center">
             <img
               id="CIS-logo"
               className="w3 h3 pr2 br"
