@@ -1,11 +1,12 @@
 import { camelCase, keys, snakeCase } from "lodash";
-import { crossProduct } from "./utils";
-import { listOfReducersToReducer } from "./lib/ListToReducer";
+import { crossProduct, trie } from "./utils";
+import { listOfReducersToReducer } from "./ListToReducer";
 
 /**
  * reducer factories. Simplifies the generation of reducers
+ * @typedef {(state, action) => action.payload} handler
  */
-const defHandlers = {
+export const handlers = {
   set: (state, action) => {
     return action.payload;
   },
@@ -17,7 +18,7 @@ const defHandlers = {
   },
 };
 
-const action = (type) => (payload) => ({ type, payload });
+const action = (dispatch, type) => (payload) => dispatch({ type, payload });
 const getVerb = (actionType) => actionType.split("_")[0].toLowerCase();
 const getResource = (actionType) => actionType.split("_")[1]?.toLowerCase();
 /**
@@ -35,26 +36,39 @@ const getResource = (actionType) => actionType.split("_")[1]?.toLowerCase();
  * and reducers for types "SET_CAT", and "UPDATE_CAT"
  *
  */
-export const fromStateMap = (stateMap, handlers = defHandlers) => {
+/** @type { 
+  <T, K extends keyof T, S, V extends keyof S>
+    (stateMap: T, handlers: S ) => 
+      {actions:
+        {[k in K]: {
+          [s in V]: (payload:{})=>{type:[s, k], payload:{}}
+        }
+      }
+    }
+  }
+*/
+export const generateActions = (dispatch, stateMap, _handlers = handlers) => {
   const resourceNames = keys(stateMap);
-  const verbs = keys(handlers);
-  return {
-    actions: makeActions(verbs, resourceNames),
-    reducers: makeReducers(stateMap, resourceNames, handlers),
-  };
+  const verbs = keys(_handlers);
+  return makeActions(verbs, resourceNames, dispatch);
 };
 
-function makeActions(verbs, resourceNames) {
+export const generateReducers = (stateMap, _handlers = handlers) => {
+  const resourceNames = keys(stateMap);
+  return makeReducers(stateMap, resourceNames, _handlers);
+};
+
+function makeActions(verbs, resourceNames, dispatch) {
   const actionList = crossProduct(verbs, resourceNames).map(
     ([verb, resource]) => {
       const type = snakeCase(`${verb}_${resource}`).toUpperCase();
-      return { [camelCase(type)]: action(type) };
+      return [resource, verb, action(dispatch, type)];
     }
   );
-  return Object.assign({}, ...actionList);
+  return trie(actionList).tree;
 }
 
-function makeReducers(stateMap, resourceNames, handlers = defHandlers) {
+function makeReducers(stateMap, resourceNames, handlers = handlers) {
   // this returns a map from the keys in stateMap to a generic verb based reducer
   const reducerList = resourceNames.map((resource) => {
     const defaultState = stateMap[resource];

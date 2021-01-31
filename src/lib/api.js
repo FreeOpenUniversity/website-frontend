@@ -1,5 +1,5 @@
 import { camelCase, isArray, keyBy, keys } from "lodash";
-import { fromStateMap } from "./stateToRedux";
+import { fromStateMap, generateActions } from "./stateToRedux";
 import { crossProduct, trie } from "./utils";
 
 const methods = {
@@ -67,8 +67,7 @@ const requestFactory = (
   return dispatch(requestAction).then(({ value }) => {
     cache[url] = true;
     isArray(value) && (value = keyBy(value, "id"));
-    const key = camelCase("update_" + resourceName);
-    return dispatch(actions[key](value));
+    return dispatch(actions[resourceName].update(value));
   });
 };
 
@@ -98,7 +97,7 @@ const requestFactory = (
  * The tool does not work with nested resources.
  */
 export const apiFactory = (baseURL, stateMap, dispatch) => {
-  const { actions } = fromStateMap(stateMap);
+  const actions = generateActions(dispatch, stateMap);
 
   const resourceNames = keys(stateMap);
   const cache = {};
