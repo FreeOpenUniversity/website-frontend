@@ -2,24 +2,34 @@
 
 ## Example use
 
-Declare the resources you'd like in your state map.
+Declare the resources you'd like in your state map, and their default values.
+
 ```js
-const stateMap = {
-  book: {},
-  category: {},
-  image: {},
-  user: {},
-  userhistory: {},
-  image: {},
+const ui = {
+  auth: {
+    token: localStorage.getItem("getItem"),
+    isAuthenicated: null,
+    loading: true,
+    user: null,
+  },
+  scrollState: {
+    x: 0,
+    y: 0,
+  },
 };
+
+actions.scrollState.update({});
+actions.auth.update();
 ```
 
 generate reducers and actions
+
 ```js
-const {reducers, actions} = fromStateMap(stateMap)
+const { reducers, actions } = fromStateMap(ui);
 ```
 
 use them in your code
+
 ```js
 export const store = createStore(reducers, composeEnhancer(middleware));
 ---
@@ -33,6 +43,7 @@ actions.updateCategory({...})
 ```
 
 ## Why
+
 If you're familiar with redux, you might start a project by creating
 action creators for every dataStore update that you'd like to perform.
 
@@ -56,10 +67,9 @@ bookReducer = (state, action)=>{
 }
 ```
 
-
 Each reducer has to be imported in the store, and all of your actions must
 be imported into their different files. You have to decide if you should you put them all in the same
-file, or allocate them with the components that use them. After you've decided all that, 
+file, or allocate them with the components that use them. After you've decided all that,
 you have to write several actions for each reducer, and a reducer for each resource.
 This is tedious and error prone.
 
@@ -87,7 +97,7 @@ StateToRedux handles the database, data access, and service components of the st
 
 ## Single responsibility
 
-Data access and service become very simple in this model. They communicate with a vocabulary of `<verb>_<resource>`. 
+Data access and service become very simple in this model. They communicate with a vocabulary of `<verb>_<resource>`.
 `<Verb>` always does the same thing, given the resource type.
 
 All the business logic goes to the higher layers.
@@ -98,8 +108,6 @@ const reducers = {
   update: (state = defaultState, action) => ({...state, ...action.payload});
 };
 ```
-
-
 
 # API
 
