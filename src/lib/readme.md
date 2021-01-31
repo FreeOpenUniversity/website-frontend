@@ -17,9 +17,6 @@ const ui = {
     y: 0,
   },
 };
-
-actions.scrollState.update({});
-actions.auth.update();
 ```
 
 generate reducers and actions
@@ -34,10 +31,10 @@ use them in your code
 export const store = createStore(reducers, composeEnhancer(middleware));
 ---
 
-actions.setUserhistory({...})
-actions.updateUserhistory({...})
-actions.setCategory({...})
-actions.updateCategory({...})
+actions.userhistory.set({...})
+actions.userhistory.update({...})
+actions.category.set({...})
+actions.category.update({...})
 ...
 
 ```
