@@ -24,11 +24,9 @@ export function Book({ book, key, pathname }) {
         to={{ pathname: pathname + `/book/` + id, state: { id } }}
         className="link dim"
       >
-        <img src={download} alt="" srcset="" className="h4 w-100 db center" />
-        <div className="pb2 pt3  f4 fw5 tc black">
+        <div className="pb2 pt3 f4 fw5 tc black">
           {title.length > cutLength ? title.slice(0, cutLength) + "..." : title}
         </div>
-
 
         <span className="i f5 tc">{author}</span>
         <img src={download} alt="" className="h4 w4 db center" />

@@ -1,22 +1,30 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../actions/auth";
 
-const Login = () => {
+const Login = ({ login, isAuthenicated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const { name, email, password } = formData;
+  const { email, password } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("success");
+    login(email, password);
   };
 
+  //redirect if loggedin
+  //below line should be if(isAuthenicated) I am using ! for testing
+  if (!isAuthenicated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <div className="w-50 w-70-m vh-100 mt5 center">
       <h1 className="f1 measure green">Sign In</h1>
@@ -55,7 +63,7 @@ const Login = () => {
       </form>
       <p className="f3 measure">
         Don't have an account?{" "}
-        <Link className="no-underline green" to="/signup">
+        <Link className="no-underline orange b" to="/signup">
           Sign Up
         </Link>
       </p>
@@ -63,4 +71,12 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenicated: PropTypes.bool,
+};
+
+const mapStateToProp = (state) => ({
+  isAuthenicated: state.auth.isAuthenicated,
+});
+export default connect(mapStateToProp, { login })(Login);

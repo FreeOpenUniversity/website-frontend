@@ -6,6 +6,8 @@ import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
 import promise from "redux-promise-middleware";
 import rootReducer from "./reducers";
+import auth, { initialState } from "./reducers/auth";
+import alert from "./reducers/alert";
 
 // Add api endpoints here
 const apiStateMap = {
@@ -17,8 +19,12 @@ const apiStateMap = {
   image: {},
 };
 
+const authStateApi = {
+  auth: initialState,
+};
+
 // add new reducers here
-const reducerList = [fromStateMap(apiStateMap).reducers];
+const reducerList = [fromStateMap(apiStateMap).reducers, { auth }, { alert }];
 
 // create the redux store
 const middleware = applyMiddleware(thunk, promise);

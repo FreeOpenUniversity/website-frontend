@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import FrontPage from "./components/FrontPage";
@@ -18,8 +19,29 @@ import { connect } from "react-redux";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
+import Cat from "./components/Cat";
+import Alert from "./components/Alert";
+import { loadUser } from "./actions/auth";
+import { store } from "./store";
+import setAuthToken from "./utils/setAuthToken";
+import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
+import CreateProfile from "./components/Profile/CreateProfile";
+import EditProfile from "./components/Profile/EditProfile";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 function App(props) {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
+  const { books, categories } = props;
+  api.book.read();
+  api.category.read();
+  let cats = Object.values(categories); // covert categories to array
   const getBookTitle = (props) => {
     const id = props.match.params.id;
     const book = books[id] ? books[id] : MOCK_DATA[id - 1];
@@ -29,14 +51,20 @@ function App(props) {
     const id = props.match.params.id;
     return <Book {...(books[id] ? books[id] : MOCK_DATA[id - 1])}></Book>;
   };
-  const { books } = props;
-  api.book.read();
-  api.category.read();
+  const getCat = (props) => {
+    const name = props.match.params.name;
+    return <Cat data={cats.filter((cat) => cat.name == name)}></Cat>;
+  };
   const routes = [
     {
       title: (props) => props.match.params.name,
       path: "/category/:name",
       as: Category,
+    },
+    {
+      title: (props) => props.match.params.name,
+      path: "/cat/:name",
+      as: getCat,
     },
     {
       title: getBookTitle,
@@ -57,9 +85,9 @@ function App(props) {
     { title: "Profile", path: "/profile", as: Profile },
     { title: "Questions", path: "/questions", as: FAQ },
     { title: "Log in ", path: "/login", as: Login },
-    { title: "Sign up",path: "/signup", as: SignUp },
+    { title: "Sign up", path: "/signup", as: SignUp },
   ]
-  
+
     .map((v) => ({ exact: true, ...v }))
     .map(({ as: As, title, path }, _, routes) => {
       return {
@@ -88,6 +116,11 @@ function App(props) {
               </Route>
             );
           })}
+
+          {/*When connecting these needs to be <PrivateRoute/> */}
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/create-profile" component={CreateProfile} />
+          {/*<Route exact path="/edit-profile" component={ EditProfile }/>*/}
         </Switch>
       </ScrollToTop>
       <Footer />
@@ -95,8 +128,8 @@ function App(props) {
   );
 }
 
-function mapStateToProps(state, props) {
-  return { categories: state.category, books: state.book, ...props };
+function mapStateToProps(state) {
+  return { categories: state.category, books: state.book };
 }
 
 export default connect(mapStateToProps)(App);

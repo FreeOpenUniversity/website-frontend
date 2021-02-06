@@ -57,6 +57,7 @@ const requestFactory = (
     },
     json: true,
   };
+
   const body = JSON.stringify(data);
   if (!method === "get") options.body = body;
   const requestAction = {

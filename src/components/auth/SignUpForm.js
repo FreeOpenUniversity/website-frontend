@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-const SignUpForm = ({ register }) => {
+const SignUpForm = ({ setAlert, register, isAuthenicated }) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -21,16 +22,21 @@ const SignUpForm = ({ register }) => {
     e.preventDefault();
 
     if (password !== password2) {
-      console.log("passwords don't match");
+      setAlert("passwords don't match", "danger");
     } else {
       register({ username, email, password });
     }
   };
+
+  //redirect if registered
+  if (isAuthenicated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
-    <div className="w-60 vh-100 mt5 center">
+    <div className="w-60 vh-100 mt3 center">
       <h1 className="f1 measure green">Sign Up</h1>
       <p className="f3 measre">
-        <i className="fas fa-user"></i> Create Your Account
+        <i className="fas fa-user green"></i> Create Your Account
       </p>
 
       <form className="" onSubmit={(e) => onSubmit(e)}>
@@ -84,7 +90,7 @@ const SignUpForm = ({ register }) => {
       </form>
       <p className="f3 measure">
         Already have an account?
-        <Link className="no-underline green" to="/login">
+        <Link className="ml1 no-underline orange b" to="/login">
           Sign In
         </Link>
       </p>
@@ -93,7 +99,13 @@ const SignUpForm = ({ register }) => {
 };
 
 SignUpForm.propTypes = {
+  setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenicated: PropTypes.bool,
 };
 
-export default connect(null, { register })(SignUpForm);
+const mapStateToProp = (state) => ({
+  isAuthenicated: state.auth.isAuthenicated,
+});
+
+export default connect(mapStateToProp, { setAlert, register })(SignUpForm);

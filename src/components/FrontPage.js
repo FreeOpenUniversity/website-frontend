@@ -19,6 +19,7 @@ const frontPage = (props) => {
         style={background}
         className="cover bg-near-white mw-100 vh-75"
       ></div> */}
+
       <h1 className="tc ttu f1 fw9 tracked-tight">
         Welcome to Collegiate Independent Study
       </h1>
@@ -29,6 +30,7 @@ const frontPage = (props) => {
           className="center vh-75"
         />
       </div>
+
       <HomepageIntro />
       <CategoryScroller
         categories={_.uniq(
