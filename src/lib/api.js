@@ -3,6 +3,7 @@ import { crossProduct, trie } from "./utils";
 
 const methods = {
   create: "post",
+  post: "post",
   read: "get",
   get: "get",
   update: "patch",
@@ -47,9 +48,8 @@ const requestFactory = (
   }
 
   const url =
-    [baseURL, resourceName, id || ""].join("/") + urlQuery
-      ? "?" + urlQuery
-      : "";
+    [baseURL, resourceName, id || ""].join("/") +
+    (urlQuery ? "?" + urlQuery : "");
   if (!requestOptions.force && methods[method] === "get" && cache[url]) return;
 
   let options = {
@@ -62,6 +62,8 @@ const requestFactory = (
 
   const body = JSON.stringify(data);
   if (!method === "get") options.body = body;
+
+  console.log(url);
   const requestAction = {
     type: `${method}_${resourceName}`.toUpperCase(),
     payload: (await fetch(url, options)).json(),
