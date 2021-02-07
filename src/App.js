@@ -15,19 +15,16 @@ import Header from "./components/Header/Header";
 import { api } from "./store";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
-import { connect } from "react-redux";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
 import Cat from "./components/Cat";
-import Alert from "./components/Alert";
 import { loadUser } from "./actions/auth";
 import { store } from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import Dashboard from "./components/dashboard/Dashboard";
-import PrivateRoute from "./components/PrivateRoute";
+import { connect } from "./lib/stateToRedux";
 import CreateProfile from "./components/Profile/CreateProfile";
-import EditProfile from "./components/Profile/EditProfile";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -129,7 +126,7 @@ function App(props) {
 }
 
 function mapStateToProps(state) {
-  return { categories: state.category, books: state.book };
+  return { categories: state.api.category, books: state.api.book };
 }
 
 export default connect(mapStateToProps)(App);
