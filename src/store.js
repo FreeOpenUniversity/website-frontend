@@ -5,11 +5,6 @@ import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
 import promise from "redux-promise-middleware";
 
-const handlers = {
-  set: (state, action) => action.payload,
-  update: (state, { payload }) => ({ ...state, ...payload }),
-};
-
 // Add api endpoints here
 const apiStateMap = {
   book: {},
@@ -37,13 +32,14 @@ const stateMap = { ...apiStateMap, ...UIStateMap };
 
 // create the redux store
 const middleware = applyMiddleware(thunk, promise);
-const reducers = combineReducers(generateReducers(stateMap, handlers));
+const reducers = combineReducers(generateReducers(stateMap));
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancer(middleware));
-export const actions = generateActions(store.dispatch, stateMap, handlers);
+export const actions = generateActions(store.dispatch, stateMap);
 // initializing the api object
 
 // django todo: add /books/api/book
 // django todo: add {format: "json"} as last param to apiFactory
 const baseURL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 export const api = apiFactory(baseURL, actions, store.dispatch);
+console.log(api, actions);

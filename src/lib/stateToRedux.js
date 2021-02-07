@@ -6,7 +6,7 @@ import { listOfReducersToReducer } from "./ListToReducer";
  * reducer factories. Simplifies the generation of reducers
  * @typedef {(state, action) => action.payload} handler
  */
-export const handlers = {
+export const defaultHandlers = {
   set: (state, action) => {
     return action.payload;
   },
@@ -47,15 +47,17 @@ const getResource = (actionType) => actionType.split("_")[1]?.toLowerCase();
     }
   }
 */
-export const generateActions = (dispatch, stateMap, _handlers = handlers) => {
+export const generateActions = (dispatch, stateMap, _handlers = {}) => {
+  const handlers = { ...defaultHandlers, _handlers };
   const resourceNames = keys(stateMap);
-  const verbs = keys(_handlers);
+  const verbs = keys(handlers);
   return makeActions(verbs, resourceNames, dispatch);
 };
 
-export const generateReducers = (stateMap, _handlers = handlers) => {
+export const generateReducers = (stateMap, _handlers = {}) => {
+  const handlers = { ...defaultHandlers, _handlers };
   const resourceNames = keys(stateMap);
-  return makeReducers(stateMap, resourceNames, _handlers);
+  return makeReducers(stateMap, resourceNames, handlers);
 };
 
 function makeActions(verbs, resourceNames, dispatch) {
@@ -68,7 +70,7 @@ function makeActions(verbs, resourceNames, dispatch) {
   return trie(actionList).tree;
 }
 
-function makeReducers(stateMap, resourceNames, handlers = handlers) {
+function makeReducers(stateMap, resourceNames, handlers) {
   // this returns a map from the keys in stateMap to a generic verb based reducer
   const reducerList = resourceNames.map((resource) => {
     const defaultState = stateMap[resource];
