@@ -62,8 +62,6 @@ const requestFactory = (
 
   const body = JSON.stringify(data);
   if (!method === "get") options.body = body;
-
-  console.log(url);
   const requestAction = {
     type: `${method}_${resourceName}`.toUpperCase(),
     payload: (await fetch(url, options)).json(),
