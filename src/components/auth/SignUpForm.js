@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { connect } from "../../lib/stateToRedux";
 import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
+import { api } from "../../store";
 
 const SignUpForm = ({ setAlert, register, isAuthenicated }) => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,10 @@ const SignUpForm = ({ setAlert, register, isAuthenicated }) => {
     if (password !== password2) {
       setAlert("passwords don't match", "danger");
     } else {
-      register({ username, email, password });
+      api.user.create({ username, email, password }).then(({ data }) => {
+        console.log(data);
+      });
+      // register({ username, email, password });
     }
   };
 
@@ -105,7 +109,7 @@ SignUpForm.propTypes = {
 };
 
 const mapStateToProp = (state) => ({
-  isAuthenicated: state.auth.isAuthenicated,
+  isAuthenicated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProp, { setAlert, register })(SignUpForm);
