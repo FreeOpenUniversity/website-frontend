@@ -1,5 +1,4 @@
-import { camelCase, isArray, keyBy, keys } from "lodash";
-import { fromStateMap, generateActions } from "./stateToRedux";
+import { isArray, keyBy, keys } from "lodash";
 import { crossProduct, trie } from "./utils";
 
 const methods = {
@@ -27,9 +26,10 @@ const requestFactory = (
   method,
   dispatch,
   actions,
-  cache
+  cache,
+  standardQuery
 ) => async (data, requestOptions = {}) => {
-  const { query } = requestOptions;
+  const query = { ...standardQuery, ...requestOptions.query };
 
   const urlQuery = query
     ? Object.entries(query)
@@ -67,7 +67,7 @@ const requestFactory = (
   return dispatch(requestAction).then(({ value }) => {
     cache[url] = true;
     isArray(value) && (value = keyBy(value, "id"));
-    return dispatch(actions[resourceName].update(value));
+    return actions[resourceName].update(value);
   });
 };
 
@@ -96,9 +96,7 @@ const requestFactory = (
  *
  * The tool does not work with nested resources.
  */
-export const apiFactory = (baseURL, stateMap, dispatch) => {
-  const actions = generateActions(dispatch, stateMap);
-
+export const apiFactory = (baseURL, actions, dispatch, standardQuery) => {
   const resourceNames = keys(stateMap);
   const cache = {};
   // From [resource, method, function] triplets, we create a trie (https://en.wikipedia.org/wiki/Trie)
@@ -114,7 +112,8 @@ export const apiFactory = (baseURL, stateMap, dispatch) => {
       methods[method],
       dispatch,
       actions,
-      cache
+      cache,
+      standardQuery
     ),
   ]);
 

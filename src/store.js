@@ -6,15 +6,8 @@ import { applyMiddleware, compose, createStore } from "redux";
 import promise from "redux-promise-middleware";
 
 const handlers = {
-  set: (state, action) => {
-    return action.payload;
-  },
-  update: (state, action) => {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  },
+  set: (state, action) => action.payload,
+  update: (state, { payload }) => ({ ...state, ...payload }),
 };
 
 // Add api endpoints here
@@ -49,5 +42,8 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancer(middleware));
 export const actions = generateActions(store.dispatch, stateMap, handlers);
 // initializing the api object
+
+// django todo: add /books/api/book
+// django todo: add {format: "json"} as last param to apiFactory
 const baseURL = process.env.REACT_APP_API_URL || "http://localhost:8080";
-export const api = apiFactory(baseURL, apiStateMap, store.dispatch);
+export const api = apiFactory(baseURL, actions, store.dispatch);
