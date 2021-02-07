@@ -11,7 +11,6 @@ const apiStateMap = {
   image: {},
   user: {},
   userhistory: {},
-  login: {},
 };
 
 // create, read, update, delete
