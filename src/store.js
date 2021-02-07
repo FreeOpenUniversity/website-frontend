@@ -1,6 +1,4 @@
-import { combineReducers } from "redux";
-import { fromStateMap } from "./lib/stateToRedux";
-import { listOfReducersToReducer } from "./lib/ListToReducer";
+import { generateReducers, generateActions } from "./lib/stateToRedux";
 import { apiFactory } from "./lib/api";
 import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
@@ -10,29 +8,40 @@ import auth, { initialState } from "./reducers/auth";
 import alert from "./reducers/alert";
 
 // Add api endpoints here
-const apiStateMap = {
+const _api = {
   book: {},
   category: {},
   image: {},
   user: {},
   userhistory: {},
-  image: {},
+  auth: {
+    token: localStorage.getItem("token"),
+    isAuthenticated: null,
+    loading: true,
+    user: null,
+  },
 };
 
-const authStateApi = {
-  auth: initialState,
+const _auth = {
+  alerts: [],
 };
 
 // add new reducers here
-const reducerList = [fromStateMap(apiStateMap).reducers, { auth }, { alert }];
+// const reducerList = [fromStateMap(apiStateMap).reducers, { auth }, { alert }];
+
+const stateMap = { _api, _auth };
 
 // create the redux store
 const middleware = applyMiddleware(thunk, promise);
-const reduced = listOfReducersToReducer(reducerList);
-const reducers = combineReducers(reduced);
+const reducers = generateReducers(stateMap);
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancer(middleware));
 
+export const actions = generateActions(store.dispatch, stateMap);
+console.log(actions);
 // initializing the api object
+
+// django todo: add /books/api/book
+// django todo: add {format: "json"} as last param to apiFactory
 const baseURL = process.env.REACT_APP_API_URL || "http://localhost:8080";
-export const api = apiFactory(baseURL, apiStateMap, store.dispatch);
+export const api = apiFactory(baseURL, actions.api, store.dispatch);
