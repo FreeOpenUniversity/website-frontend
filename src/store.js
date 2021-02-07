@@ -1,5 +1,4 @@
-import { combineReducers } from "redux";
-import { fromStateMap } from "./lib/stateToRedux";
+import { generateReducers, generateActions } from "./lib/stateToRedux";
 import { apiFactory } from "./lib/api";
 import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
@@ -29,15 +28,17 @@ const UIStateMap = {
 };
 
 const stateMap = { ...apiStateMap, ...UIStateMap };
-const { reducers, actions: _actions } = fromStateMap(stateMap);
-export const actions = _actions;
 
 // create the redux store
 const middleware = applyMiddleware(thunk, promise);
-const reducers = combineReducers(fromStateMap(stateMap).reducers);
+const reducers = generateReducers(stateMap);
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancer(middleware));
 
+export const actions = generateActions(store.dispatch, stateMap);
 // initializing the api object
+
+// django todo: add /books/api/book
+// django todo: add {format: "json"} as last param to apiFactory
 const baseURL = process.env.REACT_APP_API_URL || "http://localhost:8080";
-export const api = apiFactory(baseURL, apiStateMap, store.dispatch);
+export const api = apiFactory(baseURL, actions, store.dispatch);

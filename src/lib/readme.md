@@ -6,40 +6,82 @@ Declare the resources you'd like in your state map, and their default values.
 
 ```js
 const ui = {
-  auth: {
+  user: {
     token: localStorage.getItem("getItem"),
-    isAuthenicated: null,
+    isAuthenticated: null,
     loading: true,
-    user: null,
+    userId: null,
   },
   scrollState: {
     x: 0,
     y: 0,
   },
 };
-
-actions.scrollState.update({});
-actions.auth.update();
 ```
 
 generate reducers and actions
 
 ```js
-const { reducers, actions } = fromStateMap(ui);
+// store.js
+const reducers = generateReducers(ui);
+export const store = createStore(reducers, composeEnhancer(middleware));
+export const actions = generateActions(ui, store.dispatch)
+---
+// totally_awesome_component.js
+import { actions: { user, scrollState }, api } from "../store";
+import React from "react"
+
+const doingAwesomeThings = ({user, scrollState})=>{
+  const userLoggedIn = (response)=>user.update({isAuthenticated: true, loading:false, id: response.token.id})
+  const logInHandler = (credentials)=>api.login.post(credentials).then(userLoggedIn)
+  const scrollReset = ()=>scrollState.set({x:0,y:0})
+  const scrollHandler = (e)=>scrollState.update({y:e.target.y})
+  const credentials = {
+    username: "billy the kid",
+    password: "stop looking at my password",
+  };
+  const userLoggedIn = (response) =>
+    user.update({
+      isAuthenticated: true,
+      loading: false,
+      id: response.token.id,
+    });
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    api.login.post(credentials).then(userLoggedIn);
+  };
+  // const scrollReset = () => scrollState.set({ x: 0, y: 0 });
+  // const scrollHandler = (e) => scrollState.update({ y: e.target.y });
+
+  return (
+    <div>
+      <form action="" onSubmit={loginHandler}>
+        <label htmlFor="">Name</label>
+        <input type="text" />
+        <label htmlFor="">Password</label>
+        <input type="password" />
+        <input type="submit" />
+      </form>
+    </div>
+  );
+}
+
 ```
 
-use them in your code
+if you need more power from your reducers and actions, use thunks and api promises!
 
 ```js
-export const store = createStore(reducers, composeEnhancer(middleware));
----
+// inspiring_business_logic.js
 
-actions.setUserhistory({...})
-actions.updateUserhistory({...})
-actions.setCategory({...})
-actions.updateCategory({...})
-...
+const updateBookCategory = (bookId, categoryId, joinId, category)=>(dispatch, getState)=>{
+  dispatch(actions.category.update([categoryId]:{category}))
+  dispatch(actions.bookcategory.update({[joinId]: { bookId, categoryId }}))
 
+}
+
+// logic in a promise
+api.login.post(credentials).then(userLoggedIn);
 ```
 
 ## Why

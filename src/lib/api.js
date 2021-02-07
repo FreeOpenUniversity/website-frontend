@@ -1,9 +1,9 @@
-import { camelCase, isArray, keyBy, keys } from "lodash";
-import { fromStateMap } from "./stateToRedux";
+import { isArray, isEmpty, keyBy, keys } from "lodash";
 import { crossProduct, trie } from "./utils";
 
 const methods = {
   create: "post",
+  post: "post",
   read: "get",
   get: "get",
   update: "patch",
@@ -27,11 +27,11 @@ const requestFactory = (
   method,
   dispatch,
   actions,
-  cache
+  cache,
+  standardQuery
 ) => async (data, requestOptions = {}) => {
-  const { query } = requestOptions;
-
-  const urlQuery = query
+  const query = { ...standardQuery, ...requestOptions.query };
+  const urlQuery = !isEmpty(query)
     ? Object.entries(query)
         .map(([k, v]) => `${k}=${isArray(v) ? v.join(",") : v}`)
         .join("&")
@@ -47,7 +47,9 @@ const requestFactory = (
        method: ${method}`;
   }
 
-  const url = [baseURL, resourceName, id || ""].join("/") + "?" + urlQuery;
+  const url =
+    [baseURL, resourceName, id || ""].join("/") +
+    (urlQuery ? "?" + urlQuery : "");
   if (!requestOptions.force && methods[method] === "get" && cache[url]) return;
 
   let options = {
@@ -67,8 +69,7 @@ const requestFactory = (
   return dispatch(requestAction).then(({ value }) => {
     cache[url] = true;
     isArray(value) && (value = keyBy(value, "id"));
-    const key = camelCase("update_" + resourceName);
-    return dispatch(actions[key](value));
+    return actions[resourceName].update(value);
   });
 };
 
@@ -97,10 +98,8 @@ const requestFactory = (
  *
  * The tool does not work with nested resources.
  */
-export const apiFactory = (baseURL, stateMap, dispatch) => {
-  const { actions } = fromStateMap(stateMap);
-
-  const resourceNames = keys(stateMap);
+export const apiFactory = (baseURL, actions, dispatch, standardQuery) => {
+  const resourceNames = keys(actions);
   const cache = {};
   // From [resource, method, function] triplets, we create a trie (https://en.wikipedia.org/wiki/Trie)
   const paths = crossProduct(
@@ -115,7 +114,8 @@ export const apiFactory = (baseURL, stateMap, dispatch) => {
       methods[method],
       dispatch,
       actions,
-      cache
+      cache,
+      standardQuery
     ),
   ]);
 

@@ -51,10 +51,11 @@ const stateMap = {
 };
 ```
 
-generate reducers and actions
+generate reducers:
 
 ```js
-const { reducers, actions } = fromStateMap(stateMap);
+const reducers = generateReducers(stateMap, handlers);
+const actions = generateActions(store.dispatch, stateMap, handlers);
 ```
 
 use them in your code
@@ -63,10 +64,10 @@ use them in your code
 export const store = createStore(reducers, composeEnhancer(middleware));
 ---
 
-actions.setUserhistory({...})
-actions.updateUserhistory({...})
-actions.setCategory({...})
-actions.updateCategory({...})
+actions.userhistory.set({...})
+actions.userhistory.update({...})
+actions.category.set({...})
+actions.category.update({...})
 ...
 
 ```
