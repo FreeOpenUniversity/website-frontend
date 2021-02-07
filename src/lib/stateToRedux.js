@@ -1,6 +1,7 @@
-import { camelCase, keys, snakeCase } from "lodash";
+import { keys, snakeCase } from "lodash";
 import { crossProduct, trie } from "./utils";
 import { listOfReducersToReducer } from "./ListToReducer";
+import { combineReducers } from "redux";
 
 /**
  * reducer factories. Simplifies the generation of reducers
@@ -57,7 +58,7 @@ export const generateActions = (dispatch, stateMap, _handlers = {}) => {
 export const generateReducers = (stateMap, _handlers = {}) => {
   const handlers = { ...defaultHandlers, _handlers };
   const resourceNames = keys(stateMap);
-  return makeReducers(stateMap, resourceNames, handlers);
+  return combineReducers(makeReducers(stateMap, resourceNames, handlers));
 };
 
 function makeActions(verbs, resourceNames, dispatch) {
