@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { login } from "../../actions/auth";
+// import { login } from "../../actions/auth";
+import { actions, api } from "../../store";
 
-const Login = ({ login, isAuthenicated }) => {
+const Login = ({ isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,12 +18,15 @@ const Login = ({ login, isAuthenicated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    api.auth.post({ email, password }).then(({ payload }) => {
+      localStorage.setItem("token", payload.token);
+      actions.auth.update({ token: payload.token });
+    });
   };
 
   //redirect if loggedin
-  //below line should be if(isAuthenicated) I am using ! for testing
-  if (!isAuthenicated) {
+  //below line should be if(isAuthenticated) I am using ! for testing
+  if (!isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
   return (
@@ -73,10 +77,10 @@ const Login = ({ login, isAuthenicated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenicated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProp = (state) => ({
-  isAuthenicated: state.auth.isAuthenicated,
+  isAuthenticated: state.auth.isAuthenticated,
 });
-export default connect(mapStateToProp, { login })(Login);
+export default connect(mapStateToProp)(Login);
