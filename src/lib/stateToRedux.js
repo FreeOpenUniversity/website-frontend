@@ -1,10 +1,14 @@
-import { camelCase, keys, snakeCase } from "lodash";
-import { crossProduct } from "./utils";
+import { keys, last, snakeCase } from "lodash";
+import { crossProduct, trie } from "./utils";
+import { listOfReducersToReducer } from "./ListToReducer";
+import { combineReducers } from "redux";
+import { connect as rconnect } from "react-redux";
 
 /**
  * reducer factories. Simplifies the generation of reducers
+ * @typedef {(state, action) => action.payload} handler
  */
-const defHandlers = {
+export const defaultHandlers = {
   set: (state, action) => {
     return action.payload;
   },
@@ -16,7 +20,39 @@ const defHandlers = {
   },
 };
 
-const action = (type) => (payload) => ({ type, payload });
+// add new reducers here
+// const reducerList = [fromStateMap(apiStateMap).reducers, { auth }, { alert }];
+
+const getResourcePaths = (stateMap, prefix = []) => {
+  const nested = keys(stateMap).filter((k) => k.startsWith("_"));
+  const unnested = keys(stateMap).filter((k) => !k.startsWith("_"));
+  const level = unnested.map((resourceName) => [
+    ...prefix,
+    resourceName,
+    stateMap[resourceName],
+  ]);
+  if (nested.length === 0) return level;
+
+  return [
+    ...level,
+    ...nested
+      .map((nameSpace) =>
+        getResourcePaths(stateMap[nameSpace], [...prefix, nameSpace.slice(1)])
+      )
+      .flat(),
+  ];
+};
+
+export const objectify = (state) =>
+  trie(keys(state).map((k) => [...k.split("/"), state[k]])).tree;
+
+export const connect = (mapStateToProps, actions) =>
+  rconnect((state) => mapStateToProps(objectify(state)), actions);
+
+const getResourceName = (resourcePath) =>
+  resourcePath.slice(0, resourcePath.length - 1).join("/");
+
+const action = (dispatch, type) => (payload) => dispatch({ type, payload });
 const getVerb = (actionType) => actionType.split("_")[0].toLowerCase();
 const getResource = (actionType) => actionType.split("_")[1]?.toLowerCase();
 /**
@@ -34,30 +70,50 @@ const getResource = (actionType) => actionType.split("_")[1]?.toLowerCase();
  * and reducers for types "SET_CAT", and "UPDATE_CAT"
  *
  */
-export const fromStateMap = (stateMap, handlers = defHandlers) => {
-  const resourceNames = keys(stateMap);
+/** @type { 
+  <T, K extends keyof T, S, V extends keyof S>
+    (stateMap: T, handlers: S ) => 
+      {actions:
+        {[k in K]: {
+          [s in V]: (payload:{})=>{type:[s, k], payload:{}}
+        }
+      }
+    }
+  }
+*/
+export const generateActions = (dispatch, stateMap, _handlers = {}) => {
+  const handlers = { ...defaultHandlers, _handlers };
+  const resourcePaths = getResourcePaths(stateMap);
   const verbs = keys(handlers);
-  return {
-    actions: makeActions(verbs, resourceNames),
-    reducers: makeReducers(stateMap, resourceNames, handlers),
-  };
+  return makeActions(verbs, resourcePaths, dispatch);
 };
 
-function makeActions(verbs, resourceNames) {
-  const actionList = crossProduct(verbs, resourceNames).map(
-    ([verb, resource]) => {
+export const generateReducers = (stateMap, _handlers = {}) => {
+  const handlers = { ...defaultHandlers, _handlers };
+  const resourcePaths = getResourcePaths(stateMap);
+  return combineReducers(makeReducers(stateMap, resourcePaths, handlers));
+};
+
+function makeActions(verbs, resourcePaths, dispatch) {
+  const actionList = crossProduct(verbs, resourcePaths).map(
+    ([verb, resourcePath]) => {
+      const resource = getResourceName(resourcePath);
       const type = snakeCase(`${verb}_${resource}`).toUpperCase();
-      return { [camelCase(type)]: action(type) };
+      return [
+        ...resourcePath.slice(0, resourcePath.length - 1),
+        verb,
+        action(dispatch, type),
+      ];
     }
   );
-  return Object.assign({}, ...actionList);
+  return trie(actionList).tree;
 }
 
-function makeReducers(stateMap, resourceNames, handlers = defHandlers) {
+function makeReducers(stateMap, resourcePaths, handlers) {
   // this returns a map from the keys in stateMap to a generic verb based reducer
-  const reducerList = resourceNames.map((resource) => {
-    const defaultState = stateMap[resource];
-
+  const reducerList = resourcePaths.map((resourcePath) => {
+    const defaultState = last(resourcePath);
+    const resource = getResourceName(resourcePath);
     const reducer = (state = defaultState, action) => {
       if (getResource(action.type) !== resource) return state;
       const handler = handlers[getVerb(action.type)];
@@ -67,5 +123,5 @@ function makeReducers(stateMap, resourceNames, handlers = defHandlers) {
     return { [resource]: reducer };
   });
 
-  return Object.assign({}, ...reducerList);
+  return listOfReducersToReducer([Object.assign({}, ...reducerList)]);
 }
