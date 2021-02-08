@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
 import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
-import { api } from "./store";
+import { actions, api } from "./store";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import Login from "./components/auth/Login";
@@ -20,7 +20,6 @@ import SignUp from "./components/auth/SignUp";
 import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
 import Cat from "./components/Cat";
 import { loadUser } from "./actions/auth";
-import { store } from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import Dashboard from "./components/dashboard/Dashboard";
 import { connect } from "./lib/stateToRedux";
@@ -31,13 +30,17 @@ if (localStorage.token) {
 }
 
 function App(props) {
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, []);
-
+  api.auth.get().then((data) =>
+    actions.auth.auth.update({
+      isAuthenicated: true,
+      loaded: false,
+      user: data,
+    })
+  );
   const { books, categories } = props;
   api.book.read();
   api.category.read();
+  api.user.get();
   let cats = Object.values(categories); // covert categories to array
   const getBookTitle = (props) => {
     const id = props.match.params.id;

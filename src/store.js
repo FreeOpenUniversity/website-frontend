@@ -3,9 +3,6 @@ import { apiFactory } from "./lib/api";
 import thunk from "redux-thunk";
 import { applyMiddleware, compose, createStore } from "redux";
 import promise from "redux-promise-middleware";
-import rootReducer from "./reducers";
-import auth, { initialState } from "./reducers/auth";
-import alert from "./reducers/alert";
 
 // Add api endpoints here
 const _api = {
@@ -14,15 +11,16 @@ const _api = {
   image: {},
   user: {},
   userhistory: {},
+  auth: {},
+};
+
+const _auth = {
   auth: {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
     user: null,
   },
-};
-
-const _auth = {
   alerts: [],
 };
 

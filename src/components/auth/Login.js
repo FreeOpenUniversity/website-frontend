@@ -10,7 +10,6 @@ const Login = ({ isAuthenticated }) => {
     email: "",
     password: "",
   });
-
   const { email, password } = formData;
 
   const onChange = (e) =>
@@ -18,10 +17,20 @@ const Login = ({ isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    api.auth.post({ email, password }).then(({ payload }) => {
-      localStorage.setItem("token", payload.token);
-      actions.auth.update({ token: payload.token });
-    });
+    api.auth
+      .post({ email, password })
+      .then(({ payload }) => {
+        localStorage.setItem("token", payload.token);
+        actions.auth.update({ token: payload.token });
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+        actions.auth.update({
+          token: null,
+          isAuthenicated: false,
+          loading: false,
+        });
+      });
   };
 
   //redirect if loggedin
