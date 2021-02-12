@@ -38,8 +38,7 @@ const covers = [
   { img: western },
 ];
 
-export function CategoryScroller({ categories }) {
-  // console.log("Categories", categories);
+export default function CategoryScroller({ categories }) {
   return (
     <div className="flex flex-wrap mw8-l mw100 center">
       {categories
