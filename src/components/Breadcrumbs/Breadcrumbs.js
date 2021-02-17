@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { matchRoutes } from "../../lib/utils";
+import { FaHome, FaAngleRight } from "react-icons/fa";
 
 const Breadcrumbs = (props) => {
   const {
@@ -20,9 +21,12 @@ const Breadcrumbs = (props) => {
             className="no-underline avenir link hover-green hover-animate"
             // onClick={() => history.push("/")}
           >
-            <i className="fas fa-home link black"></i> {/*home logo*/}
+            <FaHome className="link black pl4" /> {/*home logo*/}
           </Link>
-          <span className="ph2"> {">"} </span> {/*separator following home*/}
+          <span className="ph2">
+            <FaAngleRight />{" "}
+          </span>{" "}
+          {/*separator following home*/}
           {/* the rest of the crumbs */}
           {pathnames.map((name, index) => {
             const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
@@ -37,7 +41,7 @@ const Breadcrumbs = (props) => {
             const isLast = index === pathnames.length - 1;
             return isLast ? (
               // make the end the crumbs text , not link
-              <div className="ttc" key={name}>
+              <div className="ttc b" key={name}>
                 {title}
               </div>
             ) : (
@@ -48,7 +52,7 @@ const Breadcrumbs = (props) => {
                   className="no-underline fw4 avenir link hover-green hover-animate flex"
                   // onClick={() => history.push(routeTo)}
                 >
-                  <div className="ttc"> {title} </div>
+                  <div className="ttc b"> {title} </div>
                 </Link>
                 <span className="ph2"> {">"} </span> {/* breadcrumb separator*/}
               </div>

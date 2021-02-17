@@ -2,22 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SubjectCard from "../components/SubjectCard";
 
-import action from "../Images/Category/action.jpg";
-import adventure from "../Images/Category/adventure.jpg";
-import animation from "../Images/Category/animation.jpg";
-import children from "../Images/Category/children.jpg";
-import comedy from "../Images/Category/comedy.jpg";
-import crime from "../Images/Category/crime.jpg";
-import documentary from "../Images/Category/documentary.jpg";
-import drama from "../Images/Category/drama.jpg";
-import filmNoir from "../Images/Category/filmNoir.jpg";
-import horror from "../Images/Category/horror.jpg";
-import musical from "../Images/Category/musical.jpg";
-import mystery from "../Images/Category/mystery.jpg";
-import nogenres from "../Images/Category/nogenres.jpg";
-import romance from "../Images/Category/romance.jpg";
-import thriller from "../Images/Category/thriller.jpg";
-import western from "../Images/Category/western.jpg";
+import action from "../Images/Category/action.webp";
+import adventure from "../Images/Category/adventure.webp";
+import animation from "../Images/Category/animation.webp";
+import children from "../Images/Category/children.webp";
+import comedy from "../Images/Category/comedy.webp";
+import crime from "../Images/Category/crime.webp";
+import documentary from "../Images/Category/documentary.webp";
+import drama from "../Images/Category/drama.webp";
+import filmNoir from "../Images/Category/filmNoir.webp";
+import horror from "../Images/Category/horror.webp";
+import musical from "../Images/Category/musical.webp";
+import mystery from "../Images/Category/mystery.webp";
+import nogenres from "../Images/Category/nogenres.webp";
+import romance from "../Images/Category/romance.webp";
+import thriller from "../Images/Category/thriller.webp";
+import western from "../Images/Category/western.webp";
 
 const covers = [
   { img: nogenres },

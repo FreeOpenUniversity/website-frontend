@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { api } from "../store";
-
+import { FaSearch } from "react-icons/fa";
 function searchBar({ className }) {
   api.book.read();
   return (
@@ -11,7 +11,7 @@ function searchBar({ className }) {
         className="fw5 avenir pv2 ph4 ph3-m br-pill mr2 b-dark-green outline-0"
       />
       <button className="fw5 avenir pv2 ph4 ph3-m br-pill ttc bg-dark-green white bw0 pointer outline-0 bn">
-        <i className="fa fa-search"></i> search
+        <FaSearch /> search
       </button>
     </div>
   );

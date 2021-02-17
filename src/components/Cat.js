@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export function Book({ book, path }) {
-  const { title, author, link, id, imageId } = book;
+  const { title, author, id, imageId } = book;
   const cutLength = 24;
-  const [cover, setCover] = useState({});
+  const [setCover] = useState({});
   const dummyImg = "https://dummyimage.com/600x400/00ff40/fafafa";
   useEffect(() => {
     fetch(`http://66.76.242.195:8180/image/${imageId}`)
@@ -33,7 +33,7 @@ export function Book({ book, path }) {
 }
 
 export default function Cat(props) {
-  const { id, name, imageId, books } = props.data[0] || [];
+  const { name, books } = props.data[0] || [];
   return (
     <>
       <div className="f1 tc mt3 ttc">{name}</div>
