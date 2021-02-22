@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <>
-      <div className="bg-light-silver w-100">
+      <div className="bg-white w-100">
         <div className="pa4 mh5 mh2-m flex items-center justify-between">
           <Link to="/" className="black no-underline flex items-center">
             <img

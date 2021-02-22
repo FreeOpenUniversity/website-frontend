@@ -10,6 +10,10 @@ body {
   pointer-events: none;
 }
 
+@font-face {
+  font-display: swap;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
