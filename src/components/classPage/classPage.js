@@ -7,9 +7,9 @@ function ClassPage(props){
   let {classes} = props;
   api.userhistory.read();
   classes = Object.values(classes);
-  let holderIp = [],
-    holderCom = [],
-    holderFav = [];
+  let inProgress = [],
+    Completed = [],
+    Favorites = [];
   let count1 = 0,
     count2 = 0,
     count3 = 0;
@@ -31,33 +31,33 @@ function ClassPage(props){
     if (d.progress === 0.0) {
       count1 += 1;
       a.classNum = count1;
-      holderFav.push(a);
+      Favorites.push(a);
     } else if (d.progress < 1.0) {
       count2 += 1;
       a.classNum = count2;
-      holderIp.push(a);
+      inProgress.push(a);
     } else {
       count3 += 1;
       a.classNum = count3;
-      holderCom.push(a);
+      Completed.push(a);
     }
   });
   return (
     <div>
       <h1 className="mid-gray athelas tracked-tight pl4 f3"> In Progress </h1>
-      {holderIp.map((data) => (
+      {inProgress.map((data) => (
         <ClassList {...data} />
       ))}
 
       <hr />
       <h1 className="mid-gray athelas tracked-tight pl4 f3"> Completed </h1>
-      {holderCom.map((data) => (
+      {Completed.map((data) => (
         <ClassList {...data} />
       ))}
 
       <hr />
       <h1 className="mid-gray athelas tracked-tight pl4 f3"> Favorites </h1>
-      {holderFav.map((data) => (
+      {Favorites.map((data) => (
         <ClassList {...data} />
       ))}
     </div>
