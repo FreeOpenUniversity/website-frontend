@@ -1,3 +1,5 @@
+import SuspenseImage from "../SuspenseImage";
+
 export default function SubjectCard({ title, img }) {
   return (
     <div className="mv3">
@@ -5,9 +7,9 @@ export default function SubjectCard({ title, img }) {
         {title}
       </div>
       <div className="tc ph1">
-        <img
+        <SuspenseImage
           src={img}
-          className="w-100 h-100 br2 br--bottom"
+          styles="w-100 h-100 br2 br--bottom"
           alt={`cover of subject ${title}`}
         />
       </div>

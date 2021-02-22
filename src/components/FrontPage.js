@@ -12,7 +12,7 @@ const CategoryScroller = lazy(() => import("./CategoriesScroller"));
 const frontPage = () => {
   api.category.read();
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<p className="w100 tc avenir">Loading...</p>}>
       <div className="avenir">
         <h1 className="tc ttu f1 fw9 tracked-tight">
           Welcome to Collegiate Independent Study
