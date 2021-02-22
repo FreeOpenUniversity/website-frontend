@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
     "husky": "^4.3.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
@@ -23,6 +24,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.3.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4",
     "yarn": "^1.22.10"
   },

@@ -16,8 +16,14 @@ export const MenuData = [
   },
 
   {
+    title: "My Learning",
+    path: "/my-classes",
+    icon: <AiIcons.AiOutlineBook />,
+  },
+
+  {
     title: "Log Out",
-    path: "/#",
+    path: "/",
     icon: <AiIcons.AiOutlineLogout />,
   },
 ];

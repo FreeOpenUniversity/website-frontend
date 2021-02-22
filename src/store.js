@@ -5,29 +5,29 @@ import { applyMiddleware, compose, createStore } from "redux";
 import promise from "redux-promise-middleware";
 
 // Add api endpoints here
-const apiStateMap = {
+const _api = {
   book: {},
   category: {},
   image: {},
   user: {},
   userhistory: {},
+  auth: {},
 };
 
-// create, read, update, delete
-
-// api.chocolate.create({name:"dark"})
-// api.chocolate.update({id: "123", name:"extra dark"})
-// api.chocolate.read({id: "123"})
-// api.chocolate.read()
-// api.chocolate.delete({id: "123"})
-
-const UIStateMap = {
-  // user: { loggedIn: false, currentPage: "/home" },
-  // searchOptions: {},
-  // add new state here
+const _auth = {
+  auth: {
+    token: localStorage.getItem("token"),
+    isAuthenticated: null,
+    loading: true,
+    user: null,
+  },
+  alerts: [],
 };
 
-const stateMap = { ...apiStateMap, ...UIStateMap };
+// add new reducers here
+// const reducerList = [fromStateMap(apiStateMap).reducers, { auth }, { alert }];
+
+const stateMap = { _api, _auth };
 
 // create the redux store
 const middleware = applyMiddleware(thunk, promise);
@@ -36,9 +36,10 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancer(middleware));
 
 export const actions = generateActions(store.dispatch, stateMap);
+console.log(actions);
 // initializing the api object
 
 // django todo: add /books/api/book
 // django todo: add {format: "json"} as last param to apiFactory
 const baseURL = process.env.REACT_APP_API_URL || "http://localhost:8080";
-export const api = apiFactory(baseURL, actions, store.dispatch);
+export const api = apiFactory(baseURL, actions.api, store.dispatch);

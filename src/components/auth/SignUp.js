@@ -1,10 +1,12 @@
 import React from "react";
-import Submit from "./Submit";
+import SignUpForm from "./SignUpForm";
+import Alert from "../Alert";
 
 export default function SignUp() {
   return (
     <div>
-      <Submit />
+      <Alert />
+      <SignUpForm />
     </div>
   );
 }

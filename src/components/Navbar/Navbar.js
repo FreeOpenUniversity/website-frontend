@@ -16,10 +16,7 @@ export const Navbar = ({ signedIn }) => {
     ) : (
       <div className="ml-auto">
         <Link className={className} to="./signup">
-          Sign Up
-        </Link>
-        <Link className={className} to="/my-classes">
-          My Classes
+          Sign up/Login
         </Link>
       </div>
     );

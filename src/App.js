@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import FrontPage from "./components/FrontPage";
@@ -11,19 +12,35 @@ import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
 import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
-import { api } from "./store";
+import { actions, api } from "./store";
 import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
-import { connect } from "react-redux";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
 import Cat from "./components/Cat";
+import { loadUser } from "./actions/auth";
+import setAuthToken from "./utils/setAuthToken";
+import Dashboard from "./components/dashboard/Dashboard";
+import { connect } from "./lib/stateToRedux";
+import CreateProfile from "./components/Profile/CreateProfile";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 function App(props) {
+  api.auth.get().then((data) =>
+    actions.auth.auth.update({
+      isAuthenicated: true,
+      loaded: false,
+      user: data,
+    })
+  );
   const { books, categories } = props;
   api.book.read();
   api.category.read();
+  api.user.get();
   let cats = Object.values(categories); // covert categories to array
   const getBookTitle = (props) => {
     const id = props.match.params.id;
@@ -99,6 +116,11 @@ function App(props) {
               </Route>
             );
           })}
+
+          {/*When connecting these needs to be <PrivateRoute/> */}
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/create-profile" component={CreateProfile} />
+          {/*<Route exact path="/edit-profile" component={ EditProfile }/>*/}
         </Switch>
       </ScrollToTop>
       <Footer />
@@ -107,7 +129,7 @@ function App(props) {
 }
 
 function mapStateToProps(state) {
-  return { categories: state.category, books: state.book };
+  return { categories: state.api.category, books: state.api.book };
 }
 
 export default connect(mapStateToProps)(App);

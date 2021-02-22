@@ -3,8 +3,8 @@ import { api } from "../../store";
 import ClassList from "./ClassList";
 import { connect } from "react-redux";
 
-function ClassPage(props){
-  let {classes} = props;
+function ClassPage(props) {
+  let { classes } = props;
   api.userhistory.read();
   classes = Object.values(classes);
   let inProgress = [],
@@ -26,7 +26,7 @@ function ClassPage(props){
         chapters: "#",
         scores: "#",
         keepG: "#",
-      }
+      },
     };
     if (d.progress === 0.0) {
       count1 += 1;
@@ -65,7 +65,7 @@ function ClassPage(props){
 }
 
 function mapStateToProps(state) {
-  return  {classes : state.userhistory};
+  return { classes: state.userhistory };
 }
 
 export default connect(mapStateToProps)(ClassPage);

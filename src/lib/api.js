@@ -69,7 +69,10 @@ const requestFactory = (
   return dispatch(requestAction).then(({ value }) => {
     cache[url] = true;
     isArray(value) && (value = keyBy(value, "id"));
-    return actions[resourceName].update(value);
+    const update = resourceName
+      .split("/")
+      .reduce((future, token) => future[token], actions).update;
+    return update(value);
   });
 };
 
