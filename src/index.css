@@ -17,3 +17,8 @@
 .hover-bg-dark-blue:focus {
   background-color: #1f253d;
 }
+
+.hidden {
+  visibility: hidden;
+  display: none;
+}

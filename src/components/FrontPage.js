@@ -19,15 +19,11 @@ const frontPage = (props) => {
         style={background}
         className="cover bg-near-white mw-100 vh-75"
       ></div> */}
-      <h1 className="tc ttu f1 fw9 tracked-tight">
+      <h1 className="tc ttu f3 mt6 tracked-tight">
         Welcome to Collegiate Independent Study
       </h1>
       <div className="tc">
-        <img
-          src={frontpgImg}
-          alt="front page header"
-          className="center vh-75"
-        />
+        <img src={frontpgImg} alt="front page header" className="center" />
       </div>
       <HomepageIntro />
       <CategoryScroller

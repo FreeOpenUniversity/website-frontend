@@ -1,72 +1,61 @@
 export const SubCategoryData = [
   {
-    title: "placeholder1", //category
-    path: "/category/placeholder1",
+    title: "Action", //category
+    path: "/category/action",
   },
   {
-    title: "placeholder2",
-    path: "/category/placeholder2",
+    title: "Adventure",
+    path: "/category/adventure",
   },
   {
-    title: "placeholder3",
-    path: "/category/placeholder3",
-  },
-
-  {
-    title: "placeholder4",
-    path: "/category/placeholder4",
-  },
-  {
-    title: "placeholder5",
-    path: "/category/placeholder5",
-  },
-  {
-    title: "placeholder6",
-    path: "/category/placeholder6",
+    title: "Animation",
+    path: "/category/animation",
   },
 
   {
-    title: "placeholder7",
-    path: "/category/placeholder7",
+    title: "Children",
+    path: "/category/children",
   },
   {
-    title: "placeholder8",
-    path: "/category/placeholder8",
+    title: "Comedy",
+    path: "/category/comedy",
   },
   {
-    title: "placeholder9",
-    path: "/category/placeholder9",
-  },
-  {
-    title: "placeholder10",
-    path: "/category/placeholder10",
-  },
-  {
-    title: "placeholder11",
-    path: "/category/placeholder11",
+    title: "Crime",
+    path: "/category/Crime",
   },
 
   {
-    title: "placeholder12",
-    path: "/category/placeholder12",
+    title: "Documentary",
+    path: "/category/documentary",
   },
   {
-    title: "placeholder13",
-    path: "/category/placeholder13",
+    title: "Drama",
+    path: "/category/drama",
   },
   {
-    title: "placeholder14",
+    title: "Film-Noir",
+    path: "/category/Horror",
+  },
+  {
+    title: "Musical",
+    path: "/category/Musical",
+  },
+  {
+    title: "Mystery",
+    path: "/category/mystery",
+  },
+
+  {
+    title: "Romance",
+    path: "/category/Romance",
+  },
+  {
+    title: "Thriller",
+    path: "/category/Thriller",
+  },
+  {
+    title: "Western",
     path: "/category/placeholder14",
   },
-  {
-    title: "placeholder15",
-    path: "/category/placeholder15",
-  },
-  {
-    title: "placeholder16",
-    path: "/category/placeholder16",
-  },
-  { title: "About Us", path: "/about-us" },
-  { title: "Contact OpenLearn", path: "/contact-us" },
-  { title: "FAQ", path: "/questions" },
 ];
