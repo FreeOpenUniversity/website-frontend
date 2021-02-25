@@ -1,8 +1,3 @@
-.dropdown:hover .dn {
-  visibility: visible;
-  display: block;
-}
-
 .plus::before,
 .plus::after,
 .minus::before {
@@ -19,7 +14,6 @@
   width: 0.2rem;
 }
 .plus::after {
-  /* transform: translateY(10px); */
   width: 0.2rem;
 }
 .minus::before {

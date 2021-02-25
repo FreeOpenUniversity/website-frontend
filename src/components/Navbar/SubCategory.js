@@ -10,11 +10,6 @@ import { useSelector } from "react-redux";
 export const SubCategory = () => {
   const categories = useSelector((state) => state.category);
 
-  // <div className="pa4 bg-white shadow-5 fl w-50-l visibility-hidden absolute black">
-  //     <div className="pb2 flex mb2 bb bw1 justify-between items-center">
-  //       <h2 className="dib w-75-ns">Categories</h2>
-  //       <button className="avenir fw5 f5-ns f4-l link dim br-pill bn ph4 dib mv3-l h3-l h-50-ns bg-near-white"></button>
-  // pa4 bg-white shadow-5 fl w-100 h-100 absolute top-20 left-0 black
   return (
     <>
       <div className=" flex flex-column flex-wrap-ns ph3  bg-dark-blue w-75-ns">

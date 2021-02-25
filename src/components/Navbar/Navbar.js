@@ -34,7 +34,6 @@ export const Navbar = ({ signedIn }) => {
     ) : (
       <div className="ml-ns flex-column flex flex-row-ns mv2 ">
         <Link className={`${className} ml-custom`} to="/my-classes">
-          {/* <div className={plusSign}></div> */}
           MY CLASSES
         </Link>
         <Link className={`${className} f4 pt4`} to="./signup">
@@ -48,8 +47,6 @@ export const Navbar = ({ signedIn }) => {
   return (
     // main navbar
     <div className="fw5 flex flex-column flex-row-ns white  vh-100 w-100 h3-ns f4 bg-dark-blue z-index-100  ">
-      {/* <div className=" w-100 flex-ns justify-between-ns white hover-green  dropdown"> */}
-
       <Link
         className={`${className} mt4 dropdown`}
         onClick={() => {
@@ -69,7 +66,5 @@ export const Navbar = ({ signedIn }) => {
         <img src={googleplus} className={icons}></img>
       </div>
     </div>
-
-    // </div>
   );
 };
