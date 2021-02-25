@@ -26,3 +26,11 @@
   transform: rotate(90deg);
   width: 0.2rem;
 }
+
+.z-index-100 {
+  z-index: 100;
+}
+
+.ml-custom {
+  margin-left: 1.5rem;
+}

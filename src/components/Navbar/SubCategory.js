@@ -10,14 +10,6 @@ import { useSelector } from "react-redux";
 export const SubCategory = () => {
   const categories = useSelector((state) => state.category);
 
-  const lala = _.uniqBy(
-    data
-      .map(({ category }) => category)
-      .filter((cat) => !cat.includes("|"))
-      .map((name) => ({ name }))
-  );
-  console.log(lala);
-
   // <div className="pa4 bg-white shadow-5 fl w-50-l visibility-hidden absolute black">
   //     <div className="pb2 flex mb2 bb bw1 justify-between items-center">
   //       <h2 className="dib w-75-ns">Categories</h2>
@@ -27,12 +19,12 @@ export const SubCategory = () => {
     <>
       <div className=" flex flex-column flex-wrap-ns ph3  bg-dark-blue w-75-ns">
         <div className=" flex flex-column flex-row-ns flex-wrap-ns w-100   ">
-          {SubCategoryData.slice(0, 10).map((item, index) => {
+          {SubCategoryData.slice(0, 16).map((item, index) => {
             return (
               <ul key={index} className="fw4 f4 pa2 ph4 ">
                 <li className="list pl3 v-mid ">
                   <Link to={{ pathname: item.path, state: { id: item.title } }}>
-                    <div className="link black hover-green hover-animate white w-100 ">
+                    <div className="link no-underline black hover-green hover-animate white w-100 ">
                       {item.title}
                     </div>
                   </Link>

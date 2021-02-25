@@ -56,6 +56,10 @@ export const SubCategoryData = [
   },
   {
     title: "Western",
-    path: "/category/placeholder14",
+    path: "/category/Western",
+  },
+  {
+    title: "Show more +",
+    path: "/category/Western",
   },
 ];

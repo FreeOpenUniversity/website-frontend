@@ -20,11 +20,11 @@ export const Navbar = ({ signedIn }) => {
 
   const [subCategory, setSubCategory] = useState(false);
 
-  const handleClick = () => {
-    console.log("hello");
-    console.log(subCategory);
-    return subCategory ? <SubCategory /> : <div></div>;
-  };
+  function toggleState(stateSetter) {
+    stateSetter((prev) => {
+      return !prev;
+    });
+  }
 
   const UserControls = () => {
     return signedIn ? (
@@ -33,8 +33,8 @@ export const Navbar = ({ signedIn }) => {
       </div>
     ) : (
       <div className="ml-ns flex-column flex flex-row-ns mv2 ">
-        <Link className={className} to="/my-classes">
-          <div className={plusSign}></div>
+        <Link className={`${className} ml-custom`} to="/my-classes">
+          {/* <div className={plusSign}></div> */}
           MY CLASSES
         </Link>
         <Link className={`${className} f4 pt4`} to="./signup">
@@ -47,21 +47,22 @@ export const Navbar = ({ signedIn }) => {
 
   return (
     // main navbar
-    <div className="fw5 flex flex-column flex-row-ns white vh-100 w-100 h3-ns f4 bg-dark-blue   ">
+    <div className="fw5 flex flex-column flex-row-ns white  vh-100 w-100 h3-ns f4 bg-dark-blue z-index-100  ">
       {/* <div className=" w-100 flex-ns justify-between-ns white hover-green  dropdown"> */}
 
       <Link
         className={`${className} mt4 dropdown`}
-        onClick={handleClick}
+        onClick={() => {
+          toggleState(setSubCategory);
+        }}
         to="./"
       >
-        <div className={minusSign}></div>CATEGORY
+        <div className={subCategory ? minusSign : plusSign}></div>CATEGORY
       </Link>
-      <div className="w-100">
-        <SubCategory />
-      </div>
+
+      <div className="w-100">{subCategory && <SubCategory />}</div>
       <UserControls />
-      <div className="ma4 bt center pt2">
+      <div className="ma4 bt center pt2 dn-ns">
         <img src={facebook} className={icons}></img>
         <img src={instagram} className={icons}></img>
         <img src={twitter} className={icons}></img>
