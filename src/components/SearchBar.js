@@ -29,37 +29,15 @@ function onSub(holder) {
   }
 }
 
-// function searchBar({ books, className }) {
-//   let word = "";
-//   api.book.read();
-//     return (
-//     <div className={"ma2 tc w100" + className}>
-//       <form onSubmit={onSub(word)}>
-//         <input
-//         type="text"
-//         className="fw5 avenir pv2 ph4 ph3-m br-pill mr2 b-dark-green outline-0 bn" onChange={handleChange(word)}/>
-//         <button type="submit" className="fw6 avenir pa2 ph4 ph3-m br-pill f4 ttc bg-dark-green b-dark-green bw0 pointer outline-0 bn">
-//         search
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
-
-// export const SearchBar = connect(
-//   (state, props) => ({ books: state.book, ...props }),
-//   {}
-// )(searchBar);
-
-export function SearchBar() {
+function SearchBar({ books, className }) {
   const [word, setWord] = useState("");
   api.book.read();
   return (
-    <div className={"ma2 tc w100"}>
+    <div className={"ma2 tc w100" + className}>
       <form onSubmit={onSub(word)}>
         <input
           type="text"
-          className="fw5 avenir pv2 ph4 ph3-m br-pill mr2 b-dark-green outline-0 bn"
+          className="fw5 avenir pv2 ph4 ph3-m br-pill mr2 b-dark-green outline-0 ba"
           onChange={handleChange(setWord)}
         />
         <button
@@ -72,3 +50,30 @@ export function SearchBar() {
     </div>
   );
 }
+
+export const searchBar = connect(
+  (state, props) => ({ books: state.book, ...props }),
+  {}
+)(SearchBar);
+
+// export function SearchBar() {
+//   const [word, setWord] = useState("");
+//   api.book.read();
+//   return (
+//     <div className={"ma2 tc w100"}>
+//       <form onSubmit={()=>api.book.get({name:"word"})}>
+//         <input
+//           type="text"
+//           className="fw5 avenir pv2 ph4 ph3-m br-pill mr2 b-dark-green outline-0 bn"
+//           onChange={handleChange(setWord)}
+//         />
+//         <button
+//           type="submit"
+//           className="fw6 avenir pa2 ph4 ph3-m br-pill f4 ttc bg-dark-green b-dark-green bw0 pointer outline-0 bn"
+//         >
+//           search
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }

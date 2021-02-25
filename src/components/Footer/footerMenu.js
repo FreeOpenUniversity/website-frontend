@@ -5,7 +5,7 @@ const toggleItems = (e) => {
     e.target.classList.toggle("active");
     let menuItems = e.target.nextElementSibling;
 
-    if (menuItems.style.display == "block") {
+    if (menuItems.style.display === "block") {
       menuItems.style.display = "none";
     } else {
       menuItems.style.display = "block";
@@ -24,7 +24,9 @@ const FooterMenu = ({ title, items, hasBorder }) => {
       <ul className="db-l dn list pl0 pl4-m">
         {items.map((menu, index) =>
           menu.link == "none" ? (
-            <p key={index}>{menu.title}</p>
+            <li key={index}>
+              <p>{menu.title}</p>
+            </li>
           ) : (
             <li key={index}>
               <Link to={menu.link}>{menu.title}</Link>
@@ -40,7 +42,7 @@ const FooterMenu = ({ title, items, hasBorder }) => {
       </h2>
       <ul className="db-l dn list pl0 pl4-m">
         {items.map((menu, index) =>
-          menu.link == "none" ? (
+          menu.link === "none" ? (
             <p key={index}>{menu.title}</p>
           ) : (
             <li key={index}>

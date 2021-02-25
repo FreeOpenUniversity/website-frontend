@@ -12,36 +12,87 @@ import ContactUs from "./components/ContactUs";
 import FAQ from "./components/FAQ";
 import Header from "./components/Header/Header";
 import { api } from "./store";
-import ClassPage from "./components/classPage/classPage";
+import classPage from "./components/classPage/classPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { connect } from "react-redux";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
+import BreadCrumb from "./components/Breadcrumbs/Breadcrumbs";
+import Cat from "./components/Cat";
 
 function App(props) {
-  const { books } = props;
+  const { books, categories } = props;
+  api.book.read();
+  api.category.read();
+  let cats = Object.values(categories); // covert categories to array
+  const getBookTitle = (props) => {
+    const id = props.match.params.id;
+    const book = books[id] ? books[id] : MOCK_DATA[id - 1];
+    return book.title;
+  };
+  const getBook = (props) => {
+    const id = props.match.params.id;
+    return <Book {...(books[id] ? books[id] : MOCK_DATA[id - 1])}></Book>;
+  };
+  const getCat = (props) => {
+    const name = props.match.params.name;
+    return <Cat data={cats.filter((cat) => cat.name == name)}></Cat>;
+  };
   const routes = [
-    { path: "/category/:name", as: Category },
     {
-      path: "/book/:id",
-      as: (props) => {
-        const id = props.match.params.id;
-        return <Book data={books[id] ? books[id] : MOCK_DATA[id - 1]}></Book>;
-      },
+      title: (props) => props.match.params.name,
+      path: "/category/:name",
+      as: Category,
     },
-    { path: "/", as: <FrontPage /> },
-    { path: "/about-us", as: AboutUs },
-    { path: "/contact-us", as: ContactUs },
-    { path: "/my-classes", as: <ClassPage/> },
-    { path: "/setting", as: AccountSetting },
-    { path: "/profile", as: Profile },
-    { path: "/questions", as: FAQ },
-  ];
+    {
+      title: (props) => props.match.params.name,
+      path: "/cat/:name",
+      as: getCat,
+    },
+    {
+      title: getBookTitle,
+      path: "/category/:name/book/:id",
+      as: getBook,
+    },
+    {
+      title: getBookTitle,
+      path: "/book/:id",
+      as: getBook,
+    },
+
+    { title: "Home", path: "/", as: FrontPage },
+    { title: "About", path: "/about-us", as: AboutUs },
+    { title: "Contact", path: "/contact-us", as: ContactUs },
+    { title: "My Classes", path: "/my-classes", as: classPage },
+    { title: "Settings", path: "/setting", as: AccountSetting },
+    { title: "Profile", path: "/profile", as: Profile },
+    { title: "Questions", path: "/questions", as: FAQ },
+    { title: "Log in ", path: "/login", as: Login },
+    { title: "Sign up", path: "/signup", as: SignUp },
+  ]
+
+    .map((v) => ({ exact: true, ...v }))
+    .map(({ as: As, title, path }, _, routes) => {
+      return {
+        as: (props) => {
+          return (
+            <>
+              {BreadCrumb({ title, ...props, routes })}
+              <As {...props} />
+            </>
+          );
+        },
+        title,
+        path,
+      };
+    });
 
   return (
     <>
       <Header />
       <ScrollToTop>
         <Switch>
-          {routes.map(({ path, as, index }) => {
+          {routes.map(({ path, as }, index) => {
             return (
               <Route key={index} path={path} exact>
                 {as}
@@ -55,8 +106,8 @@ function App(props) {
   );
 }
 
-function mapStateToProps(state, props) {
-  return { categories: state.category, books: state.book, ...props };
+function mapStateToProps(state) {
+  return { categories: state.category, books: state.book };
 }
 
 export default connect(mapStateToProps)(App);

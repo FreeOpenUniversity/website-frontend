@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo1 from "../../Images/logo1.png";
 import logo2 from "../../Images/logo2.png";
+import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const BotFooter = () => (
   <div className="footer--bot h5-m white center mb6 ph2 pv4 tc-m">
@@ -42,7 +43,7 @@ const BotFooter = () => (
             target="_blank"
             rel="noreferrer"
           >
-            <i className="fab fa-twitter f1" aria-hidden="true"></i>
+            <FaTwitter className="f1" />
             <div>Twitter</div>
           </a>
         </li>
@@ -52,7 +53,7 @@ const BotFooter = () => (
             target="_blank"
             rel="noreferrer"
           >
-            <i className="fab fa-facebook-square f1" aria-hidden="true"></i>
+            <FaFacebook className="f1" />
             <div>Facebook</div>
           </a>
         </li>
@@ -62,7 +63,7 @@ const BotFooter = () => (
             target="_blank"
             rel="noreferrer"
           >
-            <i className="fab fa-youtube f1" aria-hidden="true"></i>
+            <FaYoutube className="f1" />
             <div>YouTube</div>
           </a>
         </li>

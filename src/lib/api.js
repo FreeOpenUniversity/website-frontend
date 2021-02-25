@@ -1,6 +1,14 @@
-import { camelCase, isArray, keyBy, keys } from "lodash";
-import { fromStateMap } from "./stateToRedux";
+import { isArray, isEmpty, keyBy, keys } from "lodash";
 import { crossProduct, trie } from "./utils";
+
+const methods = {
+  create: "post",
+  post: "post",
+  read: "get",
+  get: "get",
+  update: "patch",
+  delete: "delete",
+};
 
 /**
  * @typedef {(data:{id?}, options?:{query})=>Promise<Response>} ApiCall
@@ -18,11 +26,12 @@ const requestFactory = (
   resourceName,
   method,
   dispatch,
-  actions
-) => async (data, userOptions = {}) => {
-  const { query } = userOptions;
-
-  const urlQuery = query
+  actions,
+  cache,
+  standardQuery
+) => async (data, requestOptions = {}) => {
+  const query = { ...standardQuery, ...requestOptions.query };
+  const urlQuery = !isEmpty(query)
     ? Object.entries(query)
         .map(([k, v]) => `${k}=${isArray(v) ? v.join(",") : v}`)
         .join("&")
@@ -38,7 +47,11 @@ const requestFactory = (
        method: ${method}`;
   }
 
-  const url = [baseURL, resourceName, id || ""].join("/") + "?" + urlQuery;
+  const url =
+    [baseURL, resourceName, id || ""].join("/") +
+    (urlQuery ? "?" + urlQuery : "");
+  if (!requestOptions.force && methods[method] === "get" && cache[url]) return;
+
   let options = {
     method,
     headers: {
@@ -46,6 +59,7 @@ const requestFactory = (
     },
     json: true,
   };
+
   const body = JSON.stringify(data);
   if (!method === "get") options.body = body;
   const requestAction = {
@@ -53,9 +67,9 @@ const requestFactory = (
     payload: (await fetch(url, options)).json(),
   };
   return dispatch(requestAction).then(({ value }) => {
+    cache[url] = true;
     isArray(value) && (value = keyBy(value, "id"));
-    const key = camelCase("update_" + resourceName);
-    return dispatch(actions[key](value));
+    return actions[resourceName].update(value);
   });
 };
 
@@ -84,18 +98,9 @@ const requestFactory = (
  *
  * The tool does not work with nested resources.
  */
-export const apiFactory = (baseURL, stateMap, dispatch) => {
-  const { actions } = fromStateMap(stateMap);
-  const methods = {
-    create: "post",
-    read: "get",
-    get: "get",
-    update: "patch",
-    delete: "delete",
-  };
-
-  const resourceNames = keys(stateMap);
-
+export const apiFactory = (baseURL, actions, dispatch, standardQuery) => {
+  const resourceNames = keys(actions);
+  const cache = {};
   // From [resource, method, function] triplets, we create a trie (https://en.wikipedia.org/wiki/Trie)
   const paths = crossProduct(
     resourceNames,
@@ -103,7 +108,15 @@ export const apiFactory = (baseURL, stateMap, dispatch) => {
   ).map(([resource, method]) => [
     resource,
     method,
-    requestFactory(baseURL, resource, methods[method], dispatch, actions),
+    requestFactory(
+      baseURL,
+      resource,
+      methods[method],
+      dispatch,
+      actions,
+      cache,
+      standardQuery
+    ),
   ]);
 
   return trie(paths).tree;

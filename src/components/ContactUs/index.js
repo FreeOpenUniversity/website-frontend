@@ -1,20 +1,20 @@
-import Template from "../BlogTemplate";
-import Sidebar from "./sidebar";
-import Main from "./main";
+import React, { lazy, Suspense } from "react";
 import ContactUsBanner from "../../Images/contactus-banner.jpg";
-import BreadCrumb from "../BlogTemplate/BreadCrumb";
-import Banner from "../BlogTemplate/Banner";
+
+const Banner = lazy(() => import("../BlogTemplate/Banner"));
+const Template = lazy(() => import("../BlogTemplate"));
+const Content = lazy(() => import("./main"));
+const Sidebar = lazy(() => import("./sidebar"));
 
 const ContactUs = () => (
-  <>
-    <BreadCrumb title="Contact Us" />
+  <Suspense fallback={<p>Loading...</p>}>
     <Banner
       title="Contact Us"
       date="Friday, 25th October 2019"
       image={ContactUsBanner}
     />
-    <Template Main={Main} Sidebar={Sidebar} />
-  </>
+    <Template Main={Content} Sidebar={Sidebar} />
+  </Suspense>
 );
 
 export default ContactUs;

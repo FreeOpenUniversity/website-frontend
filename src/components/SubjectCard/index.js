@@ -1,15 +1,15 @@
-import COVER from "../../Images/card_cover.png";
+import SuspenseImage from "../SuspenseImage";
 
-export default function SubjectCard({ title }) {
+export default function SubjectCard({ title, img }) {
   return (
-    <div className="">
-      <div className="tc bg-red b f3 h3 flex items-center justify-center">
+    <div className="mv3">
+      <div className="tc bg-dark-blue b f4 h3 flex mh1 items-center justify-center br2 br--top">
         {title}
       </div>
-      <div className="tc">
-        <img
-          src={COVER}
-          className="h4 w-100"
+      <div className="tc ph1">
+        <SuspenseImage
+          src={img}
+          styles="w-100 h-100 br2 br--bottom"
           alt={`cover of subject ${title}`}
         />
       </div>
