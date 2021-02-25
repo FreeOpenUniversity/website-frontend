@@ -9,14 +9,8 @@ const Sidebar = () => {
           <li className="dib bg-light-gray black fl ma2 pa3 br-pill">
             Help and Advice
           </li>
-          <li className="dib bg-light-gray black fl ma2 pa3 br-pill">
-            OpenLearn
-          </li>
           <li className="dib bg-light-gray black fl ma2 pa3 br-pill">FAQs</li>
           <li className="dib bg-light-gray black fl ma2 pa3 br-pill">Course</li>
-          <li className="dib bg-light-gray black fl ma2 pa3 br-pill">
-            Posters
-          </li>
         </ul>
       </div>
     </div>

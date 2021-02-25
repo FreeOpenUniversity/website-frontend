@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="pt2 pb5 mv0 footer bg-dark-gray">
       <TopFooter />
-      <BotFooter />
+      {/* <BotFooter /> */}
     </div>
   );
 };

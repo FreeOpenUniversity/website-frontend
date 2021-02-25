@@ -7,8 +7,8 @@ const Main = () => (
   <div>
     <h1 className="f2 mb4">We're here to help!</h1>
     <div>
-      If you need any assistance or have any questions regarding OpenLearn then
-      please follow our recommended three step approach:
+      If you need any assistance or have any questions regarding CIS then please
+      follow our recommended three step approach:
     </div>
     <div className="flex">
       <div className="w-75">
@@ -35,7 +35,7 @@ const Main = () => (
       <div className="w-60 pr3 br">
         <h3 className="f4">How to start a course?</h3>
         <p>
-          Are you wondering about how to enroll, start or complete an OpenLearn
+          Are you wondering about how to enroll, start or complete an CIS
           course? Look no further, we're here to help!
         </p>
         <Link to="/">
@@ -51,10 +51,10 @@ const Main = () => (
         <img src={BeingOU} alt="Thumbnail of BeingOU" />
       </div>
       <div className="w-60 pr3 br">
-        <h3 className="f4">My OpenLearn Account</h3>
+        <h3 className="f4">My CIS Account</h3>
         <p>
-          Have questions concerning your OpenLearn account? Look no further,
-          we're here to help!
+          Have questions concerning your CIS account? Look no further, we're
+          here to help!
         </p>
         <Link to="/">
           <strong>Read Now ></strong>
