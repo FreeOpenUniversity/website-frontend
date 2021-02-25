@@ -12,11 +12,11 @@ export default function Content() {
   return (
     <div>
       <p id="summary-content">
-        <b>Welcome to Collegiate Independent Study</b>- the home of free
-        learning from The Open University. Are you looking for a new topic to
-        explore, or want to dig deeper into something you've already discovered?
-        Whether it’s a 60-second animated video or a 24-hour course you are
-        after, you will find it on Collegiate Independent Study for free.
+        <b>Welcome to Collegiate Independent Study</b>. Are you looking for a
+        new topic to explore, or want to dig deeper into something you've
+        already discovered? Whether it’s a 60-second animated video or a 24-hour
+        course you are after, you will find it on Collegiate Independent Study
+        for free.
       </p>
       {/* Section: Who We Are */}
       <TitleBar title="Who We Are" />
