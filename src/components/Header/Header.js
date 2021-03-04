@@ -1,8 +1,9 @@
 import React from "react";
 import logo from "../../Images/logo.png";
-import { SearchBar } from "../SearchBar";
+import { SearchBar } from "../Searchbar";
 import { Navbar } from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <>
