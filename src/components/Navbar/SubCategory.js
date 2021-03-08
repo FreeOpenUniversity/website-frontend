@@ -8,16 +8,14 @@ import "./Navbar.css";
 import { useSelector } from "react-redux";
 
 export const SubCategory = () => {
-  const categories = useSelector((state) => state.category);
-
   return (
     <>
-      <div className=" flex flex-column flex-wrap-ns ph3  bg-dark-blue w-75-ns">
+      <div className=" flex flex-column flex-wrap-ns ph3 absolute-ns left-0 top-custom bg-dark-blue bg-white-ns w-50-ns">
         <div className=" flex flex-column flex-row-ns flex-wrap-ns w-100   ">
           {SubCategoryData.slice(0, 16).map((item, index) => {
             return (
-              <ul key={index} className="fw4 f4 pa2 ph4 ">
-                <li className="list pl3 v-mid ">
+              <ul key={index} className="fw4 f4 pa2 pa3-ns ph4 w-25-ns w-33-m">
+                <li className="list pl3 pl4-l v-mid ">
                   <Link to={{ pathname: item.path, state: { id: item.title } }}>
                     <div className="link no-underline black hover-green hover-animate white w-100 ">
                       {item.title}

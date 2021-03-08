@@ -32,12 +32,12 @@ export const Navbar = ({ signedIn }) => {
         <UserDropdownMenu />
       </div>
     ) : (
-      <div className="ml-ns flex-column flex flex-row-ns mv2 ">
+      <div className="ml-ns flex-column flex flex-row-ns mv2 pr4-ns items-center-ns">
         <Link className={`${className} ml-custom`} to="/my-classes">
           MY CLASSES
         </Link>
-        <Link className={`${className} f4 pt4`} to="./signup">
-          <img src={profile_avatar} className="h1 pr3"></img>
+        <Link className={`${className} f4 pt4 pt2-ns`} to="./signup">
+          <img src={profile_avatar} className="h1 pr3 dn-ns"></img>
           Sign Up
         </Link>
       </div>
@@ -46,24 +46,31 @@ export const Navbar = ({ signedIn }) => {
 
   return (
     // main navbar
-    <div className="fw5 flex flex-column flex-row-ns white  vh-100 w-100 h3-ns f4 bg-dark-blue z-index-100  ">
+    <div className="fw5 flex flex-column flex-row-ns justify-between-ns white vh-100 w-100 h3-ns f4 bg-dark-blue z-index-100 ">
       <Link
-        className={`${className} mt4 dropdown`}
+        className={`${className} mt4 mt3-ns dropdown`}
         onClick={() => {
           toggleState(setSubCategory);
         }}
-        to="./"
       >
         <div className={subCategory ? minusSign : plusSign}></div>CATEGORY
       </Link>
 
-      <div className="w-100">{subCategory && <SubCategory />}</div>
+      <div className="">{subCategory && <SubCategory />}</div>
       <UserControls />
       <div className="ma4 bt center pt2 dn-ns">
-        <img src={facebook} className={icons}></img>
-        <img src={instagram} className={icons}></img>
-        <img src={twitter} className={icons}></img>
-        <img src={googleplus} className={icons}></img>
+        <Link to="./">
+          <img src={facebook} className={icons}></img>
+        </Link>
+        <Link to="./">
+          <img src={instagram} className={icons}></img>
+        </Link>
+        <Link to="./">
+          <img src={twitter} className={icons}></img>
+        </Link>
+        <Link to="./">
+          <img src={googleplus} className={icons}></img>
+        </Link>
       </div>
     </div>
   );

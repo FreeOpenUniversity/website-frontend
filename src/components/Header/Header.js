@@ -4,9 +4,12 @@ import { SearchBar } from "../SearchBar";
 import { Navbar } from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { useMediaQuery } from "./mediaQueryHook";
 
 function Header() {
   const [hamburgerIsClicked, setHamberger] = useState(false);
+  const screen_ns = useMediaQuery("(min-width: 480px)");
+  const screen_small = useMediaQuery("(max-width: 480px)");
 
   function toggleState(stateSetter) {
     stateSetter((prev) => {
@@ -28,10 +31,10 @@ function Header() {
 
   return (
     <>
-      <div className=" w-100 bg-white fixed top-0 left-0 z-index-100">
+      <div className=" w-100 bg-white fixed relative-ns top-0 left-0 z-index-100">
         <div className="pa2  mh5-ns mh2-m flex items-center justify-between">
           <Link to="/" className="link black flex items-center w-100 h-100">
-            <div className="w-50 ml3 w3-ns mw-100 pr2-ns br-ns">
+            <div className="w3 ml3 pr2-ns br-ns">
               <img
                 id="CIS-logo"
                 className=""
@@ -48,6 +51,7 @@ function Header() {
         </div>
 
         <div
+          className="dn-ns"
           onClick={() => {
             toggleState(setHamberger);
           }}
@@ -55,7 +59,8 @@ function Header() {
           <Hamburger />
         </div>
 
-        {hamburgerIsClicked && <Navbar />}
+        {screen_small && hamburgerIsClicked && <Navbar />}
+        {screen_ns && <Navbar />}
       </div>
     </>
   );
