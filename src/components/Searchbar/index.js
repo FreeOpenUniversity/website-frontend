@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { api } from "../../store";
 import { FaSearch } from "react-icons/fa";
@@ -13,7 +14,7 @@ const categories = [
   "Crime",
   "Documentary",
   "Drama",
-  "Filmnoir",
+  "Film-Noir",
   "Horror",
   "Musical",
   "Mystery",
@@ -21,13 +22,20 @@ const categories = [
   "Thriller",
   "Western",
 ];
-const listitemstyles = "ba bg-white b--light-gray pa2 tl center pointer";
+const listitemstyles =
+  "db ba bg-white b--light-gray pa2 tl center pointer link black";
 
 function SearchBarComponent({ className }) {
+  const history = useHistory();
+
   useEffect(() => {
     const inp = document.getElementById("searchBar");
-    autoComplete(inp, categories);
+    autoComplete(inp, categories, changePage);
   });
+
+  function changePage(name) {
+    history.push(`category/${name}`);
+  }
 
   api.book.read();
   return (
@@ -44,7 +52,7 @@ function SearchBarComponent({ className }) {
   );
 }
 
-function autoComplete(inp, arr) {
+function autoComplete(inp, arr, changePage) {
   let currFocus = -1;
 
   document.addEventListener("click", function (e) {
@@ -65,8 +73,9 @@ function autoComplete(inp, arr) {
 
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-        let listitem = document.createElement("DIV");
+        let listitem = document.createElement("a");
         listitem.setAttribute("class", listitemstyles);
+        listitem.setAttribute("href", `/category/${arr[i]}`);
 
         listitem.innerHTML =
           "<strong>" + arr[i].substr(0, val.length) + "</strong>";
