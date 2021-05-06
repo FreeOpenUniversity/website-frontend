@@ -5,7 +5,6 @@ import data from "../../MOCK_DATA.json";
 import { SubCategoryData } from "./SubCategoryData";
 
 import "./Navbar.css";
-import { useSelector } from "react-redux";
 
 export const SubCategory = () => {
   return (
